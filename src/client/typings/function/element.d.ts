@@ -46,32 +46,6 @@ declare namespace Client {
   function createElement(elementType: string, elementID?: string): Element | false;
 
   /**
-   * Creates an area of water.
-   * The largest possible size of a water area is 5996&#0215;5996.
-   * Also be aware that the function will change all x and y coordinates you specify into even integer numbers if necessary: this is because of a limitation of San Andreas.
-   * You are able to give the water a shallow water effect, which practically changes the water invisible to the eye.
-   * However, all elements still work the same way as without the shallow effect - allowing swimming, diving, vehicles to sink, etc.
-   * - Note: X and Y positions will be changed to an even integer. i.e. -2, 0, 2, 4 etc.
-   * Important note: If you're working with dimensions, be sure to apply it by using setElementDimension.
-   * @param x1 position of bottom left (south-west) corner.
-   * @param y1 position of bottom left (south-west) corner.
-   * @param z1 position of bottom left (south-west) corner.
-   * @param x2 position of bottom right (south-east) corner.
-   * @param y2 position of bottom right (south-east) corner.
-   * @param z2 position of bottom right (south-east) corner.
-   * @param x3 position of top left (north-west) corner.
-   * @param y3 position of top left (north-west) corner.
-   * @param z3 position of top left (north-west) corner.
-   * @param x4 position of top right (north-east) corner.
-   * @param y4 position of top right (north-east) corner.
-   * @param z4 position of top right (north-east) corner.
-   * @param [bShallow=false] gives the water a shallow water effect.
-   * @returns Returns a water element if successful, false otherwise. The water element can be repositioned with setElementPosition and destroyed with destroyElement.
-   * @see https://wiki.mtasa.com/wiki/CreateWater
-   **/
-  function createWater(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number, x4: number, y4: number, z4: number, bShallow?: boolean): Water;
-
-  /**
    * This function detaches attached elements from one another.
    * @param theElement The element to be detached (the "child")
    * @param theAttachToElement The element you wish to detach from, will detach from the attached element if this isn't specified.
@@ -142,7 +116,7 @@ declare namespace Client {
    * This function is used to retrieve a list of the child elements of a given parent element.
    * Note that it will only return direct children and not elements that are further down the element tree.
    * @param parent Supply this argument with the parent of the children you want returned.
-   * @param [theType=nil] The type of element you want a list of. This is the same as the tag name in the .map file, so this can be used with a custom element type if desired. Built in types are
+   * @param [theType=null] The type of element you want a list of. This is the same as the tag name in the .map file, so this can be used with a custom element type if desired. Built in types are
    * @returns This function returns a table that contains a list of elements that the parent has. If the element has no children, it will return an empy table. It will return false if the parent element does not exist.
    * @see https://wiki.mtasa.com/wiki/GetElementChildren
    **/
@@ -298,7 +272,6 @@ declare namespace Client {
    **/
   function getElementType(theElement: Element): string | false;
 
-  //TODO: BIG PROBLEM
   /**
    * This function returns three floats containing the velocity (movement speeds) along the X, Y, and Z axis respectively.
    * This means that velocity values can be positive and negative for each axis.

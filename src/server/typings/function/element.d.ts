@@ -290,7 +290,7 @@ declare namespace Server {
    * Retrieve the rotation of elements.
    * @param theElement The element whose rotation will be retrieved
    * @param [rotOrder=default] A string representing the rotation order desired when returning the euler angles. If omitted, default value is "default". Allowed values are
-   * @returns * rx, ry, rz: 3 floats representing the Euler rotation angles on the axis X, Y and Z (with the rotation order depending on the rotOrder argument) if element exists and is a valid element, false if it's invalid.
+   * @returns rx, ry, rz: 3 floats representing the Euler rotation angles on the axis X, Y and Z (with the rotation order depending on the rotOrder argument) if element exists and is a valid element, false if it's invalid.
    * @see https://wiki.mtasa.com/wiki/GetElementRotation
    * @tupleReturn
    **/
@@ -342,7 +342,7 @@ declare namespace Server {
    * - Note: For legacy reasons, a colshape created on the client does not collide with elements already existing at that location until they first move
    * * This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed
    * @param theShape The colshape you want to get the elements from.
-   * @param [elemType=nil] The type of element you want a list of. This can be any element type, the common ones being
+   * @param [elemType=null] The type of element you want a list of. This can be any element type, the common ones being
    * @returns Returns a table containing all the elements inside the colshape, of the specified type. Returns an empty table if there are no elements inside. Returns false if the colshape is invalid.
    * @see https://wiki.mtasa.com/wiki/GetElementsWithinColShape
    **/
