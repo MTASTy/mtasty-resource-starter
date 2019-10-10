@@ -1,3 +1,4 @@
+/** @noSelf **/
 declare namespace Server {
   /**
    * This function attaches one element to another, so that the first one follows the second whenever it moves.
