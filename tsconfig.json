@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["esnext"],
+    "strict": true,
+    "rootDir": "src",
+    "module": "none",
+    "outDir": "build/",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": [ "src/shared", "src/server", "src/client" ],
+  "tstl": {
+    "luaTarget": "5.1",
+    "luaLibImport": "inline"
+  }
+}
