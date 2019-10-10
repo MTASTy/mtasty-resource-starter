@@ -106,7 +106,7 @@ declare namespace Client {
    * @see https://wiki.mtasa.com/wiki/GetElementAttachedOffsets
    * @tupleReturn
    **/
-  function getElementAttachedOffsets(theElement: Element): [number, number, number, number, number, number] | false;
+  function getElementAttachedOffsets(theElement: Element): [number, number, number, number, number, number] | [false, null, null, null, null, null];
 
   /**
    * This function determines the element that the specified element is attached to.
@@ -125,7 +125,7 @@ declare namespace Client {
    * @see https://wiki.mtasa.com/wiki/GetElementBoundingBox
    * @tupleReturn
    **/
-  function getElementBoundingBox(theElement: Element): [number, number, number, number, number, number] | false;
+  function getElementBoundingBox(theElement: Element): [number, number, number, number, number, number] | [false, null, null, null, null, null];
 
   /**
    * This function returns an element from the specified ID. If more than one element with the same ID exists, only the first one in the order it appears in the XML tree will be returned by this function.
@@ -269,7 +269,7 @@ declare namespace Client {
    * @see https://wiki.mtasa.com/wiki/GetElementPosition
    * @tupleReturn
    **/
-  function getElementPosition(theElement: Element): [number, number, number];
+  function getElementPosition(theElement: Element): [number, number, number] | [false, null, null];
 
   /**
    * This function gets the radius of an element.
@@ -288,7 +288,7 @@ declare namespace Client {
    * @see https://wiki.mtasa.com/wiki/GetElementRotation
    * @tupleReturn
    **/
-  function getElementRotation(theElement: Element, rotOrder?: string): [number, number, number] | false;
+  function getElementRotation(theElement: Element, rotOrder?: string): [number, number, number] | [false, null, null];
 
   /**
    * This function is used to retrieve the type of an element.
@@ -306,7 +306,7 @@ declare namespace Client {
    * @returns If successful, returns three floats that represent the element's current velocity along the x, y, and z axis respectively. This function can fail if the element is a player in a car. Use the vehicle element in this case. It will also fail if the element specified does not have a velocity, or does not exist. In case of failure, the first return value will be false. The returned values are expressed in GTA units per 1/50th of a second. A GTA Unit is equal to one metre.
    * @see https://wiki.mtasa.com/wiki/GetElementVelocity
    **/
-  function getElementVelocity(theElement: Element): [number, number, number];
+  function getElementVelocity(theElement: Element): [number, number, number] | [false, null, null];
 
   // TODO: getElementsByType
   // TODO: getElementsWithinColShape

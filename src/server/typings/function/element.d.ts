@@ -121,7 +121,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementAttachedOffsets
    * @tupleReturn
    **/
-  function getElementAttachedOffsets(theElement: Element): [number, number, number, number, number, number] | false;
+  function getElementAttachedOffsets(theElement: Element): [number, number, number, number, number, number] | [false, null, null, null, null, null];
 
   /**
    * This function determines the element that the specified element is attached to.
@@ -284,7 +284,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementPosition
    * @tupleReturn
    **/
-  function getElementPosition(theElement: Element): [number, number, number] | false;
+  function getElementPosition(theElement: Element): [number, number, number] | [false, null, null];
 
   /**
    * Retrieve the rotation of elements.
@@ -294,7 +294,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementRotation
    * @tupleReturn
    **/
-  function getElementRotation(theElement: Element, rotOrder?: string): [number, number, number] | false;
+  function getElementRotation(theElement: Element, rotOrder?: string): [number, number, number] | [false, null, null];
 
   /**
    * This function gets the syncer of an element.
@@ -322,7 +322,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementVelocity
    * @tupleReturn
    **/
-  function getElementVelocity(theElement: Element): [number, number, number] | false;
+  function getElementVelocity(theElement: Element): [number, number, number] | [false, null, null];
 
   /**
    * This function allows you to retrieve the zone name of an element (eg. Verdant Bluffs or Ocean Docks)
@@ -490,7 +490,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementAngularVelocity
    * @tupleReturn
    **/
-  function getElementAngularVelocity(theElement: Element): [number, number, number];
+  function getElementAngularVelocity(theElement: Element): [number, number, number] | [false, null, null];
 
   /**
    * This function updates the offsets of an element that has been attached to another element using attachElements.
