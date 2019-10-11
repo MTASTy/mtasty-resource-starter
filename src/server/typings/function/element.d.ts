@@ -58,7 +58,7 @@ declare namespace Server {
    * A common use for this function is for creating custom elements, such as a Flag or a Base.
    * Elements created using this function are placed in the element tree with their parent as the 'dynamic' map element.
    * @param elementType The type of element being created.
-   * @param [elementID=null] The ID of the element being created.
+   * @param [elementID=undefined] The ID of the element being created.
    * @returns Returns the element if it was successfully created. Returns false if the arguments are wrong.
    * @see https://wiki.mtasa.com/wiki/CreateElement
    **/
@@ -87,7 +87,6 @@ declare namespace Server {
    **/
   function detachElements(theElement: Element, theAttachToElement: Element): boolean;
 
-  // TODO: Fix types
   /**
    * Returns a table of all element data of an element.
    * @param theElement the element you want to get the element data of.
@@ -96,14 +95,13 @@ declare namespace Server {
    **/
   function getAllElementData(theElement: Element): object | false;
 
-  // TODO: Fix types
   /**
    * This function returns a table of all the elements attached to the specified element
    * @param theElement The element which you require the information from.
    * @returns Returns a table of all the elements attached to the specified element.
    * @see https://wiki.mtasa.com/wiki/GetAttachedElements
    **/
-  function getAttachedElements(theElement: Element): object | false;
+  function getAttachedElements(theElement: Element): Element[] | false;
 
   /**
    * This function returns the alpha (transparency) value for the specified element.
@@ -121,7 +119,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementAttachedOffsets
    * @tupleReturn
    **/
-  function getElementAttachedOffsets(theElement: Element): [number, number, number, number, number, number] | [false, null, null, null, null, null];
+  function getElementAttachedOffsets(theElement: Element): [number, number, number, number, number, number] | [false, undefined, undefined, undefined, undefined, undefined];
 
   /**
    * This function determines the element that the specified element is attached to.
@@ -169,16 +167,15 @@ declare namespace Server {
    **/
   function getElementChild(parent: Element, index: number): Element | false;
 
-  // TODO: Fix types
   /**
    * This function is used to retrieve a list of the child elements of a given parent element.
    * Note that it will only return direct children and not elements that are further down the element tree.
    * @param parent Supply this argument with the parent of the children you want returned.
-   * @param [theType=null] The type of element you want a list of. This is the same as the tag name in the .map file, so this can be used with a custom element type if desired. Built in types are
+   * @param [theType=undefined] The type of element you want a list of. This is the same as the tag name in the .map file, so this can be used with a custom element type if desired. Built in types are
    * @returns This function returns a table that contains a list of elements that the parent has. If the element has no children, it will return an empty table. It will return false if the parent element does not exist.
    * @see https://wiki.mtasa.com/wiki/GetElementChildren
    **/
-  function getElementChildren(parent: Element, theType?: string): object | false;
+  function getElementChildren(parent: Element, theType?: string): Element[] | false;
 
   /**
    * This function returns the number of children an element has.
@@ -284,7 +281,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementPosition
    * @tupleReturn
    **/
-  function getElementPosition(theElement: Element): [number, number, number] | [false, null, null];
+  function getElementPosition(theElement: Element): [number, number, number] | [false, undefined, undefined];
 
   /**
    * Retrieve the rotation of elements.
@@ -294,7 +291,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementRotation
    * @tupleReturn
    **/
-  function getElementRotation(theElement: Element, rotOrder?: string): [number, number, number] | [false, null, null];
+  function getElementRotation(theElement: Element, rotOrder?: string): [number, number, number] | [false, undefined, undefined];
 
   /**
    * This function gets the syncer of an element.
@@ -305,7 +302,7 @@ declare namespace Server {
    **/
   function getElementSyncer(theElement: Element): Element | false;
 
-  // TODO: Fix types
+  // TODO: Fix types (add ElementType enum)
   /**
    * This function is used to retrieve the type of an element.
    * @param theElement The element you wish to get the type of.
@@ -322,7 +319,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementVelocity
    * @tupleReturn
    **/
-  function getElementVelocity(theElement: Element): [number, number, number] | [false, null, null];
+  function getElementVelocity(theElement: Element): [number, number, number] | [false, undefined, undefined];
 
   /**
    * This function allows you to retrieve the zone name of an element (eg. Verdant Bluffs or Ocean Docks)
@@ -336,17 +333,16 @@ declare namespace Server {
 
   // TODO: getElementsByType
 
-  // TODO: Fix types
   /**
    * This function is used to retrieve a list of all elements in a colshape, of the specified type.
    * - Note: For legacy reasons, a colshape created on the client does not collide with elements already existing at that location until they first move
    * * This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed
    * @param theShape The colshape you want to get the elements from.
-   * @param [elemType=null] The type of element you want a list of. This can be any element type, the common ones being
+   * @param [elemType=undefined] The type of element you want a list of. This can be any element type, the common ones being
    * @returns Returns a table containing all the elements inside the colshape, of the specified type. Returns an empty table if there are no elements inside. Returns false if the colshape is invalid.
    * @see https://wiki.mtasa.com/wiki/GetElementsWithinColShape
    **/
-   function getElementsWithinColShape(theShape: ColShape, elemType?: string): object | false;
+   function getElementsWithinColShape(theShape: ColShape, elemType?: string): Element[] | false;
 
   /**
    * This function return the low LOD element that an element is associated with.
@@ -383,7 +379,7 @@ declare namespace Server {
    * @returns Returns true if the specified element is attached to another element, false if it is not attached or nil if an improper argument was passed.
    * @see https://wiki.mtasa.com/wiki/IsElementAttached
    **/
-  function isElementAttached(theElement: Element): boolean | null;
+  function isElementAttached(theElement: Element): boolean | undefined;
 
   // TODO: isElementCallPropagationEnabled
 
@@ -490,7 +486,7 @@ declare namespace Server {
    * @see https://wiki.mtasa.com/wiki/GetElementAngularVelocity
    * @tupleReturn
    **/
-  function getElementAngularVelocity(theElement: Element): [number, number, number] | [false, null, null];
+  function getElementAngularVelocity(theElement: Element): [number, number, number] | [false, undefined, undefined];
 
   /**
    * This function updates the offsets of an element that has been attached to another element using attachElements.
