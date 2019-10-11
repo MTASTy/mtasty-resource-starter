@@ -1,32 +1,4 @@
 /**
- * This function will attach a scripting function (handler) to a console command, so that whenever a player or administrator uses the command the function is called.
- * Multiple command handlers can be attached to a single command, and they will be called in the order that the handlers were attached.
- * Equally, multiple commands can be handled by a single function, and the commandName parameter used to decide the course of action.
- * For users, a command is in the format:
- * commandName argument1 argument2
- * This can be triggered from the player's console or directly from the chat box by prefixing the message with a forward slash (/). For server side handlers, the server admin is also able to trigger these directly from the server's console in the same way as they are triggered from a player's console.
- * Important note: Do NOT use the same name for your handler function as the command name, as this can lead to confusion if multiple handler functions are used. Use a name that describes your handler's purpose more specifically.
- * - Note: You cannot use "check", "list" or "test" as a command name.
- * @param ) unknown
- * @param x unknown
- * @param , unknown
- * @param = unknown
- * @param ( unknown
- * @param ) unknown
- * @param player unknown
- * @param position unknown
- * @param ( unknown
- * @param , unknown
- * @param ( unknown
- * @param random unknown
- * @param 10 unknown
- * @param ) unknown
- * @returns Returns true if the command handler was added successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/AddCommandHandler
-**/
-declare function addCommandHandler(): unknown, x: unknown, ,: unknown, =: unknown, (: unknown, ): unknown, player: unknown, position: unknown, (: unknown, ,: unknown, (: unknown, random: unknown, 10: unknown, ): unknown): Function;
-
-/**
  * This function allows tracing of MTA functions and events.
  * It should only be used when debugging scripts as it may degrade script performance.
  * Debug hooks are not recursive, so functions and events triggered inside the hook callback will not be traced.
@@ -98,19 +70,6 @@ declare function base64Decode(data: string): string;
  * @see https://wiki.mtasa.com/wiki/Base64Encode
 **/
 declare function base64Encode(data: string): string;
-
-/**
- * Binds a player's key to a handler function or command, which will be called when the key is pressed.
- * @param thePlayer The player you wish to bind the key of.
- * @param key The key or control you wish to bind to the command. See key names for a list of possible keys.
- * @param keyState A string that has one of the following values
- * @param handlerFunction The function that will be triggered when the player's key is pressed. This function should have the form
- * @param arguments Any arguments you may want to pass to the function when the key is pressed by the user.Any number of arguments of can be specified, each being passed to the designated function.You may not pass functions.
- * @param ] unknown
- * @returns Returns true if the key was bound, false otherwise.
- * @see https://wiki.mtasa.com/wiki/BindKey
-**/
-declare function bindKey(thePlayer: Player, key: string, keyState: string, handlerFunction: Function, arguments: unknown, ]: unknown): boolean;
 
 /**
  * integers]].
@@ -519,18 +478,6 @@ declare function detonateSatchels(Player: Player): boolean;
 declare function encodeString(algorithm: string, input: string, options: object): string;
 
 /**
- * This function will call all the attached functions of an existing console command, for a specified player.
- * - Note: You can only execute commands created with addCommandHandler. You cannot execute MTA harcoded commands due to security reasons.
- * - Note: Serverside commands can only be executed by the server. The same applies to the client side
- * @param commandName The name of the command you wish to execute. This is what must be typed into the console to trigger the function.
- * @param thePlayer The player that will be presented as executer of the command to the handler function(s) of the command.
- * @param args Additional parameters that will be passed to the handler function(s) of the command that is called, separated by spaces.
- * @returns Returns true if the command handler was called successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ExecuteCommandHandler
-**/
-declare function executeCommandHandler(commandName: string, thePlayer: Player, args: string): boolean;
-
-/**
  * This function allows you to post and receive data from HTTP servers.
  * The calls are asynchronous so you do not get an immediate result from the call, instead a callback function you specify is called when the download completes.
  * In the case when the call fails, a string containing "ERROR" followed by an integer containing the error reason will be passed to the callback function.
@@ -614,15 +561,6 @@ declare function getColShapeType(shape: ColShape): number;
  * @see https://wiki.mtasa.com/wiki/GetColorFromString
 **/
 declare function getColorFromString(theColor: string): [number, number, number, number];
-
-/**
- * Function also added client-side.
- * New items: 3.0153,1.5.3,This function is used to retrieve a list of all the registered command handlers of a given resource (or of all resources).
- * @param theResource The resource from which you wish to retrieve all command handlers.Or leave it empty to retrieve command handlers of all resources.
- * @returns Returns a table containing all the commands of the given resource or a table with subtables containing the command and theResource pointer ( { "command", theResource } ). See examples below if you don't understand it.
- * @see https://wiki.mtasa.com/wiki/GetCommandHandlers
-**/
-declare function getCommandHandlers(theResource: Resource): object;
 
 /**
  * This function is used to get the development mode of the client.
@@ -727,17 +665,6 @@ declare function getFarClipDistance(getFarClipDistance: number): [];
 declare function getFogDistance(getFogDistance: number): [];
 
 /**
- * Gets the functions bound to a key.
- * To bind a function to a key use the bindKey function
- * @param thePlayer The player to get the functions from a key.
- * @param key unknown
- * @param keyState A string that has one of the following values
- * @returns Returns a table of the key function(s).
- * @see https://wiki.mtasa.com/wiki/GetFunctionsBoundToKey
-**/
-declare function getFunctionsBoundToKey(thePlayer: Player, key: string, keyState: string): object;
-
-/**
  * This function gets the current game speed value.
  * @param getGameSpeed unknown
  * @returns Returns a float representing the speed of the game.
@@ -777,15 +704,6 @@ declare function getHeatHaze(,: number, ,: number, ,: number, ,: number, ,: numb
  * @see https://wiki.mtasa.com/wiki/GetJetpackMaxHeight
 **/
 declare function getJetpackMaxHeight(getJetpackMaxHeight: number): [];
-
-/**
- * getKeyBoundToFunction allows retrieval of the first key bound to a function.
- * @param thePlayer The player you are checking the function bound to a key
- * @param theFunction The function in which you would like to check the bound key
- * @returns Returns a string of the first key the function was bound to.Returns a string of the first key the function was bound to.
- * @see https://wiki.mtasa.com/wiki/GetKeyBoundToFunction
-**/
-declare function getKeyBoundToFunction(thePlayer: Player, theFunction: Function): string;
 
 /**
  * Gets the currently queued latent events.
@@ -1843,21 +1761,6 @@ declare function inspect(var: any, options: object): string;
 declare function iprint(var1: any, var2: any, var3: any, ]: unknown): boolean;
 
 /**
- * Checks whether a GTA control is enabled or disabled for a certain player.
- * @param thePlayer The player you wish the control status of.
- * @param control The control you wish to check. See control names for a list of possible controls.
- * @returns Returns true if control is enabled, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsControlEnabled
-**/
-declare function isControlEnabled(thePlayer: Player, control: string): boolean;
-
-
-
-
-
-
-
-/**
  * This function checks whether or not a specific garage door is open.
  * @param garageID The garage ID that represents the garage door that is being checked.
  * @returns Returns true if the garage is open, false if it is closed or an invalid garage ID was given.
@@ -2257,16 +2160,6 @@ declare function pregMatch(base: string, pattern: string, flags?: unknown, maxRe
  * @see https://wiki.mtasa.com/wiki/PregReplace
 **/
 declare function pregReplace(subject: string, pattern: string, replacement: string, flags: unknown): string;
-
-/**
- * This function removes a command handler, that is one that has been added using addCommandHandler.
- * This function can only remove command handlers that were added by the resource that it is called in.
- * @param commandName the name of the command you wish to remove.
- * @param handler the specific handler function to remove.If not specified, all handler functions for the command (from the calling resource) will be removed.This argument is only available in the server.
- * @returns Returns true if the command handler was removed successfully, false if the command doesn't exist.
- * @see https://wiki.mtasa.com/wiki/RemoveCommandHandler
-**/
-declare function removeCommandHandler(commandName: string, handler: Function): boolean;
 
 /**
  * This function removes hooks added by addDebugHook
@@ -3529,41 +3422,6 @@ declare function toJSON(value: unknown, compact?: boolean, prettyType?: string):
 declare function tocolor(red: number, green: number, blue: number, alpha?: number): number;
 
 /**
- * Enables or disables the use of all GTA controls for a specified player.
- * @param thePlayer The player you wish to toggle the control ability of.
- * @param enabled A boolean value representing whether or not the controls will be usable.
- * @param [gtaControls=true] A boolean deciding whether the enabled parameter will affect GTA's internal controls.
- * @param [mtaControls=true] A boolean deciding whether the enabled parameter will affect MTA's own controls., e.g. chatbox.
- * @returns This function returns true if controls were toggled successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ToggleAllControls
-**/
-declare function toggleAllControls(thePlayer: Player, enabled: boolean, gtaControls?: boolean, mtaControls?: boolean): boolean;
-
-/**
- * Enables or disables the use of a GTA control for a specific player.
- * @param thePlayer The player you wish to toggle the control ability of.
- * @param control The control that you want to toggle the ability of. See control names for a list of possible controls.
- * @param enabled A boolean value representing whether or not the key will be usable or not.
- * @returns This function true if the control was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ToggleControl
-**/
-declare function toggleControl(thePlayer: Player, control: string, enabled: boolean): boolean;
-
-
-/**
- * Removes an existing key bind from the specified player.
- * - Note: unbindKey will only work on binds that were added by the same resource
- * - Note: unbindKey on the server may return true on failure
- * @param thePlayer The player you wish to unbind the key of.
- * @param key The key you wish to unbind. See Key names for a list of valid key names.
- * @param keyState is optional in Syntax 2.
- * @param handler (Syntax 2) The function you wish to unbind.
- * @returns Returns 'true if the key was unbound, false if it was not previously bound or invalid arguments were passed to the function.Returns 'true if the key was unbound, false if it was not previously bound or invalid arguments were passed to the function.
- * @see https://wiki.mtasa.com/wiki/UnbindKey
-**/
-declare function unbindKey(thePlayer: Player, key: string, keyState: string, handler: Function): boolean;
-
-/**
  * Returns the codepoints for the i-th through j-th character of the string passed.
  * @param input A string character sequence
  * @param [i=1] An integer representing the beginning position.
@@ -4219,22 +4077,6 @@ declare function get(settingName: string): unknown;
 **/
 declare function getAlivePlayers(getAlivePlayers: object): [];
 
-
-
-/**
- * This function will check if a player is pressing a particular control.
- * Controls are those that affect GTA.
- * If you wish to get the state of another key, use bindKey and a command function.
- * - Note: Not all control states are sent to the server at all times, as such their state may be given incorrectly.
- * As a rule, keys that move or affect the player or their vehicle are most likely to be accurate.
- * For increased accuracy (and also increased bandwidth usage) use bindKey instead to bind a GTA control name to a function.
- * @param thePlayer The player you wish to get the control state of. Do not use this parameter when scripting for client.
- * @param controlName The control that you want to get the state of. See control names for a list of possible controls.
- * @returns Returns the state of the control, false if the control doesn't exist or if the player is dead.
- * @see https://wiki.mtasa.com/wiki/GetControlState
-**/
-declare function getControlState(thePlayer: Player, controlName: string): boolean;
-
 /**
  * This function returns a table of all currently dead players on the server.
 
@@ -4527,18 +4369,6 @@ declare function giveWeapon(thePlayer: Ped, weapon: number, ammo?: number, setAs
 declare function isGlitchEnabled(glitchName: string): boolean;
 
 /**
- * This function can be used to find out if a key has already been bound.
- * If you do not specify a keyState or handler, any instances of key being bound will cause isKeyBound to return true.
- * @param thePlayer The player you're checking.
- * @param key The key you're checking. See Key names for a list of valid key names.
- * @param keyState Is the state of the key when it calls the function, Can be either
- * @param handler The function you're checking against
- * @returns Returns true if the key is bound, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsKeyBound
-**/
-declare function isKeyBound(thePlayer: Player, key: string, keyState: string, handler: Function): boolean;
-
-/**
  * This function checks if a pickup is currently spawned (is visible and can be picked up) or not (a player picked it up recently).
  * @param thePickup the pickup you want to check.
  * @returns Returns true if the pickup is spawned, false if it's not spawned or an invalid pickup was specified.
@@ -4730,16 +4560,6 @@ declare function saveMapData(node: unknown, baseElement: Element, childrenOnly?:
  * @see https://wiki.mtasa.com/wiki/Set
 **/
 declare function set(settingName: string, value: unknown): boolean;
-
-/**
- * Sets a state of a specified player's control, as if they pressed or released it.
- * @param thePlayer The player you wish to set the control state of.
- * @param control The control that you want to set the state of. See control names for a list of possible controls.
- * @param state A boolean value representing whether or not the key will be set to pressed or not.
- * @returns Returns true if the control state was successfully set, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetControlState
-**/
-declare function setControlState(thePlayer: Player, control: string, state: boolean): boolean;
 
 /**
  * This function enables or disables glitches that are found in the original Single Player game that can be used to gain an advantage in multiplayer.
