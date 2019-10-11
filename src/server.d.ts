@@ -4337,20 +4337,6 @@ declare function xmlSaveFile(rootNode: unknown): boolean;
 declare function xmlUnloadFile(node: unknown): boolean;
 
 /**
- * This function will add a ban for the specified IP/username/serial to the server.
- * - Note: One of the three: IP, Username or Serial have to be specified.
- * @param IP The IP to be banned.If you don't want to ban by IP, set this to nil.or
- * @param Username The MTA Community username to be banned (now obsolete).If you don't want to ban by username, set this to nil.or
- * @param Serial The serial to be banned.If you don't want to ban by serial, set this to nil. or any combination.
- * @param responsibleElement The element that is responsible for banning the IP/username/serial. This can be a player or the root (getRootElement).
- * @param reason The reason the IP/username/serial will be banned from the server.
- * @param [seconds=0] The amount of seconds the player will be banned from the server for. This can be 0 for an infinite amount of time.
- * @returns Returns the new ban if the IP/username/serial was banned successfully, false if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/AddBan
-**/
-declare function addBan(IP: string, Username: string, Serial: string, responsibleElement: Player, reason: string, seconds?: number): unknown;
-
-/**
  * This function adds a new empty config file to an existing resource.
  * @param filePath The filepath of the file to be created in the following format
  * @param [filetype=server] a string indicating whether the file is serverside ("server") or clientside ("client").
@@ -4384,17 +4370,6 @@ declare function addResourceMap(filePath: string, dimension?: number): unknown;
  * @see https://wiki.mtasa.com/wiki/AddVehicleSirens
 **/
 declare function addVehicleSirens(theVehicle: Vehicle, sirenCount: number, sirenType: number, 360flag?: boolean, checkLosFlag?: boolean, useRandomiser: boolean, =: unknown, ,: unknown, silentFlag?: boolean): boolean;
-
-/**
- * New feature: 3,1.0,This function will ban the specified player by either IP, serial or username
- * Deprecated feature: 3,1.0,This function will ban the specified player from the server by IP.
- * @param bannedPlayer The player that will be banned from the server.
- * @param responsibleElement The element that is responsible for banning the player. This can be a player or the root (getRootElement) (Maximum 30 characters if using a string).
- * @param reason The reason the player will be banned from the server.
- * @returns Returns a ban object if banned successfully, or false if unsuccessful.
- * @see https://wiki.mtasa.com/wiki/BanPlayer
-**/
-declare function banPlayer(bannedPlayer: Player, responsibleElement: Element, reason: string): boolean;
 
 /**
  * This function allows you to call functions that have been exported with HTTP access by other MTA servers.
@@ -4565,72 +4540,6 @@ declare function get(settingName: string): unknown;
  * @see https://wiki.mtasa.com/wiki/GetAlivePlayers
 **/
 declare function getAlivePlayers(getAlivePlayers: object): [];
-
-
-
-/**
- * This function will return the responsible admin (nickname of the admin) of the specified ban.
- * @param theBan The ban you want to return the admin of.
- * @returns Returns a string of the admin if everything was successful, false if invalid arguments are specified if there was no admin specified for the ban.
- * @see https://wiki.mtasa.com/wiki/GetBanAdmin
-**/
-declare function getBanAdmin(theBan: unknown): string;
-
-/**
- * This function will return the IP of the specified ban.
- * @param theBan The ban in which you want to return the IP of.
- * @returns Returns a string of the IP if everything was successful, false if invalid arguments are specified if there was no IP specified for the ban.
- * @see https://wiki.mtasa.com/wiki/GetBanIP
-**/
-declare function getBanIP(theBan: unknown): string;
-
-/**
- * This function will return the nickname (nickname that the player had when he was banned) of the specified ban.
- * @param theBan The ban element which nickname you want to return.
- * @returns Returns a string of the nickname if everything was successfull, false if invalid arguments are specified if there was no nickname specified for the ban element.
- * @see https://wiki.mtasa.com/wiki/GetBanNick
-**/
-declare function getBanNick(theBan: unknown): string;
-
-/**
- * This function will return the ban reason of the specified ban.
- * @param theBan The ban in which you want to return the reason of.
- * @returns Returns a string of the reason if everything was successful, false if invalid arguments are specified if there was no reason specified for the ban.
- * @see https://wiki.mtasa.com/wiki/GetBanReason
-**/
-declare function getBanReason(theBan: unknown): string;
-
-/**
- * This function will return the serial of the specified ban.
- * @param theBan The ban you want to retrieve the serial of.
- * @returns Returns a string of the serial if everything was successful, false if invalid arguments are specified or if there was no serial specified for the ban.
- * @see https://wiki.mtasa.com/wiki/GetBanSerial
-**/
-declare function getBanSerial(theBan: unknown): string;
-
-/**
- * This function will return the time the specified ban was created, in seconds.
- * @param theBan The ban of which you wish to retrieve the time of.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetBanTime
-**/
-declare function getBanTime(theBan: unknown): number;
-
-/**
- * This function will return the username of the specified ban.
- * @param theBan The ban in which you wish to retrieve the username of.
- * @returns Returns a string of the username if everything was successful, false if invalid arguments are specified if there was no username specified for the ban.
- * @see https://wiki.mtasa.com/wiki/GetBanUsername
-**/
-declare function getBanUsername(theBan: unknown): string;
-
-/**
- * This function will return a table containing all the bans present in the server's banlist.xml.
- * @param getBans unknown
- * @returns Returns a table containing all the bans.
- * @see https://wiki.mtasa.com/wiki/GetBans
-**/
-declare function getBans(getBans: object): [];
 
 
 
@@ -4920,14 +4829,6 @@ declare function getServerPort(getServerPort: number): [];
 declare function getSkyGradient(,: number, ,: number, ,: number, ,: number, ,: number, getSkyGradient: number): [number, number, number, number, number];
 
 /**
- * This function will return the unbanning time of the specified ban in seconds.
- * @param theBan The ban in which you wish to retrieve the unban time of.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetUnbanTime
-**/
-declare function getUnbanTime(theBan: unknown): number;
-
-/**
  * This function retrieves the respawn coordinates of a vehicle.
  * @param theVehicle The vehicle which you'd like to retrieve the respawn coordinates of.
  * @returns Returns three floats indicating the respawn coordinates of the vehicle, x, y and z respectively.
@@ -4966,14 +4867,6 @@ declare function getVehiclesOfType(model: number): object;
  * @see https://wiki.mtasa.com/wiki/GiveWeapon
 **/
 declare function giveWeapon(thePlayer: Ped, weapon: number, ammo?: number, setAsCurrent?: boolean): boolean;
-
-/**
- * New items: 3.014,1.4,This function checks whether the passed value is valid ban or not.
- * @param theBan The value to check
- * @returns Returns true if the value is a ban, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsBan
-**/
-declare function isBan(theBan: unknown): boolean;
 
 
 /**
@@ -5021,15 +4914,6 @@ declare function isPlayerMuted(thePlayer: Player): boolean;
 declare function isResourceArchived(resourceElement: Resource): boolean;
 
 /**
- * This function will kick the specified player from the server.
- * @param kickedPlayer The player that will be kicked from the server
- * @param [reason=] The reason for the kick. (Maximum 64 characters)
- * @returns Returns true if the player was kicked succesfully, false if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/KickPlayer
-**/
-declare function kickPlayer(kickedPlayer: Player, reason?: string): boolean;
-
-/**
  * This function is intended to load data from a loaded XML file into the element tree.
  * This could be used for loading an external map, or part of another map.
  * @param node The node that you wish to load into the element tree.
@@ -5070,29 +4954,12 @@ declare function redirectPlayer(thePlayer: Player, serverIP?: string, serverPort
 declare function refreshResources(refreshAll?: boolean, targetResource?: Resource): boolean;
 
 /**
- * This function will reload the server ban list file.
-
- * @returns Returns true if the ban list was reloaded successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ReloadBans
-**/
-declare function reloadBans(): boolean;
-
-/**
  * This function makes a pedestrian reload their weapon.
  * @param thePed The ped who will reload their weapon.
  * @returns Returns true if the pedestrian was made to reload, or false if invalid arguments were passed or that pedestrian has a weapon which cannot be reloaded. Note: this will fail but return true if 1) the ped is crouched and moving 2) the ped is using a weapon without clip ammo (or minigun/flamethrower/fire extinguisher) 3) the ped is using his weapon (shooting/aiming) 4) the ped moved while crouching recently Due to these circumstances causing problems with this function
  * @see https://wiki.mtasa.com/wiki/ReloadPedWeapon
 **/
 declare function reloadPedWeapon(thePed: Ped): boolean;
-
-/**
- * This function will remove a specific ban.
- * @param theBan The ban to be removed.
- * @param [responsibleElement=nil] The element that is responsible for removing the ban element.This can be a player or the root (getRootElement).
- * @returns Returns true if the ban was removed succesfully, false if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/RemoveBan
-**/
-declare function removeBan(theBan: unknown, responsibleElement?: Player): boolean;
 
 
 /**
@@ -5222,33 +5089,6 @@ declare function saveMapData(node: unknown, baseElement: Element, childrenOnly?:
  * @see https://wiki.mtasa.com/wiki/Set
 **/
 declare function set(settingName: string, value: unknown): boolean;
-
-/**
- * New items: 3.014,1.4,This function sets a new admin for a ban.
- * @param theBan The ban you want to change the admin of.
- * @param theAdmin The new admin.
- * @returns Returns true if changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetBanAdmin
-**/
-declare function setBanAdmin(theBan: unknown, theAdmin: string): boolean;
-
-/**
- * This function sets a new nick for a ban.
- * @param theBan The ban you want to change the nick of.
- * @param theNick A string representing the nick you want to set the ban to.
- * @returns Returns true if changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetBanNick
-**/
-declare function setBanNick(theBan: unknown, theNick: string): boolean;
-
-/**
- * New items: 3.0140,1.4,This function sets the reason for the specified ban.
- * @param theBan The ban that you wish to set the reason of.
- * @param theReason the new reason (max 60 characters).
- * @returns Returns true if the new reason was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetBanReason
-**/
-declare function setBanReason(theBan: unknown, theReason: string): boolean;
 
 /**
  * Sets a state of a specified player's control, as if they pressed or released it.
@@ -5495,15 +5335,6 @@ declare function setTeamFriendlyFire(theTeam: Team, friendlyFire: boolean): bool
  * @see https://wiki.mtasa.com/wiki/SetTeamName
 **/
 declare function setTeamName(theTeam: Team, newName: string): boolean;
-
-/**
- * New items: 3.014,1.4,This function sets a new unban time of a given ban using unix timestamp (seconds since Jan 01 1970).
- * @param theBan The ban of which to change the unban time of
- * @param theTime the new unban time
- * @returns Returns true if changed successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetUnbanTime
-**/
-declare function setUnbanTime(theBan: unknown, theTime: number): boolean;
 
 /**
  * This function sets the time delay (in milliseconds) the vehicle will remain at its position while empty.
