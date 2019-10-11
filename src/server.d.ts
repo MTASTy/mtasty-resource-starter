@@ -2442,11 +2442,6 @@ declare function passwordHash(password: string, algorithm: string, options: obje
 **/
 declare function passwordVerify(password: string, hash: string, options: object, callback: Function): boolean;
 
-// TODO: PlaySoundFrontEnd
-/**
- * @see https://wiki.mtasa.com/wiki/PlaySoundFrontEnd
-**/
-
 /**
  * New items: 3.0135,1.3.5,This function stops at the first occurrence of the pattern in the input string and returns the result of the search.
  * Warning: When declaring a pattern string in quotes, the backslash character should be doubled up. e.g. "(" will match a single bracket.
