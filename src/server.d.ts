@@ -4560,18 +4560,6 @@ declare function getControlState(thePlayer: Player, controlName: string): boolea
 **/
 declare function getDeadPlayers(): object;
 
-
-
-
-/**
- * This function retrieves the current gametype as set by setGameType.
- * The game type is displayed in the server browser next to the server's name.
-
- * @returns Returns the gametype as a string. If no gametype is set it returns nil.
- * @see https://wiki.mtasa.com/wiki/GetGameType
-**/
-declare function getGameType(): string;
-
 /**
  * This function checks if a weapon is usable while on a Jetpack.
  * @param weapon The weapon that's being checked if it's usable on a Jetpack.
@@ -4587,14 +4575,6 @@ declare function getJetpackWeaponEnabled(weapon: string): boolean;
  * @see https://wiki.mtasa.com/wiki/GetLoadedModules
 **/
 declare function getLoadedModules(): object;
-
-/**
- * This function retrieves the current mapname as set by setMapName.
-
- * @returns Returns the mapname as a string. If no mapname is set it returns nil.
- * @see https://wiki.mtasa.com/wiki/GetMapName
-**/
-declare function getMapName(): string;
 
 /**
  * This function returns the maximum number of player slots on the server.
@@ -4758,15 +4738,6 @@ declare function getResourceOrganizationalPath(theResource: Resource): string;
  * @see https://wiki.mtasa.com/wiki/GetResources
 **/
 declare function getResources(): object;
-
-/**
- * This function gets a rule value.
- * A rule value is a string that can be viewed by server browsers and used for filtering the server list.
- * @param key The name of the rule
- * @returns Returns a string containing the value set for the specified key, false if invalid arguments were specified.
- * @see https://wiki.mtasa.com/wiki/GetRuleValue
-**/
-declare function getRuleValue(key: string): string;
 
 /**
  * This function retrieves server settings which are usually stored in the mtaserver.conf file.
@@ -4967,14 +4938,6 @@ declare function reloadPedWeapon(thePed: Ped): boolean;
 declare function removeResourceFile(theResource: Resource, fileName: string): boolean;
 
 /**
- * This function removes a set rule value that can be viewed by server browsers.
- * @param key The name of the rule you wish to remove
- * @returns Returns true if the rule value was removed, false if it failed.
- * @see https://wiki.mtasa.com/wiki/RemoveRuleValue
-**/
-declare function removeRuleValue(key: string): boolean;
-
-/**
  * This function removes sirens from a vehicle.
  * @param theVehicle The vehicle to remove the sirens of
  * @returns Returns true if sirens were successfully removed from the vehicle, false otherwise.
@@ -5095,19 +5058,6 @@ declare function set(settingName: string, value: unknown): boolean;
 **/
 declare function setControlState(thePlayer: Player, control: string, state: boolean): boolean;
 
-
-
-/**
- * This function sets a string containing a name for the game type.
- * This should be the game-mode that is active, for example "Capture The Flag" or "Deathmatch".
- * This is then displayed in the server browser and external server browsers.
- * It should be noted that mapmanager handles this automatically for gamemodes that utilise the map/gamemode system.
- * @param gameType A string containing a name for the game mode, or false to clear it.
- * @returns Returns true if the game type was set, false if an invalid argument was passed to the function.
- * @see https://wiki.mtasa.com/wiki/SetGameType
-**/
-declare function setGameType(gameType: string): boolean;
-
 /**
  * This function enables or disables glitches that are found in the original Single Player game that can be used to gain an advantage in multiplayer.
  * Users of the fastmove glitch may additionally want to install this resource to disable crouchsliding.
@@ -5128,15 +5078,6 @@ declare function setGlitchEnabled(glitchName: string, enable: boolean): boolean;
  * @see https://wiki.mtasa.com/wiki/SetJetpackWeaponEnabled
 **/
 declare function setJetpackWeaponEnabled(weapon: string, enabled: boolean): boolean;
-
-/**
- * This function is used to set a map name that will be visible in the server browser.
- * In practice you should generally rely on the mapmanager to do this for you.
- * @param mapName The name you wish the server browser to show.
- * @returns Returns true if map name was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetMapName
-**/
-declare function setMapName(mapName: string): boolean;
 
 /**
  * This function sets the maximum number of player slots on the server.
@@ -5272,15 +5213,6 @@ declare function setPlayerVoiceIgnoreFrom(thePlayer: Element, ignoreFrom: any): 
  * @see https://wiki.mtasa.com/wiki/SetPlayerWantedLevel
 **/
 declare function setPlayerWantedLevel(thePlayer: Player, stars: number): boolean;
-
-/**
- * This function sets a rule value that can be viewed by server browsers.
- * @param key The name of the rule
- * @param value The value you wish to set for the rule
- * @returns Returns true if the rule value was set, false if invalid arguments were specified.
- * @see https://wiki.mtasa.com/wiki/SetRuleValue
-**/
-declare function setRuleValue(key: string, value: string): boolean;
 
 /**
  * This function sets server settings which are stored in the mtaserver.conf file.
