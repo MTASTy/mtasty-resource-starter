@@ -25,7 +25,7 @@ declare namespace Server {
    * An event triggered on any other element is triggered on its ancestors (its parent element and its parent's parent etc) and its children, grandchildren and great-grandchildren.
    * You can use the getPropagated argument to specify if you wish your handler to receive events that have propagated up or down the tree.
    * The order in which event handlers are triggered is undefined, you should not rely on one event handler being executed before another.
-   * Important note: Do NOT use the same name for your handler function as the event name, as this can lead to confusion if multiple handler functions are used.
+   * - Important note: Do NOT use the same name for your handler function as the event name, as this can lead to confusion if multiple handler functions are used.
    * - Note: See Script security for tips on preventing cheaters when using events and element data
    * - Note: See Event Source Element for a descriptive visualization of the event system handling an event trigger.
    * @param eventName The name of the event you want to attach the handler function to.
@@ -148,7 +148,7 @@ declare namespace Server {
    * Events are sent reliably, so clients will receive them, but there may be (but shouldn't be) a significant delay before they are received.
    * You should take this into account when using them.
    * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
-   * Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
+   * - Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
    * - Note: It is marginally more efficient to pass one large event than two smaller ones
    * @param sendTo The event will be sent to all players that are children of the specified element. By default this is the root element, and hence the event is sent to all players. If you specify a single player it will just be sent to that player. This argument can also be a table of player elements.
    * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
@@ -169,7 +169,7 @@ declare namespace Server {
    * Events are sent reliably, so clients will receive them, but there may be (but shouldn't be) a significant delay before they are received.
    * You should take this into account when using them.
    * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
-   * Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
+   * - Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
    * - Note: It is marginally more efficient to pass one large event than two smaller ones
    * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
    * @param sourceElement The element that is the source of the event.

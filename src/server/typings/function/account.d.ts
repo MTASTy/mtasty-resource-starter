@@ -33,13 +33,13 @@ declare namespace Server {
   /**
    * This function retrieves a string that has been stored using setAccountData.
    * Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
-   * Important note: You MUST use the standard module.key naming for your keys, as shown in the example below. This prevents collisions between different scripts.
+   * - Important note: You MUST use the standard module.key naming for your keys, as shown in the example below. This prevents collisions between different scripts.
    * @param theAccount The account you wish to retrieve the data from.
    * @param key The key under which the data is stored
    * @returns Returns a string containing the stored data or false if no data was stored under that key.
    * @see https://wiki.mtasa.com/wiki/GetAccountData
    **/
-  function getAccountData(theAccount: Account, key: string): string | false;
+  function getAccountData(theAccount: Account, key: string): string | number | boolean;
 
   /**
    * This function retrieves the name of an account.
@@ -65,6 +65,7 @@ declare namespace Server {
    **/
   function getAccountSerial(theAccount: Account): string | false;
 
+  // TODO: Fix types
   /**
    * This function returns a table over all the accounts that exist in the server internal.db file.
    * - (Note: accounts.xml is no longer used after version 1.0.4)
@@ -73,6 +74,7 @@ declare namespace Server {
    **/
   function getAccounts(): object;
 
+  // TODO: Fix types
   /**
    * This function returns a table containing all accounts that were logged onto from specified serial. If the serial is empty string, it will return all accounts that were never logged onto.
    * @param serial The serial to get accounts from
@@ -81,6 +83,7 @@ declare namespace Server {
    **/
   function getAccountsBySerial(serial: string): object | false;
 
+  // TODO: Fix types
   /**
    * This function returns a table containing all the user data for the account provided
    * @param theAccount The account you wish to retrieve all data from.
@@ -90,9 +93,9 @@ declare namespace Server {
   function getAllAccountData(theAccount: Account): object;
 
   /**
-   * This function returns the specified player's account object.
+   * This function returns the specified player's account.
    * @param thePlayer The player element you want to get the account of.
-   * @returns Returns the player's account object, or false if the player passed to the function is invalid.
+   * @returns Returns the player's account or false if the player passed to the function is invalid.
    * @see https://wiki.mtasa.com/wiki/GetPlayerAccount
    **/
   function getPlayerAccount(thePlayer: Player): Account | false;
@@ -114,7 +117,7 @@ declare namespace Server {
    * @param thePlayer The player to log into an account
    * @param theAccount The account to log the player into
    * @param thePassword The password needed to sign into this account
-   * @returns Returns true if the player was successfully logged into the given account. Returns false or nil if the log in failed for some reason, ie. the player was already logged in to some account (use logOut first), if the account was already in use or if it failed for some other reason.
+   * @returns Returns true if the player was successfully logged into the given account. Returns false or undefined if the log in failed for some reason, ie. the player was already logged in to some account (use logOut first), if the account was already in use or if it failed for some other reason.
    * @see https://wiki.mtasa.com/wiki/LogIn
    **/
   function logIn(thePlayer: Player, theAccount: Account, thePassword: string): boolean | undefined;
@@ -122,7 +125,7 @@ declare namespace Server {
   /**
    * This function logs the given player out of his current account.
    * @param thePlayer The player to log out of his current account
-   * @returns Returns true if the player was successfully logged out, false or nil if it failed for some reason, ie. the player was never logged in.
+   * @returns Returns true if the player was successfully logged out, false or undefined if it failed for some reason, ie. the player was never logged in.
    * @see https://wiki.mtasa.com/wiki/LogOut
    **/
   function logOut(thePlayer: Player): boolean | undefined;
@@ -140,7 +143,7 @@ declare namespace Server {
    * This can then be retrieved using getAccountData.
    * Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
    * Even if logged into a guest account, account data can be useful as a way to store a reference to your own account system, though it's persistence is equivalent to that of using setElementData on the player's element.
-   * Important note: You MUST use the standard module.key naming for your keys, as shown in the example below. This prevents collisions between different scripts.
+   * - Important note: You MUST use the standard module.key naming for your keys, as shown in the example below. This prevents collisions between different scripts.
    * @param theAccount The account you wish to retrieve the data from.
    * @param key The key under which you wish to store the data
    * @param value The value you wish to store. Set to false to remove the data. NOTE
@@ -182,6 +185,7 @@ declare namespace Server {
    **/
   function getAccountIP(theAccount: Account): string | false;
 
+  // TODO: Fix types
   /**
    * This function returns a table containing all accounts with specified dataName and value (set with setAccountData).
    * @param dataName The name of the data
@@ -191,6 +195,7 @@ declare namespace Server {
    **/
   function getAccountsByData(dataName: string, value: string | number | boolean): object | false;
 
+  // TODO: Fix types
   /**
    * This function returns a table containing all accounts that were logged onto from specified IP-address.
    * @param ip The IP to get accounts from

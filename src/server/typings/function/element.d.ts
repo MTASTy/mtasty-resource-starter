@@ -71,7 +71,7 @@ declare namespace Server {
    * The root element also cannot be destroyed, however, passing the root as an argument will wipe all elements from the server, except for the players and clients, which will become direct descendants of the root node, and other elements that cannot be destroyed, such as resource root elements.
    * Players are not the only elements that cannot be deleted.
    * This list also includes remote clients and console elements.
-   * - Note: As element ids are eventually recycled, always make sure you nil variables containing the element after calling this function
+   * - Note: As element ids are eventually recycled, always make sure you undefined variables containing the element after calling this function
    * @param elementToDestroy The element you wish to destroy.
    * @returns Returns true if the element was destroyed successfully, false if either the element passed to it was invalid or it could not be destroyed for some other reason (for example, clientside destroyElement can't destroy serverside elements).
    * @see https://wiki.mtasa.com/wiki/DestroyElement
@@ -169,7 +169,7 @@ declare namespace Server {
 
   /**
    * This function is used to retrieve a list of the child elements of a given parent element.
-   * Note that it will only return direct children and not elements that are further down the element tree.
+   * - Note that it will only return direct children and not elements that are further down the element tree.
    * @param parent Supply this argument with the parent of the children you want returned.
    * @param [theType=undefined] The type of element you want a list of. This is the same as the tag name in the .map file, so this can be used with a custom element type if desired. Built in types are
    * @returns This function returns a table that contains a list of elements that the parent has. If the element has no children, it will return an empty table. It will return false if the parent element does not exist.
@@ -179,7 +179,7 @@ declare namespace Server {
 
   /**
    * This function returns the number of children an element has.
-   * Note that only the direct children are counted and not elements that are further down the element tree.
+   * - Note that only the direct children are counted and not elements that are further down the element tree.
    * @param parent the parent element
    * @returns Returns an int with the number of child elements, or false if the parent element does not exist.
    * @see https://wiki.mtasa.com/wiki/GetElementChildrenCount
@@ -366,7 +366,7 @@ declare namespace Server {
 
   /**
    * This function checks if a value is an element or not.
-   * - Note: This function is not reliable as element ids are eventually recycled. Always make sure you nil variables containing an element after calling destroyElement or handle onElementDestroy for players and elements that might be destroyed by another resource
+   * - Note: This function is not reliable as element ids are eventually recycled. Always make sure you undefined variables containing an element after calling destroyElement or handle onElementDestroy for players and elements that might be destroyed by another resource
    * @param theValue The value that we want to check.
    * @returns Returns true if the passed value is an element, false otherwise.
    * @see https://wiki.mtasa.com/wiki/IsElement
@@ -376,7 +376,7 @@ declare namespace Server {
   /**
    * This functions checks whether or not an element is attached to another element.
    * @param theElement The element to check for attachment.
-   * @returns Returns true if the specified element is attached to another element, false if it is not attached or nil if an improper argument was passed.
+   * @returns Returns true if the specified element is attached to another element, false if it is not attached or undefined if an improper argument was passed.
    * @see https://wiki.mtasa.com/wiki/IsElementAttached
    **/
   function isElementAttached(theElement: Element): boolean | undefined;
