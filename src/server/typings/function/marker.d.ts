@@ -59,6 +59,7 @@ declare function getMarkerSize(myMarker: Marker): number;
  * @param theMarker The marker you wish to retrieve the target position of.
  * @returns Returns three numbers if a target is set, or false in the first variable and undefined in the two others if the marker is invalid or no target is set.
  * @see https://wiki.mtasa.com/wiki/GetMarkerTarget
+ * @tupleReturn
  **/
 declare function getMarkerTarget(theMarker: Marker): [number, number, number] | [false | undefined];
 

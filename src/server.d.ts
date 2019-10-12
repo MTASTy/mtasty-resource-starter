@@ -294,22 +294,6 @@ declare function createColSphere(fX: number, fY: number, fZ: number, fRadius: nu
 declare function createColTube(fX: number, fY: number, fZ: number, fRadius: number, fHeight: number): ColShape;
 
 /**
- * Creates an object in the GTA world.
- * - Note: Dynamic objects do not automatically have physics applied to them. Use setElementVelocity(object, 0, 0, 0) to fix this.
- * @param modelid a whole integer specifying the GTASA object model ID.
- * @param x a floating point number representing the X coordinate on the map.
- * @param y a floating point number representing the Y coordinate on the map.
- * @param z a floating point number representing the Z coordinate on the map.
- * @param rx a floating point number representing the rotation about the X axis in degrees.
- * @param ry a floating point number representing the rotation about the Y axis in degrees.
- * @param rz a floating point number representing the rotation about the Z axis in degrees.
- * @param [isLowLOD=false] unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/CreateObject
-**/
-declare function createObject(modelid: number, x: number, y: number, z: number, rx: number, ry: number, rz: number, isLowLOD?: boolean): Object;
-
-/**
  * Creates a Ped in the GTA world.
  * @param modelid A whole integer specifying the GTASA skin ID.
  * @param x A floating point number representing the X coordinate on the map.
@@ -727,13 +711,7 @@ declare function getNetworkStats(thePlayer?: Element): object;
 **/
 declare function getNetworkUsageData(getNetworkUsageData: object): [];
 
-/**
- * This function returns the visible size of an object.
- * @param theObject the object you wish to return the scale of.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetObjectScale
-**/
-declare function getObjectScale(theObject: Object): [number, number, number];
+
 
 /**
  * This function is used to get "occlusions enabled" state.
@@ -1929,56 +1907,6 @@ declare function killTimer(theTimer: unknown): boolean;
 declare function md5(str: string): string;
 
 /**
- * This function will smoothly move an object from its current position to a specified rotation and position.
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param ) unknown
- * @param [marker=createMarker(x,y,z,"cylinder",12,0,0,0,0)] unknown
- * @param moveGate unknown
- * @param hitPlayer unknown
- * @param ) unknown
- * @param ( unknown
- * @param , unknown
- * @param , unknown
- * @param 4 unknown
- * @param , unknown
- * @param 9 unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param ) unknown
- * @param addEventHandler unknown
- * @param "onMarkerHit" unknown
- * @param , unknown
- * @param ) unknown
- * @param moveBack unknown
- * @param ) unknown
- * @param ( unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param , unknown
- * @param ) unknown
- * @param addEventHandler unknown
- * @param "onMarkerLeave" unknown
- * @param , unknown
- * @param ) unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/MoveObject
-**/
-declare function moveObject(,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ): unknown, marker?: unknown, moveGate: Function, hitPlayer: unknown, ): unknown, (: unknown, ,: unknown, ,: unknown, 4: unknown, ,: unknown, 9: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ): unknown, addEventHandler: unknown, "onMarkerHit": unknown, ,: Marker, ): unknown, moveBack: Function, ): unknown, (: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ,: unknown, ): unknown, addEventHandler: unknown, "onMarkerLeave": unknown, ,: Marker, ): unknown): [, , , , , , , , , , , , , , , , , , , , ];
-
-/**
  * This outputs the specified text string to the chatbox.
  * It can be specified as a message to certain player(s) or all players.
  * It can optionally allow you to embed color changes into the string by setting the colorCoded boolean to true.
@@ -2420,18 +2348,6 @@ declare function setMinuteDuration(milliseconds: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetMoonSize
 **/
 declare function setMoonSize(size: number): boolean;
-
-/**
- * This function changes the visible size of an object.
- * - Note: setObjectScale does not affect the collision models for the object, as such is unsuitable for use for interaction with players, vehicles or other objects.
- * @param theObject the object you wish to change the scale of.
- * @param scale a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
- * @param [scaleY=scale] a float containing the new scale on the Y axis
- * @param [scaleZ=scale] a float containing the new scale on the Z axis
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetObjectScale
-**/
-declare function setObjectScale(theObject: Object, scale: number, scaleY?: number, scaleZ?: number): boolean;
 
 /**
  * This function is used to enable or disable occlusions.
@@ -3242,14 +3158,6 @@ declare function showChat(thePlayer: Player, show: boolean): boolean;
  * @see https://wiki.mtasa.com/wiki/Split
 **/
 declare function split(stringToSplit: string, int: string, ): unknown): object;
-
-/**
- * This will allow you to stop an object that is currently moving.
- * @param theobject the object whose movement you wish to stop
- * @returns 
- * @see https://wiki.mtasa.com/wiki/StopObject
-**/
-declare function stopObject(theobject: Object): boolean;
 
 /**
  * This function subtracts money from a player's current money amount.
