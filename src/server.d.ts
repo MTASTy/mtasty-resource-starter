@@ -294,28 +294,6 @@ declare function createColSphere(fX: number, fY: number, fZ: number, fRadius: nu
 declare function createColTube(fX: number, fY: number, fZ: number, fRadius: number, fHeight: number): ColShape;
 
 /**
- * This function creates a marker.
- * A marker is a 3D model in the world that can highlight a particular point or area, often used to instruct players where to go to perform actions such as entering buildings.
- * There are various limits that govern the maximum number of each type that can be visible at once.
- * These are:
- * You are able to create as many markers as you wish (memory and element limit permitting), but the player will only be able to see the nearest ones up to the limit.
- * @param x A floating point number representing the X coordinate on the map.
- * @param y A floating point number representing the Y coordinate on the map.
- * @param z A floating point number representing the Z coordinate on the map.
- * @param [theType=checkpoint] unknown
- * @param [size=4] unknown
- * @param , unknown
- * @param [r=0] unknown
- * @param [g=0] unknown
- * @param [b=255] unknown
- * @param [a=255] unknown
- * @param [visibleTo=getRootElement] unknown
- * @returns Returns the marker element that was created, or false if the arguments are incorrect.
- * @see https://wiki.mtasa.com/wiki/CreateMarker
-**/
-declare function createMarker(x: number, y: number, z: number, theType?: string, size?: number, ,: unknown, r?: number, g?: number, b?: number, a?: number, visibleTo?: Element): Marker;
-
-/**
  * Creates an object in the GTA world.
  * - Note: Dynamic objects do not automatically have physics applied to them. Use setElementVelocity(object, 0, 0, 0) to fix this.
  * @param modelid a whole integer specifying the GTASA object model ID.
@@ -714,60 +692,6 @@ declare function getJetpackMaxHeight(getJetpackMaxHeight: number): [];
  * @see https://wiki.mtasa.com/wiki/GetLatentEventHandles
 **/
 declare function getLatentEventHandles(thePlayer: Player): object;
-
-
-
-
-/**
- * This function returns the color and transparency for a marker element.
- * Not all marker types support transparency.
- * @param theMarker The marker that you wish to retrieve the color of.
- * @returns Returns four ints corresponding to the amount of red, green, blue and alpha (respectively) of the marker, false if invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/GetMarkerColor
-**/
-declare function getMarkerColor(theMarker: Marker): [number, number, number, number];
-
-/**
- * Returns the number of markers that currently exist in the world.
- * @param getMarkerCount unknown
- * @returns Returns the number of markers that currently exist.
- * @see https://wiki.mtasa.com/wiki/GetMarkerCount
-**/
-declare function getMarkerCount(getMarkerCount: number): [];
-
-/**
- * This function returns the icon name for a marker.
- * @param theMarker A marker element referencing the specified marker.
- * @returns Returns false if the marker passed is invalid or a string containing one of the following:
- * @see https://wiki.mtasa.com/wiki/GetMarkerIcon
-**/
-declare function getMarkerIcon(theMarker: Marker): string;
-
-/**
- * This function returns a float containing the size of the specified marker.
- * @param myMarker The marker that you wish to retrieve the size of.
- * @returns Returns a float containing the size of the specified marker.
- * @see https://wiki.mtasa.com/wiki/GetMarkerSize
-**/
-declare function getMarkerSize(myMarker: Marker): number;
-
-/**
- * This function returns the position of the specified marker's target, the position it points to. This only works for checkpoint markers and ring markers.
- * For checkpoints it returns the position the arrow is pointing to, for ring markers it returns the position the ring is facing.
- * You can set this target with setMarkerTarget.
- * @param theMarker The marker you wish to retrieve the target position of.
- * @returns Returns three floats if a target is set, or false in the first variable and nil in the two others if the marker is invalid or no target is set.
- * @see https://wiki.mtasa.com/wiki/GetMarkerTarget
-**/
-declare function getMarkerTarget(theMarker: Marker): [number, number, number];
-
-/**
- * This function returns a marker's type.
- * @param theMarker A marker element referencing the specified marker.
- * @returns * Returns one of the following strings: If an invalid marker is specified, false is returned.
- * @see https://wiki.mtasa.com/wiki/GetMarkerType
-**/
-declare function getMarkerType(theMarker: Marker): string;
 
 /**
  * Tells you how long an ingame minute takes in real-world milliseconds.
@@ -2478,66 +2402,6 @@ declare function setInteriorSoundsEnabled(enabled: boolean): boolean;
  * @see https://wiki.mtasa.com/wiki/SetJetpackMaxHeight
 **/
 declare function setJetpackMaxHeight(Height: number): boolean;
-
-
-/**
- * This function sets the color of the specified marker by modifying the values for red, green and blue.
- * @param theMarker The marker that you wish to set the color of.
- * @param r The amount of red in the final color (0 to 255).
- * @param g The amount of green in the final color (0 to 255).
- * @param b The amount of blue in the final color (0 to 255).
- * @param a The amount of alpha in the final color (0 to 255).
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetMarkerColor
-**/
-declare function setMarkerColor(theMarker: Marker, r: number, g: number, b: number, a: number): boolean;
-
-/**
- * 
- * @param theMarker The marker to change the visual style of
- * @param icon A string referring to the type of icon, acceptable values are
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetMarkerIcon
-**/
-declare function setMarkerIcon(theMarker: Marker, icon: string): boolean;
-
-/**
- * This function sets the size of the specified marker.
- * Setting negative value will "flip" the marker, do nothing or make it invisible:
- * @param theMarker The marker that you wish to set the size of.
- * @param size A float representing new size of the marker.
- * @returns Returns true if successful, false if failed.
- * @see https://wiki.mtasa.com/wiki/SetMarkerSize
-**/
-declare function setMarkerSize(theMarker: Marker, size: number): boolean;
-
-/**
- * This function sets the 'target' for a marker.
- * Only the checkpoint and ring marker types can have a target.
- * For checkpoint markers, the target is shown as an arrow aiming at the point specified.
- * For ring markers, the target is shown by rotating the whole ring so that it faces the point specified.
- * This function is most useful for setting up markers for races, where each marker points to the next one's position.
- * (This is mostly used in races!)
- * @param theMarker The marker to set the target of
- * @param x The x axis of the coordinate to target the marker at
- * @param y The y axis of the coordinate to target the marker at
- * @param z The z axis of the coordinate to target the marker at
- * @returns Returns true if target was set, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetMarkerTarget
-**/
-declare function setMarkerTarget(theMarker: Marker, x: number, y: number, z: number): boolean;
-
-/**
- * This function changes a marker's type.
- * The type controls how the marker is displayed in the game.
- * It's important that you use marker types that users are used to from the single player game.
- * For example, checkpoints are used in races, rings are used for aircraft races, arrows are used for entering buildings etc.
- * @param theMarker A marker element referencing the specified marker.
- * @param markerType A string denoting the marker type. Valid values are
- * @returns Returns true if the marker type was changed, false if it wasn't or marker values were invalid.
- * @see https://wiki.mtasa.com/wiki/SetMarkerType
-**/
-declare function setMarkerType(theMarker: Marker, markerType: string): boolean;
 
 /**
  * Sets the real-world duration of an ingame minute.
