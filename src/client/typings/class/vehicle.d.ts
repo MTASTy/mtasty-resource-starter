@@ -1,5 +1,3 @@
-declare namespace Client {
-  class Vehicle {
+declare class Vehicle extends Element {
 
-  }
 }

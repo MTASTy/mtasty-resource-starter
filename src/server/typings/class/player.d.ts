@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Player extends Ped {
+declare class Player extends Ped {
 
-  }
 }

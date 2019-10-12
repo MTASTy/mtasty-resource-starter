@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Marker extends Element {
+declare class Marker extends Element {
 
-  }
 }

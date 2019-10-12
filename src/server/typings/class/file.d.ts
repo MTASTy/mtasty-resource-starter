@@ -1,5 +1,3 @@
-declare namespace Server {
-  class File {
+declare class File {
 
-  }
 }

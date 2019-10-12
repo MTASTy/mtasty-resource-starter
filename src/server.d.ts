@@ -523,11 +523,10 @@ declare function fromJSON(json: string): unknown;
 
 /**
  * This function gets the maximum height at which aircraft can fly without their engines turning off.
- * @param getAircraftMaxHeight unknown
  * @returns Returns a float containing the max aircraft height.
  * @see https://wiki.mtasa.com/wiki/GetAircraftMaxHeight
 **/
-declare function getAircraftMaxHeight(getAircraftMaxHeight: number): [];
+declare function getAircraftMaxHeight(): number;
 
 /**
  * This function returns the maximum velocity at which aircrafts could fly.

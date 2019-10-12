@@ -272,11 +272,10 @@ declare function addVehicleUpgrade(theVehicle: Vehicle, upgrade: number): boolea
 /**
  * Gets whether the traffic lights are currently locked or not.
  * If the lights are locked, it means they won't change unless you do setTrafficLightState.
- * @param areTrafficLightsLocked unknown
  * @returns Returns true the traffic lights are currently locked, false otherwise.
  * @see https://wiki.mtasa.com/wiki/AreTrafficLightsLocked
 **/
-declare function areTrafficLightsLocked(areTrafficLightsLocked: boolean): [];
+declare function areTrafficLightsLocked(): boolean;
 
 /**
  * This function is used to find out whether the lights of the vehicle are on.
@@ -1014,11 +1013,10 @@ declare function detachTrailerFromVehicle(theVehicle: Vehicle, theTrailer?: Vehi
 
 /**
  * This function can be used to detonate a players satchels.
- * @param detonateSatchels unknown
  * @returns Returns true if successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/DetonateSatchels
 **/
-declare function detonateSatchels(detonateSatchels: boolean): [];
+declare function detonateSatchels(): boolean;
 
 /**
  * New items: 3.0140,1.4,This function ensures the requested resource file is correct and then triggers onClientFileDownloadComplete. If the file has been previously downloaded and the CRC matches, the file will not be downloaded again but onClientFileDownloadComplete will still run. The file should also be included in the resource meta.xml with the download attribute set to "false", see meta.xml for more details.
@@ -1093,10 +1091,10 @@ declare function dxCreateScreenSource(width: number, height: number): Element;
  * @param [maxDistance=0] If non-zero, the shader will be applied to textures nearer than maxDistance only. This can speed up rendering, but (to look good) may require the shader to fade out it's own effect as the texture reaches maxDistance.
  * @param [layered=false] When set to true, the shader will be drawn in a separate render pass. Several layered shaders can be drawn on the same world texture. (To avoid Z fighting artifacts, you may have to add DepthBias -0.0002; to the technique pass, but this might cause visual artifacts when applied on vehicles)
  * @param [elementTypes=world,vehicle,object,other] A comma seperated list of element types to restrict this shader to. Valid element types are
- * @returns 
+ * @returns element: A shader element if successful, false if invalid arguments were passed to the function. You should always check to see if this function has returned false. Also return string: The name of the technique that will be used.
  * @see https://wiki.mtasa.com/wiki/DxCreateShader
 **/
-declare function dxCreateShader(filepath: string, raw_data: string, priority?: number, maxDistance?: number, layered?: boolean, elementTypes?: string): [Element, string];
+declare function dxCreateShader(filepath: string, raw_data: string, priority?: number, maxDistance?: number, layered?: boolean, elementTypes?: string): [Element, string] | [false];
 
 /**
  * This function creates a texture element that can be used in the dxDraw functions.
@@ -1346,12 +1344,10 @@ declare function dxDrawText(text: string, leftX: number, topY: number, rightX?: 
 /**
  * This function returns the current blend mode for the dxDraw functions.
  * The blend mode is set using dxSetBlendMode
- * Needs example
- * @param dxGetBlendMode unknown
  * @returns Returns the current blend mode, which can be one of:
  * @see https://wiki.mtasa.com/wiki/DxGetBlendMode
 **/
-declare function dxGetBlendMode(dxGetBlendMode: string): [];
+declare function dxGetBlendMode(): string;
 
 /**
  * This function retrieves the theoretical height of a certain piece of text, if it were to be drawn using dxDrawText.
@@ -1369,7 +1365,7 @@ declare function dxGetFontHeight(scale?: number, font?: any): number;
  * @returns Returns two ints representing the width and height in pixels of the material, or false if an invalid parameter was passed to the function. If the material is a volume texture, this function will return three ints representing the width, height and depth.
  * @see https://wiki.mtasa.com/wiki/DxGetMaterialSize
 **/
-declare function dxGetMaterialSize(material: Element): [number, number, , number, ];
+declare function dxGetMaterialSize(material: Element): [number, number];
 
 /**
  * This function gets the color of a single pixel from pixels contained in a string.
@@ -3212,11 +3208,10 @@ declare function getLightType(theLight: Light): number;
 /**
  * This function gets the player element of the client running the current script.
  * You can use the predefined variable localPlayer instead of typing getLocalPlayer()
- * @param getLocalPlayer unknown
  * @returns Returns the local player element.
  * @see https://wiki.mtasa.com/wiki/GetLocalPlayer
 **/
-declare function getLocalPlayer(getLocalPlayer: Player): [];
+declare function getLocalPlayer(): Player;
 
 /**
  * New items: 3.0140,1.4,This function gets the player's localization setting as set in the MTA client.

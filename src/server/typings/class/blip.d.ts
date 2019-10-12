@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Blip extends Element {
+declare class Blip extends Element {
 
-  }
 }

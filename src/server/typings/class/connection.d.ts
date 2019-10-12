@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Connection extends Element {
+declare class Connection extends Element {
 
-  }
 }

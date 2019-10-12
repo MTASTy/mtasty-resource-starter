@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Element {
+declare class Element {
 
-  }
 }

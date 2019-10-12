@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Ped extends Element {
+declare class Ped extends Element {
 
-  }
 }

@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Acl {
+declare class Acl {
 
-  }
 }

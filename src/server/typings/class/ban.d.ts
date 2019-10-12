@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Ban {
+declare class Ban {
 
-  }
 }

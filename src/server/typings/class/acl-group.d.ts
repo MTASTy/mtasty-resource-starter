@@ -1,5 +1,3 @@
-declare namespace Server {
-  class AclGroup {
+declare class AclGroup {
 
-  }
 }

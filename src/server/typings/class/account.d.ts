@@ -1,5 +1,3 @@
-declare namespace Server {
-  class Account {
+declare class Account {
 
-  }
 }

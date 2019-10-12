@@ -1,5 +1,3 @@
-declare namespace Client {
-  class Water {
+declare class Water extends Element {
 
-  }
 }

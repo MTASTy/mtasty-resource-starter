@@ -1,5 +1,3 @@
-declare namespace Client {
-  class Element {
-    
-  }
+declare class Element {
+
 }

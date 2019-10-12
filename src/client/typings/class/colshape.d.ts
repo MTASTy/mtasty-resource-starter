@@ -1,5 +1,3 @@
-declare namespace Client {
-  class ColShape extends Element{
+declare class ColShape extends Element {
 
-  }
 }
