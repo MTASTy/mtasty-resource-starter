@@ -3,15 +3,20 @@
     "target": "esnext",
     "lib": ["esnext"],
     "strict": true,
-    "rootDir": "src",
     "module": "none",
-    "outDir": "build/",
+    "rootDir": "src",
+    "outDir": "build",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "plugins": [{ "name": "typescript-tstl-plugin" }]
   },
-  "include": [ "src/shared", "src/server", "src/client" ],
+  "references": [
+    { "path": "src/client" },
+    { "path": "src/server" }
+  ],
   "tstl": {
     "luaTarget": "5.1",
-    "luaLibImport": "inline"
+    "luaLibImport": "inline",
+    "noImplicitSelf": true
   }
 }
