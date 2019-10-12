@@ -363,14 +363,6 @@ declare function decodeString(algorithm: string, input: string, options: object)
 declare function detachTrailerFromVehicle(theVehicle: Vehicle, theTrailer?: Vehicle): boolean;
 
 /**
- * This function can be used to detonate a players satchels.
- * @param Player unknown
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/DetonateSatchels
-**/
-declare function detonateSatchels(Player: Player): boolean;
-
-/**
  * This function encodes a string using the specified algorithm.
  * The counterpart of this function is decodeString.
  * @param algorithm The algorithm to use.

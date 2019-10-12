@@ -214,7 +214,6 @@ declare function isPlayerMuted(thePlayer: Player): boolean;
 declare function isPlayerNametagShowing(thePlayer: Player): boolean;
 
 /**
- * Added to client side.
  * This function allows you to make the server reveal whether or not voice is currently enabled.
  * @returns Returns true if the voice is enabled on the server, false otherwise.
  * @see https://wiki.mtasa.com/wiki/IsVoiceEnabled
@@ -283,7 +282,6 @@ declare function setPlayerHudComponentVisible(thePlayer: Player, component: stri
 /**
  * Sets a player's money to a certain value, regardless of current player money.
  * It should be noted that setting negative values does not work and in fact gives the player large amounts of money.
- * - Note: Using this function client side (not recommended) will not change a players money server side.
  * @param thePlayer Which player to set the money of.
  * @param amount A whole integer specifying the new amount of money the player will have.
  * @param [instant=false] If set to true money will be set instantly without counting up/down like in singleplayer.
@@ -386,7 +384,7 @@ declare function setPlayerVoiceBroadcastTo(thePlayer: Player, broadcastTo: any):
  * This function allows you to mute voices for a player.
  * - Important note: This function should only be used as a low-level function for advanced users.
  * @param thePlayer The player you wish to change.
- * @param ignoreFrom Element or table of elements which the player should not hear voices from. Use nil if no one should be ignored.
+ * @param ignoreFrom Element or table of elements which the player should not hear voices from. Use undefined if no one should be ignored.
  * @returns Returns true if the value was set successfully, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetPlayerVoiceIgnoreFrom
  **/
