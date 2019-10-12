@@ -10,8 +10,8 @@ declare class MapObject extends Element {
    * @param rx a floating point number representing the rotation about the X axis in degrees.
    * @param ry a floating point number representing the rotation about the Y axis in degrees.
    * @param rz a floating point number representing the rotation about the Z axis in degrees.
-   * @param [isLowLOD=false] unknown
-   * @returns
+   * @param [isLowLOD=false] a bool value specifying if the object will be low LOD. A low LOD object has no collision and a longer draw distance.
+   * @returns The object element if creation was successful, false otherwise.
    * @see https://wiki.mtasa.com/wiki/CreateObject
    **/
   constructor(modelid: number, x: number, y: number, z: number, rx: number, ry: number, rz: number, isLowLOD?: boolean);
