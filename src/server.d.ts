@@ -265,21 +265,6 @@ declare function createColSphere(fX: number, fY: number, fZ: number, fRadius: nu
 declare function createColTube(fX: number, fY: number, fZ: number, fRadius: number, fHeight: number): ColShape;
 
 /**
- * This function creates a pickup element, which is placed in the GTA world and can be picked up to retrieve a health, armour or a weapon.
- * @param x A floating point number representing the X coordinate on the map.
- * @param y A floating point number representing the Y coordinate on the map.
- * @param z A floating point number representing the Z coordinate on the map.
- * @param theType This is an integer representing the type of pickup, representing the following types
- * @param amount/weapon unknown
- * @param , unknown
- * @param [respawnTime=30000] How long before the pickup respawns in milliseconds (This parameter is ignored on the client!)
- * @param [ammo=50] An integer representing the amount of ammo a pickup contains. This is only valid when the pickup type is a weapon pickup.
- * @returns Returns pickup element if the pickup was created succesfully, otherwise returns false.
- * @see https://wiki.mtasa.com/wiki/CreatePickup
-**/
-declare function createPickup(x: number, y: number, z: number, theType: number, amount/weapon: number, ,: unknown, respawnTime?: number, ammo?: number): Pickup;
-
-/**
  * This function can be used to create custom radar areas on the radar.
  * @param startPosX A float representing the origin 'x' position of the radar area.
  * @param startPosY A float representing the origin 'y' position of the radar area.
@@ -708,38 +693,6 @@ declare function getOriginalWeaponProperty(weaponID/string: number, ,: unknown, 
  * @see https://wiki.mtasa.com/wiki/GetPerformanceStats
 **/
 declare function getPerformanceStats(category: string, options?: string, filter?: string): [object, object];
-
-/**
- * This function retrieves the amount of ammo in a weapon pickup.
- * @param thePickup The pickup in which you wish to retrieve the ammo of
- * @returns Returns an integer of the amount of ammo in the pickup, false if the pickup element is invalid, 0 if it's no weapon pickup.
- * @see https://wiki.mtasa.com/wiki/GetPickupAmmo
-**/
-declare function getPickupAmmo(thePickup: Pickup): number;
-
-/**
- * This function retrieves the amount of health or armor given from a pickup.
- * @param thePickup The pickup you wish to retrieve the amount from.
- * @returns Returns an integer of the amount the pickup is set to, false if it's invalid, 0 if it's no health or amor pickup.
- * @see https://wiki.mtasa.com/wiki/GetPickupAmount
-**/
-declare function getPickupAmount(thePickup: Pickup): number;
-
-/**
- * This function retrieves the type of a pickup, either a health, armour or weapon pickup.
- * @param thePickup The pickup you wish to retrieve the type of.
- * @returns Returns false if the pickup is invalid, or an integer of the type of the pickup, which include:
- * @see https://wiki.mtasa.com/wiki/GetPickupType
-**/
-declare function getPickupType(thePickup: Pickup): number;
-
-/**
- * This function retrieves the weapon ID of a weapon pickup.
- * @param thePickup The pickup of which you wish to retrieve the weapon
- * @returns Returns the Weapon ID of the pickup, or false if the pickup is invalid.
- * @see https://wiki.mtasa.com/wiki/GetPickupWeapon
-**/
-declare function getPickupWeapon(thePickup: Pickup): number;
 
 /**
  * This function allows you to check the current blur level of a specified player.
@@ -2047,18 +2000,6 @@ declare function setMoonSize(size: number): boolean;
 declare function setOcclusionsEnabled(enabled: boolean): boolean;
 
 /**
- * This function allows changing the type of a pickup to a Weapon, Armour or Health pickup, and allows you to set the health points or the weapon and ammo that the pickup will give.
- * @param thePickup The pickup which you wish to change the settings of
- * @param theType An integer representing the type of pickup. You can choose from
- * @param amount/weapon unknown
- * @param [ unknown
- * @param ammo An integer representing the amount of ammo a pickup contains.This argument is only valid when the pickup type is a Weapon Pickup, and must be specified in that case.
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetPickupType
-**/
-declare function setPickupType(thePickup: Pickup, theType: number, amount/weapon: number, [: unknown, ammo: number): boolean;
-
-/**
  * Sets the motion blur level on the clients screen.
  * Accepts a value between 0 and 255.
  * @param thePlayer The player whose blur level will be changed.
@@ -3315,14 +3256,6 @@ declare function getMaxPlayers(): number;
 declare function getModelHandling(modelId: number): object;
 
 /**
- * Returns the time it takes before a pickup respawns after a player picked it up. The time is specified in milliseconds.
- * @param thePickup the pickup you want the respawn time of
- * @returns Returns the respawn time of the pickup if successful, false in case of failure.
- * @see https://wiki.mtasa.com/wiki/GetPickupRespawnInterval
-**/
-declare function getPickupRespawnInterval(thePickup: Pickup): number;
-
-/**
  * This function returns anti-cheat info for a player.
  * The info returned by this function can change over time, so use the server event onPlayerACInfo instead.
  * Deprecated: onPlayerACInfo
@@ -3548,14 +3481,6 @@ declare function giveWeapon(thePlayer: Ped, weapon: number, ammo?: number, setAs
 declare function isGlitchEnabled(glitchName: string): boolean;
 
 /**
- * This function checks if a pickup is currently spawned (is visible and can be picked up) or not (a player picked it up recently).
- * @param thePickup the pickup you want to check.
- * @returns Returns true if the pickup is spawned, false if it's not spawned or an invalid pickup was specified.
- * @see https://wiki.mtasa.com/wiki/IsPickupSpawned
-**/
-declare function isPickupSpawned(thePickup: Pickup): boolean;
-
-/**
  * Use this function to check if a player has been muted.
  * @param thePlayer The player you are checking.
  * @returns Returns true if the player is muted and false otherwise.
@@ -3731,15 +3656,6 @@ declare function setMaxPlayers(slots: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetModelHandling
 **/
 declare function setModelHandling(modelId: number, property: string, value: unknown): boolean;
-
-/**
- * Sets the time it takes for a pickup to respawn after a player picked it up.
- * @param thePickup the pickup to set the respawn time of
- * @param ms the new respawn time in ms
- * @returns Returns true if the new respawn time was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetPickupRespawnInterval
-**/
-declare function setPickupRespawnInterval(thePickup: Pickup, ms: number): boolean;
 
 /**
  * This function allows you to change ASE announce values for any player using a specified key.
@@ -4265,13 +4181,3 @@ declare function toggleVehicleRespawn(theVehicle: Vehicle, Respawn: boolean): bo
  * @see https://wiki.mtasa.com/wiki/TriggerClientEvent
 **/
 declare function triggerClientEvent(sendTo?: unknown, name: string, sourceElement: Element, arguments: ...any[]): boolean;
-
-
-/**
- * This function is used to simulate the player using a pickup
- * @param thePickup The pickup element to be picked up/used.
- * @param thePlayer The player to use the pickup.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/UsePickup
-**/
-declare function usePickup(thePickup: Pickup, thePlayer: Player): boolean;
