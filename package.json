@@ -12,7 +12,8 @@
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^6.3.0",
-    "typescript-to-lua": "^0.27.1"
+    "typescript-to-lua": "^0.27.1",
+    "typescript-tstl-plugin": "^0.1.0"
   },
   "dependencies": {}
 }
