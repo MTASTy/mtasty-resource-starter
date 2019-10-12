@@ -4,7 +4,7 @@
  * Debug hooks are not recursive, so functions and events triggered inside the hook callback will not be traced.
  * @param hookType The type of hook to add. This can be
  * @param callbackFunction The function to call
- * @param nameList Table of strings for restricting which functions and events the hook will be triggered on
+ * @param nameList loadMapDataTable of strings for restricting which functions and events the hook will be triggered on
  * @returns Returns true if the hook was successfully added, or false otherwise.
  * @see https://wiki.mtasa.com/wiki/AddDebugHook
 **/
@@ -4304,16 +4304,6 @@ declare function isPlayerMuted(thePlayer: Player): boolean;
 declare function isResourceArchived(resourceElement: Resource): boolean;
 
 /**
- * This function is intended to load data from a loaded XML file into the element tree.
- * This could be used for loading an external map, or part of another map.
- * @param node The node that you wish to load into the element tree.
- * @param parent The node you wish to be the parent of the new map data.
- * @returns Returns an element object that corresponds to the root of the new data added, i.e. an element that represents the node xmlnode passed to the function. Returns false if the arguments are invalid.
- * @see https://wiki.mtasa.com/wiki/LoadMapData
-**/
-declare function loadMapData(node: unknown, parent: Element): Element;
-
-/**
  * This outputs a line of text to the server's log.
  * This could be useful for debugging.
  * @param text The text to be output to the log.
@@ -4396,15 +4386,6 @@ declare function resendPlayerACInfo(thePlayer: Player): boolean;
 declare function resendPlayerModInfo(thePlayer: Player): boolean;
 
 /**
- * This function is used to reset the state of a player.
- * It is intended to restore a player to his default state as if he had just joined the server, without any scripts affecting him.
- * @param [thePlayer=getRootElement()] The specific player you wish to restore the state of.Not specifying this will result in all players map info being reset.
- * @returns Returns true if the map info was reset successfully, otherwise false.
- * @see https://wiki.mtasa.com/wiki/ResetMapInfo
-**/
-declare function resetMapInfo(thePlayer?: Player): boolean;
-
-/**
  * Resets the vehicle explosion time.
  * This is the point in time at which the vehicle last exploded: at this time plus the vehicle's respawn delay, the vehicle is respawned.
  * You can use this function to prevent the vehicle from respawning.
@@ -4448,18 +4429,6 @@ declare function respawnVehicle(theVehicle: Vehicle): boolean;
  * @see https://wiki.mtasa.com/wiki/RestartResource
 **/
 declare function restartResource(theResource: Resource, persistent?: boolean, configs?: boolean, maps?: boolean, scripts?: boolean, html?: boolean, clientConfigs?: boolean, clientScripts?: boolean, clientFiles?: boolean): boolean;
-
-/**
- * This converts a set of elements in the element tree into XML.
- * This is a format that can then be loaded as a map file.
- * Each element represents a single XML node.
- * @param node An existing node that should contain the contents of baseElement
- * @param baseElement The first element to output to the xml tree. This element and all its children (and their children, etc) will be output.
- * @param [childrenOnly=false] Defines if you want to only save children of the specified element.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SaveMapData
-**/
-declare function saveMapData(node: unknown, baseElement: Element, childrenOnly?: boolean): boolean;
 
 /**
  * This function is used to save arbitrary data under a certain name on the settings registry.

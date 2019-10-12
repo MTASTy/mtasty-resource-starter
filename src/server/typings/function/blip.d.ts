@@ -1,4 +1,3 @@
-// TODO: add visibleTo
 /**
  * This function creates a blip element, which is displayed as an icon on the client's radar.
  * @param x The x position of the blip, in world coordinates.
@@ -12,13 +11,12 @@
  * @param [a=255] The amount of alpha in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
  * @param [ordering=0] This defines the blip's Z-level ordering (-32768–32767).
  * @param [visibleDistance=16383] The maximum distance from the camera at which the blip is still visible (0–65535).
- * @param [visibleTo=?] This defines which elements can see the blip. Defaults to visible to everyone.
+ * @param visibleTo This defines which elements can see the blip. Defaults to visible to everyone.
  * @returns Returns an element of the blip if it was created successfully, false otherwise.
  * @see https://wiki.mtasa.com/wiki/CreateBlip
  **/
-declare function createBlip(x: number, y: number, z: number, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: Element): Blip | false;
+declare function createBlip(x: number, y: number, z: number, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: Player): Blip | false;
 
-// TODO: add visibleTo
 /**
  * This function creates a blip that is attached to an element. This blip is displayed as an icon on the client's radar and will 'follow' the element that it is attached to around.
  * @param elementToAttachTo The element to attach the marker to.
@@ -30,11 +28,11 @@ declare function createBlip(x: number, y: number, z: number, icon?: number, size
  * @param [a=255] The amount of alpha in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
  * @param [ordering=0] This defines the blip's Z-level ordering (-32768–32767).
  * @param [visibleDistance=16383] The maximum distance from the camera at which the blip is still visible (0–65535).
- * @param [visibleTo=?] This defines which elements can see the blip. Defaults to visible to everyone.
+ * @param visibleTo This defines which elements can see the blip. Defaults to visible to everyone.
  * @returns Returns an element of the blip if it was created successfully, false otherwise.
  * @see https://wiki.mtasa.com/wiki/CreateBlipAttachedTo
  **/
-declare function createBlipAttachedTo(elementToAttachTo: Element, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: Element): Blip | false;
+declare function createBlipAttachedTo(elementToAttachTo: Element, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: Player): Blip | false;
 
 /**
  * This function will tell you what color a blip is. This color is only applicable to the default blip icon.
