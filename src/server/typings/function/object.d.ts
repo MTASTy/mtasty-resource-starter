@@ -55,8 +55,8 @@ declare function setObjectScale(theObject: MapObject, scale: number, scaleY?: nu
 
 /**
  * This will allow you to stop an object that is currently moving.
- * @param theobject the object whose movement you wish to stop.
+ * @param theObject the object whose movement you wish to stop.
  * @returns Return true if successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/StopObject
  **/
-declare function stopObject(theobject: MapObject): boolean;
+declare function stopObject(theObject: MapObject): boolean;
