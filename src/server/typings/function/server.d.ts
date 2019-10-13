@@ -68,7 +68,7 @@ declare function setFPSLimit(fpsLimit: number | false): boolean;
  * This function enables or disables glitches that are found in the original Single Player game that can be used to gain an advantage in multiplayer.
  * Users of the fastmove glitch may additionally want to install this resource to disable crouchsliding.
  * - Note: By default all these glitches are disabled - use this function to enable them.
- * @param glitchName the name of the property to set.Possible values are: "quickreload", "fastmove", "fastfire", "crouchbug", "highcloserangedamage", "hitanim", "fastsprint", "baddrivebyhitbox", "quickstand".
+ * @param glitchName the name of the property to set. Possible values are: "quickreload", "fastmove", "fastfire", "crouchbug", "highcloserangedamage", "hitanim", "fastsprint", "baddrivebyhitbox", "quickstand".
  * @param enable whether or not to enable the glitch.
  * @returns Returns true if successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetGlitchEnabled
