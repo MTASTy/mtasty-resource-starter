@@ -456,16 +456,6 @@ declare function getEasingValue(fProgress: number, strEasingType: string, fEasin
 **/
 declare function getElementsWithinRange(x: number, y: number, z: number, range: number, elemType?: string): object;
 
-
-
-/**
- * This function retrieves the maximum FPS (Frames per second) that players on the server can run their game at.
-
- * @returns Returns an integer between 25 and 100 of the maximum FPS that players can run their game at.
- * @see https://wiki.mtasa.com/wiki/GetFPSLimit
-**/
-declare function getFPSLimit(): number;
-
 /**
  * This function will tell you what is the current render distance.
  * - Note: The function will return false server-side if far clip distance has not been set before the function is called.
@@ -1056,15 +1046,6 @@ declare function getVehicleVariant(theVehicle: Vehicle): [number, number];
 declare function getVehicleWheelStates(theVehicle: Vehicle): [number, number, number, number];
 
 /**
- * This function gives you various version information about MTA and the operating system.
- * - Note: Clientside will return the version from the player, and the server-sided will return version from the server.
- * @param getVersion unknown
- * @returns Returns a table with version information. Specifically these keys are present in the table:
- * @see https://wiki.mtasa.com/wiki/GetVersion
-**/
-declare function getVersion(getVersion: object): [];
-
-/**
  * This function returns the water color of the GTA world.
  * - Note: The server can only return the water color, if it has actually been set by script.
  * @param , unknown
@@ -1572,31 +1553,6 @@ declare function setCloudsEnabled(enabled: boolean): boolean;
  * @see https://wiki.mtasa.com/wiki/SetDevelopmentMode
 **/
 declare function setDevelopmentMode(enable: boolean, enableWeb?: boolean): boolean;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * This function sets the maximum FPS (Frames per second) that players on the server can run their game at.
- * - Note: When set client side, the actual limit used is the lowest of both the server and client set values
- * @param fpsLimit An integer value representing the maximum FPS.This value may be between 25 and 100 FPS.You can also pass 0 or false, in which case the FPS limit will be the one set in the client settings (by default, 100 FPS).
- * @returns Returns true if successful, or false if it was not possible to set the limit or an invalid value was passed.
- * @see https://wiki.mtasa.com/wiki/SetFPSLimit
-**/
-declare function setFPSLimit(fpsLimit: number): boolean;
 
 /**
  * This function is used to set the distance of render.
@@ -2751,14 +2707,6 @@ declare function get(settingName: string): unknown;
 declare function getJetpackWeaponEnabled(weapon: string): boolean;
 
 /**
- * This function returns the maximum number of player slots on the server.
-
- * @returns Returns the maximum number of players allowed on the server.
- * @see https://wiki.mtasa.com/wiki/GetMaxPlayers
-**/
-declare function getMaxPlayers(): number;
-
-/**
  * This function returns a table containing the handling data of the specified vehicle model.
  * - Note: the data returned may not reflect the actual handling of a particular vehicle, since this may be overriden by the setVehicleHandling function.
  * @param modelId the vehicle model you wish to get the handling data of.
@@ -2775,38 +2723,6 @@ declare function getModelHandling(modelId: number): object;
  * @see https://wiki.mtasa.com/wiki/GetServerConfigSetting
 **/
 declare function getServerConfigSetting(name: string): string;
-
-/**
- * This function retrieves the server's HTTP port.
- * @param getServerHttpPort unknown
- * @returns An integer corresponding to the server's HTTP port.
- * @see https://wiki.mtasa.com/wiki/GetServerHttpPort
-**/
-declare function getServerHttpPort(getServerHttpPort: number): [];
-
-/**
- * This function retrieves the server's name.
- * @param getServerName unknown
- * @returns A string containing the server's name.
- * @see https://wiki.mtasa.com/wiki/GetServerName
-**/
-declare function getServerName(getServerName: string): [];
-
-/**
- * This function returns the current password required to join the server.
-
- * @returns Returns the current server password as a string if it has a password, if not it returns nil.
- * @see https://wiki.mtasa.com/wiki/GetServerPassword
-**/
-declare function getServerPassword(): string;
-
-/**
- * This function retrieves the server's port.
- * @param getServerPort unknown
- * @returns An integer corresponding to the server's port.
- * @see https://wiki.mtasa.com/wiki/GetServerPort
-**/
-declare function getServerPort(getServerPort: number): [];
 
 /**
  * This function will return the current sky color.
@@ -2862,15 +2778,6 @@ declare function getVehiclesOfType(model: number): object;
 **/
 declare function giveWeapon(thePlayer: Ped, weapon: number, ammo?: number, setAsCurrent?: boolean): boolean;
 
-
-/**
- * This function retrieves whether San Andreas game glitches are enabled or not, set by using setGlitchEnabled
- * @param glitchName the name of the property to set.Possible values are:
- * @returns Returns true if if the glitch was enabled, or false if it is disabled.
- * @see https://wiki.mtasa.com/wiki/IsGlitchEnabled
-**/
-declare function isGlitchEnabled(glitchName: string): boolean;
-
 /**
  * This function removes sirens from a vehicle.
  * @param theVehicle The vehicle to remove the sirens of
@@ -2917,17 +2824,6 @@ declare function respawnVehicle(theVehicle: Vehicle): boolean;
 declare function set(settingName: string, value: unknown): boolean;
 
 /**
- * This function enables or disables glitches that are found in the original Single Player game that can be used to gain an advantage in multiplayer.
- * Users of the fastmove glitch may additionally want to install this resource to disable crouchsliding.
- * - Note: By default all these glitches are disabled - use this function to enable them.
- * @param glitchName the name of the property to set.Possible values are:
- * @param enable whether or not to enable the glitch.
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetGlitchEnabled
-**/
-declare function setGlitchEnabled(glitchName: string, enable: boolean): boolean;
-
-/**
  * This function sets a weapon usable while using the Jetpack.
  * - Note: colt 45, sawed-off, tec-9 and uzi are always enabled for the Jetpack and are not affected by this function
  * @param weapon unknown
@@ -2936,15 +2832,6 @@ declare function setGlitchEnabled(glitchName: string, enable: boolean): boolean;
  * @see https://wiki.mtasa.com/wiki/SetJetpackWeaponEnabled
 **/
 declare function setJetpackWeaponEnabled(weapon: string, enabled: boolean): boolean;
-
-/**
- * This function sets the maximum number of player slots on the server.
- * - Note: This function cannot set more than as defined in mtaserver.conf. (To find out the value, use getServerConfigSetting("maxplayers"))
- * @param slots Maximum number of player slots on the server.
- * @returns Returns true if number of player slots was successfully changed, false or nil otherwise.
- * @see https://wiki.mtasa.com/wiki/SetMaxPlayers
-**/
-declare function setMaxPlayers(slots: number): boolean;
 
 /**
  * This function is used to change the handling data of all vehicles of a specified model.
@@ -2966,14 +2853,6 @@ declare function setModelHandling(modelId: number, property: string, value: unkn
  * @see https://wiki.mtasa.com/wiki/SetServerConfigSetting
 **/
 declare function setServerConfigSetting(name: string, value: string, bSave?: boolean): boolean;
-
-/**
- * This function changes the password required to join the server to the given string.
- * @param thePassword The new server password you want.Pass nil or an empty string to remove the password.
- * @returns Returns true if the password was successfully changed or removed, false or nil otherwise.
- * @see https://wiki.mtasa.com/wiki/SetServerPassword
-**/
-declare function setServerPassword(thePassword: string): boolean;
 
 /**
  * This function is for setting the color of a specified team.
@@ -3066,15 +2945,6 @@ declare function setVehicleRespawnRotation(theVehicle: Vehicle, rx: number, ry: 
 declare function setVehicleVariant(theVehicle: Vehicle, variant1: number, variant2: number): boolean;
 
 /**
- * This function shuts down the server.
- * Make sure your server ACL setup has function.shutdown object protected.
- * @param reason the reason why the server has been shut down.
- * @returns Returns false if it was not possible to shut down the server.
- * @see https://wiki.mtasa.com/wiki/Shutdown
-**/
-declare function shutdown(reason: string): boolean;
-
-/**
  * Spawns a vehicle at any given position and rotation
  * @param theVehicle The vehicle you wish to spawn
  * @param x The x position you wish to spawn the vehicle at
@@ -3089,7 +2959,7 @@ declare function shutdown(reason: string): boolean;
 declare function spawnVehicle(theVehicle: Vehicle, x: number, y: number, z: number, rx: number, ry: number, rz: number): boolean;
 
 /**
- * This function removes every weapons from a specified ped, rendering it unarmed.
+ * This function removes evegetFPSLimitry weapons from a specified ped, rendering it unarmed.
  * - Note: Weapons are removed when a ped dies by default. This means that it is only appropriate to use this function while a ped is alive.
  * @param thePed A ped element referencing the specified ped
  * @returns Returns true if the function succeeded, false otherwise.
