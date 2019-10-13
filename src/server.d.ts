@@ -194,14 +194,6 @@ declare function bitXor(var1: unknown, var2: unknown, ): unknown): unknown;
 declare function blowVehicle(vehicleToBlow: Vehicle, explode?: boolean): boolean;
 
 /**
- * This function is for returning the number of players in the specified team.
- * @param theTeam The team you wish to retrieve the player count of.
- * @returns Returns an integer containing the number of players in the team, false if it could not be retrieved.
- * @see https://wiki.mtasa.com/wiki/CountPlayersInTeam
-**/
-declare function countPlayersInTeam(theTeam: Team): number;
-
-/**
  * This function creates a collision sphere.
  * This is a shape that has a position and a radius.
  * See Wikipedia for a definition of a sphere.
@@ -602,14 +594,6 @@ declare function getOriginalWeaponProperty(weaponID/string: number, ,: unknown, 
 declare function getPerformanceStats(category: string, options?: string, filter?: string): [object, object];
 
 /**
- * This function retrieves all the players of the specified team.
- * @param theTeam unknown
- * @returns Returns a table of all the players in the team, or an empty one if there are none else false if invalid arguments are passed.
- * @see https://wiki.mtasa.com/wiki/GetPlayersInTeam
-**/
-declare function getPlayersInTeam(theTeam: Team): object;
-
-/**
  * This function is used to get the current rain level.
  * - Note: The server can only return the rain level if it has actually been set by script, otherwise it will return false.
  * @param getRainLevel unknown
@@ -657,38 +641,6 @@ declare function getSunColor(,: number, ,: number, ,: number, ,: number, ,: numb
  * @see https://wiki.mtasa.com/wiki/GetSunSize
 **/
 declare function getSunSize(getSunSize: number): [];
-
-/**
- * This function retrieves the color of a team.
- * @param theTeam The team you want to get the color of.
- * @returns Returns 3 integers representing the red, green, and blue color components of the team if it's valid, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetTeamColor
-**/
-declare function getTeamColor(theTeam: Team): [number, number, number];
-
-/**
- * This function tells you if friendly fire is turned on for the specified team.
- * @param theTeam The team object that will be checked
- * @returns Returns true if friendly fire is on for the specified team, false if it is turned off or if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/GetTeamFriendlyFire
-**/
-declare function getTeamFriendlyFire(theTeam: Team): boolean;
-
-/**
- * This function finds a team element using the provided team name.
- * @param teamName A string determining the name of the team you wish to find.
- * @returns Returns the team element if it was found, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetTeamFromName
-**/
-declare function getTeamFromName(teamName: string): Team;
-
-/**
- * This function gets the team name of a team object.
- * @param theTeam The team you want to retrieve the name of.
- * @returns Returns a string representing the team's name if the team object was valid, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetTeamName
-**/
-declare function getTeamName(theTeam: Team): string;
 
 /**
  * This function returns amount of time that your system has been running in milliseconds.
@@ -2678,18 +2630,6 @@ declare function xmlUnloadFile(node: unknown): boolean;
 declare function addVehicleSirens(theVehicle: Vehicle, sirenCount: number, sirenType: number, 360flag?: boolean, checkLosFlag?: boolean, useRandomiser: boolean, =: unknown, ,: unknown, silentFlag?: boolean): boolean;
 
 /**
- * This function is for creating a new team, which can be used to group players.
- * Players will not join the team until they are respawned.
- * @param teamName A string representing the teams name.
- * @param [colorR=255] An integer representing the red color value.
- * @param [colorG=255] An integer representing the green color value.
- * @param [colorB=255] An integer representing the blue color value.
- * @returns Returns a team element if it was successfully created, false if invalid arguments are passed or a team with that name already exists.
- * @see https://wiki.mtasa.com/wiki/CreateTeam
-**/
-declare function createTeam(teamName: string, colorR?: number, colorG?: number, colorB?: number): Team;
-
-/**
  * This function checks if a weapon is usable while on a Jetpack.
  * @param weapon The weapon that's being checked if it's usable on a Jetpack.
  * @returns Returns true if the weapon is enabled, else false if the weapon isn't or invalid arguments are passed.
@@ -2833,36 +2773,6 @@ declare function setModelHandling(modelId: number, property: string, value: unkn
  * @see https://wiki.mtasa.com/wiki/SetServerConfigSetting
 **/
 declare function setServerConfigSetting(name: string, value: string, bSave?: boolean): boolean;
-
-/**
- * This function is for setting the color of a specified team.
- * This color is shown, for example, in the team players' nametags.
- * @param theTeam The team you want to change the color of.
- * @param colorR An integer representing the red color value, from 0 to 255.
- * @param colorG An integer representing the green color value, from 0 to 255.
- * @param colorB An integer representing the blue color value, from 0 to 255.
- * @returns Returns true if the team is valid and the color is different, otherwise false.
- * @see https://wiki.mtasa.com/wiki/SetTeamColor
-**/
-declare function setTeamColor(theTeam: Team, colorR: number, colorG: number, colorB: number): boolean;
-
-/**
- * This function sets the friendly fire value for the specified team.
- * @param theTeam The team that will have friendly fire set
- * @param friendlyFire A boolean denoting whether the players from the same team can kill each other (true) or whether the players can't kill each other (false).
- * @returns Returns true if the friendly fire value is set for the specified team, false if the friendly fire value can't be set for the specified team or if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/SetTeamFriendlyFire
-**/
-declare function setTeamFriendlyFire(theTeam: Team, friendlyFire: boolean): boolean;
-
-/**
- * This function is used to set a team's name.
- * @param theTeam The team you want to change the name of.
- * @param newName A string representing the name you want the team to be called.
- * @returns Returns true if the team was valid and the name was changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetTeamName
-**/
-declare function setTeamName(theTeam: Team, newName: string): boolean;
 
 /**
  * This function sets the time delay (in milliseconds) the vehicle will remain at its position while empty.
