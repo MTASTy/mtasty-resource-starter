@@ -185,17 +185,6 @@ declare function getMoonSize(): number;
 declare function getOcclusionsEnabled(getOcclusionsEnabled: boolean): [];
 
 /**
- * This function gets the original weapon property of the specified weapons specified weapon type.
- * @param weaponID/string unknown
- * @param , unknown
- * @param weaponSkill Either
- * @param property The property you want to get the value of
- * @returns On success: int: The weapon property On failure: bool: False if the passed arguments were invalid
- * @see https://wiki.mtasa.com/wiki/GetOriginalWeaponProperty
-**/
-declare function getOriginalWeaponProperty(weaponID/string: number, ,: unknown, weaponSkill: string, property: string): number;
-
-/**
  * This function is used to get the current rain level.
  * - Note: The server can only return the rain level if it has actually been set by script, otherwise it will return false.
  * @param getRainLevel unknown
@@ -203,15 +192,6 @@ declare function getOriginalWeaponProperty(weaponID/string: number, ,: unknown, 
  * @see https://wiki.mtasa.com/wiki/GetRainLevel
 **/
 declare function getRainLevel(getRainLevel: number): [];
-
-
-/**
- * This function allows you to identify the weapon slot that a weapon belongs to.
- * @param weaponid Weapon to find the weapon slot of.
- * @returns Returns an integer representing the given weapon ID's associated weapon slot, false if the ID was invalid.
- * @see https://wiki.mtasa.com/wiki/GetSlotFromWeapon
-**/
-declare function getSlotFromWeapon(weaponid: number): number;
 
 /**
  * This function is used to get the color of the sun.
@@ -252,34 +232,6 @@ declare function getTime(): [number, number];
  * @see https://wiki.mtasa.com/wiki/GetTrafficLightState
 **/
 declare function getTrafficLightState(getTrafficLightState: number): [];
-
-/**
- * This function will obtain the ID of a particular weapon from its name.
- * @param name A string containing the name of the weapon.Names can be: (Case is ignored)
- * @returns Returns an int if the name matches that of a weapon, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetWeaponIDFromName
-**/
-declare function getWeaponIDFromName(name: string): number;
-
-/**
- * This function allows you to retrieve the name of a weapon from an ID.
- * - Note: You can also retrieve the name of other methods of death, such as Fall and Rammed.
- * @param id The ID you wish to retrieve the name of
- * @returns Returns a string of the name of the weapon, false otherwise. Names will be like these: (Ignoring case)
- * @see https://wiki.mtasa.com/wiki/GetWeaponNameFromID
-**/
-declare function getWeaponNameFromID(id: number): string;
-
-/**
- * This function gets a weapon property of the specified custom weapon (clientside only) or specified player-held weapon (both client and server).
- * @param weaponID/string unknown
- * @param , unknown
- * @param weaponSkill Either
- * @param property The property you want to get the value of
- * @returns On success: int: The weapon property On failure: bool: False if the passed arguments were invalid
- * @see https://wiki.mtasa.com/wiki/GetWeaponProperty
-**/
-declare function getWeaponProperty(weaponID/string: number, ,: unknown, weaponSkill: string, property: string): number;
 
 /**
  * This function returns the current Weather ID.
@@ -654,21 +606,6 @@ declare function setTrafficLightsLocked(toggle: boolean): boolean;
  * @see https://wiki.mtasa.com/wiki/SetVehicleDirtLevel
 **/
 declare function setVehicleDirtLevel(theVehicle: Vehicle, dirtLevel: number): boolean;
-
-/**
- * <section name="setWeaponAmmo" class="server" show="true">
- * Sets the ammo to a certain amount for a specified weapon (if they already have it), regardless of current ammo.
- * @param theWeapon unknown
- * @param ammo unknown
- * @returns Returns a boolean value true or false that tells you if it was successful or not.Returns true on success, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWeaponAmmo
-**/
-declare function setWeaponAmmo(theWeapon: Weapon, ammo: number): boolean;
-
-// TODO: SetWeaponProperty
-/**
- * @see https://wiki.mtasa.com/wiki/SetWeaponProperty
-**/
 
 /**
  * This function sets the current weather to the given valid value.
@@ -1108,22 +1045,6 @@ declare function getJetpackWeaponEnabled(weapon: string): boolean;
 declare function getSkyGradient(,: number, ,: number, ,: number, ,: number, ,: number, getSkyGradient: number): [number, number, number, number, number];
 
 /**
- * giveWeapon gives a specified weapon to a certain player or ped.
- * There is an optional argument to specify ammunition.
- * For example, a melee weapon doesn't need an ammo argument.
- * - Note: *When setting ammo for weapons in slot 0,1,10,11 or 12, the ammo max is 1
- * *When setting ammo for weapons in slot 3,4,5, the ammo is added
- * *When setting ammo for weapons in slot 2,6,7,8,9 and the slot weapon is changing, the ammo is replaced
- * @param thePlayer A player or ped object referencing the specified player (or ped)
- * @param weapon A whole number integer that refers to a Weapon ID. Click here for a list of possible weapon IDs.
- * @param [ammo=30] A whole number integer serving as the ammo amount for the given weapon. For weapons that do not require ammo, such as melee, this should be at least 1.
- * @param [setAsCurrent=false] A boolean value determining whether or not the weapon will be set as the players current.
- * @returns Returns true if weapon was successfully acquired, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GiveWeapon
-**/
-declare function giveWeapon(thePlayer: Ped, weapon: number, ammo?: number, setAsCurrent?: boolean): boolean;
-
-/**
  * This function sets a weapon usable while using the Jetpack.
  * - Note: colt 45, sawed-off, tec-9 and uzi are always enabled for the Jetpack and are not affected by this function
  * @param weapon unknown
@@ -1132,25 +1053,6 @@ declare function giveWeapon(thePlayer: Ped, weapon: number, ammo?: number, setAs
  * @see https://wiki.mtasa.com/wiki/SetJetpackWeaponEnabled
 **/
 declare function setJetpackWeaponEnabled(weapon: string, enabled: boolean): boolean;
-
-/**
- * This function removes evegetFPSLimitry weapons from a specified ped, rendering it unarmed.
- * - Note: Weapons are removed when a ped dies by default. This means that it is only appropriate to use this function while a ped is alive.
- * @param thePed A ped element referencing the specified ped
- * @returns Returns true if the function succeeded, false otherwise.
- * @see https://wiki.mtasa.com/wiki/TakeAllWeapons
-**/
-declare function takeAllWeapons(thePed: Ped): boolean;
-
-/**
- * This function removes a specified weapon or ammo from a certain player's inventory.
- * @param thePlayer A player object referencing the specified player.
- * @param weaponId An integer that refers to a weapon that you wish to remove.
- * @param ammo If used, this amount of ammo will be taken instead and the weapon will not be removed.
- * @returns Returns a true if the weapon/ammo was removed successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/TakeWeapon
-**/
-declare function takeWeapon(thePlayer: Player, weaponId: number, ammo: number): boolean;
 
 /**
  * This function triggers an event previously registered on a client.

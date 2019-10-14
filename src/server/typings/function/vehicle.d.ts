@@ -240,7 +240,7 @@ declare function getVehicleLightState(theVehicle: Vehicle, light: number): numbe
  * Only passenger seats are counted, the driver seat is excluded.
  * - Important note: Only passenger seats are counted, the driver seat is excluded.
  * @param theVehicleOrModelid the vehicle that you wish to know the maximum capacity of. OR the model id that you wish to know the maximum capacity of.
- * @returns Returns an int indicating the maximum number of passengers that can enter a vehicle.
+ * @returns Returns an numberindicating the maximum number of passengers that can enter a vehicle.
  * @see https://wiki.mtasa.com/wiki/GetVehicleMaxPassengers
  **/
 declare function getVehicleMaxPassengers(theVehicleOrModelid: Vehicle | number): number;
@@ -307,7 +307,7 @@ declare function getVehiclePaintjob(theVehicle: Vehicle): number | false;
  * This function returns the current state of a specifed panel on the vehicle.
  * A vehicle can have up to 7 panels.
  * @param theVehicle the vehicle that you wish to know the panel state of.
- * @param panel an integer specifying the panel you want to know the state of. Not every vehicle has every panel. Possible values from 0 to 6.
+ * @param panel an number specifying the panel you want to know the state of. Not every vehicle has every panel. Possible values from 0 to 6.
  * @returns Returns an number indicating the state of the specified the panel. This is a value between 0 and 3, with 0 indicating the panel is undamaged and 3 indicating it is very damaged.
  * @see https://wiki.mtasa.com/wiki/GetVehiclePanelState
  **/
@@ -412,7 +412,7 @@ declare function getVehicleType(modelID: number): string | false;
  * An upgrade slot is a certain type of upgrade (eg: exhaust, spoiler), there are 17 slots (0 to 16).
  * @param theVehicle The vehicle whose upgrade you want to retrieve.
  * @param slot The slot id of the upgrade.
- * @returns Returns an integer with the upgrade on the slot if correct arguments were passed, false otherwise.
+ * @returns Returns a number with the upgrade on the slot if correct arguments were passed, false otherwise.
  * @see https://wiki.mtasa.com/wiki/GetVehicleUpgradeOnSlot
  **/
 declare function getVehicleUpgradeOnSlot(theVehicle: Vehicle, slot: number): number | false;
@@ -685,8 +685,8 @@ declare function setVehicleDoorOpenRatio(theVehicle: Vehicle, door: 0 | 1 | 2 | 
 /**
  * This function sets the state of the specified door on a vehicle.
  * @param theVehicle The vehicle that you wish to change the door state of.
- * @param door An integer representing which door to set the state of.
- * @param state An integer representing the state to set the door to.
+ * @param door a number representing which door to set the state of.
+ * @param state a number representing the state to set the door to.
  * @returns Returns true if the door state was successfully set, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetVehicleDoorState
  **/
@@ -696,8 +696,8 @@ declare function setVehicleDoorState(theVehicle: Vehicle, door: 0 | 1 | 2 | 3 | 
  * - Note: MTA 1.6 and older.
  * This function sets the state of the specified door on a vehicle.
  * @param theVehicle The vehicle that you wish to change the door state of.
- * @param door An integer representing which door to set the state of.
- * @param state An integer representing the state to set the door to.
+ * @param door a number representing which door to set the state of.
+ * @param state a number representing the state to set the door to.
  * @param [spawnFlyingComponent=true] A boolean, if set to true, spawns flying doors etc. if you remove a component and state === 4.
  * @returns Returns true if the door state was successfully set, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetVehicleDoorState
@@ -756,9 +756,9 @@ declare function setVehicleHandling(theVehicle: Vehicle, reset: boolean): boolea
  * This function will set the headlight color of a vehicle.
  * Valid Red Green and Blue arguments range from 0-255.
  * @param theVehicle The vehicle that you wish to set the headlight color of.
- * @param red An integer indicating the amount of red for the vehicle's headlights.
- * @param green An integer indicating the amount of green for the vehicle's headlights.
- * @param blue An integer indicating the amount of blue for the vehicle's headlights.
+ * @param red a number indicating the amount of red for the vehicle's headlights.
+ * @param green a number indicating the amount of green for the vehicle's headlights.
+ * @param blue a number indicating the amount of blue for the vehicle's headlights.
  * @returns Returns true if vehicle's headlight color was set, false if an invalid vehicle or invalid color ranges were specified for red, green or blue.
  * @see https://wiki.mtasa.com/wiki/SetVehicleHeadLightColor
  **/
@@ -932,8 +932,8 @@ declare function setVehicleTurretPosition(turretVehicle: Vehicle, positionX: num
  * - Tip: If you only want one variant, set 'variant2' to 255. If you want no variants, then set both 'variant1' and 'variant2' to 255.
  * - Note: The fairings on the NRG-500 and BF-400 are both variants, so unless you explicitly ask for 3 or 4, your bike will have no fairings which some people may find offensive.
  * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @param variant1 An number for the first variant see Vehicle variants.
- * @param variant2 An number for the second variant see Vehicle variants.
+ * @param variant1 a number for the first variant see Vehicle variants.
+ * @param variant2 a number for the second variant see Vehicle variants.
  * @returns Returns true as the vehicle variants were successfully set or falce because the specified vehicle didn't exist or specified variants were invalid.
  * @see https://wiki.mtasa.com/wiki/SetVehicleVariant
  **/

@@ -114,7 +114,7 @@ declare function getPedTarget(thePed: Ped): Element | false;
  * - Note: Clientside, this function will not return a correct value for remote player weapons that aren't in hand.
  * @param thePed The ped whose ammo you want to check.
  * @param [weaponSlot=current] an integer representing the weapon slot (set to the ped's current slot if not given).
- * @returns Returns an number containing the total amount of ammo for the specified ped's weapon, or 0 if the ped specified is invalid.
+ * @returns Returns a number containing the total amount of ammo for the specified ped's weapon, or 0 if the ped specified is invalid.
  * @see https://wiki.mtasa.com/wiki/GetPedTotalAmmo
  **/
 declare function getPedTotalAmmo(thePed: Ped, weaponSlot?: number): number | false;
@@ -132,7 +132,7 @@ declare function getPedWalkingStyle(thePed: Ped): number | false;
  * This function tells you which weapon type is in a certain weapon slot of a ped.
  * @param thePed the ped you want to get the weapon type from.
  * @param [weaponSlot=current] an integer representing the weapon slot (set to the ped's current slot if not given).
- * @returns Returns an number indicating the type of the weapon the ped has in the specified slot. If the slot is empty, it returns 0. It should be noted that if a ped runs out of ammo for a weapon, it will still return the ID of that weapon in the slot (even if it appears as if the ped does not have a weapon at all), though getPedTotalAmmo will return 0. Therefore, getPedTotalAmmo should be used in conjunction with getPedWeapon in order to check if a ped has a weapon.
+ * @returns Returns a number indicating the type of the weapon the ped has in the specified slot. If the slot is empty, it returns 0. It should be noted that if a ped runs out of ammo for a weapon, it will still return the ID of that weapon in the slot (even if it appears as if the ped does not have a weapon at all), though getPedTotalAmmo will return 0. Therefore, getPedTotalAmmo should be used in conjunction with getPedWeapon in order to check if a ped has a weapon.
  * @see https://wiki.mtasa.com/wiki/GetPedWeapon
  **/
 declare function getPedWeapon(thePed: Ped, weaponSlot?: number): number | false;

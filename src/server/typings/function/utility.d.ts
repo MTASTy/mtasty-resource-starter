@@ -142,7 +142,7 @@ declare function bitReplace(arg: number, replaceValue: number, field: number, wi
  * This means that all synchronization, rendering and script execution will stop except HTTP processing invoked by fetchRemote.
  * This function only works, if development mode is enabled by setDevelopmentMode and can be utilised to build a debugger that communicates via HTTP requests with the editor/IDE.
  * - Warning: Only use this function if you know what you are doing!
- * @param sleep An number value in milliseconds.
+ * @param sleep a number value in milliseconds.
  * @returns Returns true if the development mode is enabled and arguments are correct, false otherwise.
  * @see https://wiki.mtasa.com/wiki/DebugSleep
  **/
@@ -291,7 +291,7 @@ declare function getServerConfigSetting(name: string): string | false;
  * This function returns amount of time that your system has been running in milliseconds.
  * By comparing two values of getTickCount, you can determine how much time has passed (in milliseconds) between two events.
  * This could be used to determine how efficient your code is, or to time how long a player takes to complete a task.
- * @returns Returns an number containing of milliseconds since the system the server is running on started. This has the potential to wrap-around.
+ * @returns Returns a number containing of milliseconds since the system the server is running on started. This has the potential to wrap-around.
  * @see https://wiki.mtasa.com/wiki/GetTickCount
  **/
 declare function getTickCount(): number;
@@ -620,7 +620,7 @@ declare function utfChar(characterCode: number): string | false;
 /**
  * The function returns the UTF codes of the given string.
  * @param theString The string to get the UTF code of.
- * @returns Returns an number if the function was successful, false otherwise.
+ * @returns Returns a number if the function was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/UtfCode
  **/
 declare function utfCode(theString: string): number | false;
@@ -628,7 +628,7 @@ declare function utfCode(theString: string): number | false;
 /**
  * The function gets the real length of a string, in characters.
  * @param theString The string to get the length of.
- * @returns Returns an number if the function was successful, false otherwise.
+ * @returns Returns a number if the function was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/UtfLen
  **/
 declare function utfLen(theString: string): number | false;
@@ -636,8 +636,8 @@ declare function utfLen(theString: string): number | false;
 /**
  * The function returns the byte position at specified character position.
  * @param theString The string.
- * @param position An number with the specified charachter position.
- * @returns Returns an number if the function was successful, false otherwise.
+ * @param position a number with the specified charachter position.
+ * @returns Returns a number if the function was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/UtfSeek
  **/
 declare function utfSeek(theString: string, position: number): number | false;
@@ -645,8 +645,8 @@ declare function utfSeek(theString: string, position: number): number | false;
 /**
  * The function returns a sub string, from the specified positions on a character.
  * @param theString The string.
- * @param Start An number with the start position.
- * @param End An number with the end position.
+ * @param Start a number with the start position.
+ * @param End a number with the end position.
  * @returns Returns a string if the function was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/UtfSub
  **/

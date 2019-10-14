@@ -55,7 +55,7 @@ declare function getPlayerBlurLevel(thePlayer: Player): number | false;
 
 /**
  * This function returns the number of players currently connected to the server.
- * @returns Returns the number of players connected to the server as an number.
+ * @returns Returns the number of players connected to the server as a number.
  * @see https://wiki.mtasa.com/wiki/GetPlayerCount
  **/
 declare function getPlayerCount(): number;
@@ -122,7 +122,7 @@ declare function getPlayerNametagText(thePlayer: Player): string | false;
  * This function returns the ping of a specified player.
  * The ping is the number of milliseconds that data takes to travel from the player's client to the server or vice versa.
  * @param thePlayer The player whose ping you want to determine.
- * @returns Returns the ping as an number, or false if the player is invalid.
+ * @returns Returns the ping as a number, or false if the player is invalid.
  * @see https://wiki.mtasa.com/wiki/GetPlayerPing
  **/
 declare function getPlayerPing(thePlayer: Player): number | false;
@@ -130,7 +130,7 @@ declare function getPlayerPing(thePlayer: Player): number | false;
 /**
  * - Note: MTA 1.6 and older
  * @param thePlayer The player whose debug level you want to get.
- * @return Returns the debug level as an number, or false if the player is invalid.
+ * @return Returns the debug level as a number, or false if the player is invalid.
  * @see https://wiki.mtasa.com/wiki/GetPlayerScriptDebugLevel
  **/
 declare function getPlayerScriptDebugLevel(thePlayer: Player): number | false;
