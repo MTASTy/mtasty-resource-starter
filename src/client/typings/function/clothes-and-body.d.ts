@@ -63,9 +63,7 @@ declare function getPedClothes(thePed: Ped, clothesType: number): [string | fals
  * It will remove them if the clothesTexture and clothesModel aren't specified, or if they match the current clothes on that slot.
  * @param thePed The ped you want to remove clothes from.
  * @param clothesType the clothes slot/type to remove.
- * @param clothesTexture A string determining the clothes texture that will be removed.
- * @param clothesModel A string determining the clothes model that will be removed.
  * @returns This function returns true if the clothes were successfully removed from the ped, false otherwise.
  * @see https://wiki.mtasa.com/wiki/RemovePedClothes
  **/
-declare function removePedClothes(thePed: Ped, clothesType: number, clothesTexture?: string, clothesModel?: string): boolean;
+declare function removePedClothes(thePed: Ped, clothesType: number): boolean;

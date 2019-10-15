@@ -65,18 +65,6 @@ declare function addEvent(eventName: string, allowRemoteTrigger?: boolean): bool
 declare function addEventHandler(eventName: string, attachedTo: Element, handlerFunction: Function, getPropagated?: boolean, priority?: string): boolean;
 
 /**
- * This function is used to set the current clothes on a ped.
- * - Note: This function only works with peds using CJ skin (ID 0).
- * @param thePed The ped whose clothes you want to change.
- * @param clothesTexture A string determining the clothes texture that will be added. See the clothes catalog.
- * @param clothesModel A string determining the clothes model that will be added. See the clothes catalog.
- * @param clothesType A integer representing the clothes slot/type the clothes should be added to. See the clothes catalog.
- * @returns This function returns true if the clothes were successfully added to the ped, false otherwise.
- * @see https://wiki.mtasa.com/wiki/AddPedClothes
-**/
-declare function addPedClothes(thePed: Ped, clothesTexture: string, clothesModel: string, clothesType: number): boolean;
-
-/**
  * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
  * @param theVehicle The element representing the vehicle you wish to add the upgrade to.
  * @param upgrade The id of the upgrade you wish to add. (1000 to 1193), see Vehicle Upgrades
@@ -3072,15 +3060,6 @@ declare function getPedArmor(thePed: Ped): number;
  * @see https://wiki.mtasa.com/wiki/GetPedBonePosition
 **/
 declare function getPedBonePosition(thePed: Ped, bone: number): [number, number, number];
-
-/**
- * This function is used to get the current clothes texture and model of a certain type on a ped.
- * @param thePed The ped whose clothes you want to retrieve.
- * @param clothesType The type/slot of clothing you want to get.
- * @returns This function returns 2 strings, the clothes texture and model. The first return value will be false if this player's clothes type is empty or an invalid player was specified.
- * @see https://wiki.mtasa.com/wiki/GetPedClothes
-**/
-declare function getPedClothes(thePed: Ped, clothesType: number): [string, string];
 
 /**
  * This function detects the element a ped is standing on. This can be a vehicle or an object.
@@ -6362,18 +6341,6 @@ declare function removeDebugHook(hookType: string, callbackFunction: Function): 
  * @see https://wiki.mtasa.com/wiki/RemoveEventHandler
 **/
 declare function removeEventHandler(eventName: string, attachedTo: Element, functionVar: Function): boolean;
-
-/**
- * This function is used to remove the current clothes of a certain type on a ped.
- * It will remove them if the clothesTexture and clothesModel aren't specified, or if they match the current clothes on that slot.
- * @param thePed The ped you want to remove clothes from.
- * @param clothesType the clothes slot/type to remove. See the clothes catalog.
- * @param clothesTexture (Server only) A string determining the clothes texture that will be removed. See the clothes catalog.
- * @param clothesModel (Server only) A string determining the clothes model that will be removed. See the clothes catalog.
- * @returns This function returns true if the clothes were successfully removed from the ped, false otherwise.
- * @see https://wiki.mtasa.com/wiki/RemovePedClothes
-**/
-declare function removePedClothes(thePed: Ped, clothesType: number, clothesTexture: string, clothesModel: string): boolean;
 
 /**
  * This function removes a ped from a vehicle immediately.
