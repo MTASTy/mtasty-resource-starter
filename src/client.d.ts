@@ -315,22 +315,6 @@ declare function breakObject(theObject: Object): boolean;
 declare function call(...arguments: any[]): any;
 
 /**
- * This function checks if the browser can return to the previous page.
- * @param webBrowser The browser you want to check for a previous page.
- * @returns Returns true if the browser can navigate back, false otherwise.
- * @see https://wiki.mtasa.com/wiki/CanBrowserNavigateBack
-**/
-declare function canBrowserNavigateBack(webBrowser: Browser): boolean;
-
-/**
- * This function checks if the browser can go to the next page.
- * @param webBrowser The browser you want check for a next page.
- * @returns Returns true if the browser can go to the next page, false otherwise.
- * @see https://wiki.mtasa.com/wiki/CanBrowserNavigateForward
-**/
-declare function canBrowserNavigateForward(webBrowser: Browser): boolean;
-
-/**
  * This function checks if the given ped can fall off bikes.
  * @param thePed the ped you want to check.
  * @returns Returns true if the ped can be knocked off bikes, false if he cannot or an invalid element was passed.
@@ -385,18 +369,6 @@ declare function countPlayersInTeam(theTeam: Team): number;
 /**
  * @see https://wiki.mtasa.com/wiki/CreateBlipAttachedTo
 **/
-
-/**
- * browser]] element.
- * - Note: You can also enable CEF development tools using toggleBrowserDevTools
- * @param width The browser's native width. This should be greater than or equal to 1.
- * @param height The browser's native height. This should be greater than or equal to 1.
- * @param isLocal Sets whether the browser can only show local content or content from the internet (see examples for more information)
- * @param [transparent=false] true if you want the browser transparent, false for opaque.
- * @returns Returns a texture of the browser if it was created successfully, false otherwise. Returns also false, if the user disabled remote pages and isLocal was set to false.
- * @see https://wiki.mtasa.com/wiki/CreateBrowser
-**/
-declare function createBrowser(width: number, height: number, isLocal: boolean, transparent?: boolean): Element;
 
 /**
  * This function creates a collision circle.
@@ -1717,16 +1689,6 @@ declare function engineSetModelLODDistance(model: number, distance: number): boo
 declare function engineSetSurfaceProperties(surfaceID: number, property: string, value: any): boolean;
 
 /**
- * browser]].
- * Works only with local browsers.
- * @param webBrowser The web browser which will execute the Javascript code
- * @param jsCode The Javascript code string
- * @returns Returns true if executing Javascript is allowed in the current context, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ExecuteBrowserJavascript
-**/
-declare function executeBrowserJavascript(webBrowser: Browser, jsCode: string): boolean;
-
-/**
  * This function will call all the attached functions of an existing console command, for a specified player.
  * - Note: You can only execute commands created with addCommandHandler. You cannot execute MTA harcoded commands due to security reasons.
  * - Note: Serverside commands can only be executed by the server. The same applies to the client side
@@ -1945,15 +1907,6 @@ declare function fireWeapon(theWeapon: Weapon): boolean;
  * @see https://wiki.mtasa.com/wiki/FixVehicle
 **/
 declare function fixVehicle(theVehicle: Vehicle): boolean;
-
-/**
- * browser]] or unfocus all browsers.
- * The browser that is focused will retrieve keyboard input.
- * @param webBrowser The web browser to be focused - if this is nil, it will unfocus all browsers.
- * @returns Returns true if the browser was focused or if nil was passed, false if it failed to focus or the browser does not exist.
- * @see https://wiki.mtasa.com/wiki/FocusBrowser
-**/
-declare function focusBrowser(webBrowser: Browser): boolean;
 
 /**
  * This function is used to forcefully show a player's radar map.
@@ -2276,50 +2229,6 @@ declare function getBodyPartName(bodyPartID: number): string;
  * @see https://wiki.mtasa.com/wiki/GetBoundKeys
 **/
 declare function getBoundKeys(command/control: string): object;
-
-/**
- * This function gets a given property of a specified browser.
- * Needs example
- * @param theBrowser unknown
- * @param key unknown
- * @returns Returns the value if the property was successfully found, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetBrowserProperty
-**/
-declare function getBrowserProperty(theBrowser: Browser, key: string): boolean;
-
-/**
- * This function returns a table containing the browser settings.
-
- * @returns A table having the following keys:
- * @see https://wiki.mtasa.com/wiki/GetBrowserSettings
-**/
-declare function getBrowserSettings(): object;
-
-/**
- * This function can be used to retrieve the source code of a website (asynchronously).
- * The size of the source code is limited to 2 MiB (remaining bytes are cut).
- * @param webBrowser unknown
- * @param callback unknown
- * @returns Returns true if valid arguments have been passed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetBrowserSource
-**/
-declare function getBrowserSource(webBrowser: Browser, callback: Function): boolean;
-
-/**
- * browser]].
- * @param webBrowser unknown
- * @returns Returns the title as a string. Returns false if invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/GetBrowserTitle
-**/
-declare function getBrowserTitle(webBrowser: Browser): string;
-
-/**
- * browser]].
- * @param webBrowser The browser
- * @returns Returns the web browser URL.
- * @see https://wiki.mtasa.com/wiki/GetBrowserURL
-**/
-declare function getBrowserURL(webBrowser: Browser): string;
 
 /**
  * New items: 3.0135,1.3.5,This function returns an element that corresponds to the game camera
@@ -5696,44 +5605,6 @@ declare function guiWindowSetSizable(theElement: Element, status: boolean): bool
 declare function hash(algorithm: string, dataToHash: string): string;
 
 /**
- * This function injects a mouse click (state: down).
- * @param webBrowser unknown
- * @param mouseButton unknown
- * @returns Returns true if the click was successfully injected, false otherwise.
- * @see https://wiki.mtasa.com/wiki/InjectBrowserMouseDown
-**/
-declare function injectBrowserMouseDown(webBrowser: Browser, mouseButton: string): boolean;
-
-/**
- * This function injects a mouse movement.
- * @param webBrowser unknown
- * @param posX unknown
- * @param posY unknown
- * @returns Returns true if the movement was injected successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/InjectBrowserMouseMove
-**/
-declare function injectBrowserMouseMove(webBrowser: Browser, posX: number, posY: number): boolean;
-
-/**
- * This function injects a mouse click (state: up).
- * @param webBrowser unknown
- * @param mouseButton unknown
- * @returns Returns true if the click was successfully injected, false otherwise.
- * @see https://wiki.mtasa.com/wiki/InjectBrowserMouseUp
-**/
-declare function injectBrowserMouseUp(webBrowser: Browser, mouseButton: string): boolean;
-
-/**
- * This function injects mouse wheel events.
- * @param webBrowser unknown
- * @param verticalScroll unknown
- * @param horizontalScroll unknown
- * @returns Returns true if the mouse action was successfully injected, false otherwise.
- * @see https://wiki.mtasa.com/wiki/InjectBrowserMouseWheel
-**/
-declare function injectBrowserMouseWheel(webBrowser: Browser, verticalScroll: number, horizontalScroll: number): boolean;
-
-/**
  * New items: 3.0153,1.5.3,This function returns human-readable representations of tables and MTA datatypes as a string.
  * @param var A variable of any datatype.
  * @param options A table of options. It is not mandatory, but when it is provided, it must be a table. For a list of options, see the Inspect's GitHub page.
@@ -5765,31 +5636,6 @@ declare function iprint(var1: any, var2: any, var3: any, ]: unknown): boolean;
  * @see https://wiki.mtasa.com/wiki/IsAmbientSoundEnabled
 **/
 declare function isAmbientSoundEnabled(theType: string): boolean;
-
-/**
- * This function checks if the specified URL is blocked from being loaded.
- * @param address unknown
- * @param [isURL=false] unknown
- * @returns Returns false if the URL is able to be loaded, true if it is blocked and nil if an invalid domain/URL was passed.
- * @see https://wiki.mtasa.com/wiki/IsBrowserDomainBlocked
-**/
-declare function isBrowserDomainBlocked(address: string, isURL?: boolean): boolean;
-
-/**
- * This function checks if a browser is focused.
- * @param webBrowser unknown
- * @returns Returns true if the browser is focused, false otherwise and nil if invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/IsBrowserFocused
-**/
-declare function isBrowserFocused(webBrowser: Browser): boolean;
-
-/**
- * This function checks if a browser is currently loading a website.
- * @param webBrowser unknown
- * @returns Returns true if the browser is loading a website, false otherwise and nil if invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/IsBrowserLoading
-**/
-declare function isBrowserLoading(webBrowser: Browser): boolean;
 
 /**
  * This function returns whether the ingame chatbox is being used (accepting chatbox input) or not.
@@ -6394,18 +6240,6 @@ declare function killPed(thePed: Ped, theKiller?: Ped, weapon?: number, bodyPart
 declare function killTimer(theTimer: unknown): boolean;
 
 /**
- * You should use requestBrowserDomains first to request permission to load the url on the client.
- * }}
- * @param webBrowser unknown
- * @param url unknown
- * @param [postData=] unknown
- * @param [urlEncoded=true] unknown
- * @returns Returns true if the URL was successfully loaded.
- * @see https://wiki.mtasa.com/wiki/LoadBrowserURL
-**/
-declare function loadBrowserURL(webBrowser: Browser, url: string, postData?: string, urlEncoded?: boolean): boolean;
-
-/**
  * Calculates the MD5 hash of the specified string and returns its hexadecimal representation.
  * Warning: It is strongly recommended to use passwordHash to hash passwords, md5 is easily decodeable.
  * - Note: It returns an uppercase string, so make sure you string.upper() anything else you are checking against that has been MD5'd elsewhere.
@@ -6433,22 +6267,6 @@ declare function md5(str: string): string;
  * @see https://wiki.mtasa.com/wiki/MoveObject
 **/
 declare function moveObject(theObject: Object, time: number, targetx: number, targety: number, targetz: number, moverx: number, movery: number, moverz: number, strEasingType: string, fEasingPeriod: number, fEasingAmplitude: number, fEasingOvershoot: number): boolean;
-
-/**
- * Returns the browser to the previous page.
- * @param webBrowser The browser that you want return to the previous page.
- * @returns Returns true if the browser has returned to the previous page, false otherwise.
- * @see https://wiki.mtasa.com/wiki/NavigateBrowserBack
-**/
-declare function navigateBrowserBack(webBrowser: Browser): boolean;
-
-/**
- * This function takes the browser to the next page.
- * @param webBrowser The browser that you want to take to the next page.
- * @returns Returns true if the browser has gone to the next page, false otherwise.
- * @see https://wiki.mtasa.com/wiki/NavigateBrowserForward
-**/
-declare function navigateBrowserForward(webBrowser: Browser): boolean;
 
 /**
  * This outputs the specified text string to the chatbox.
@@ -6584,14 +6402,6 @@ declare function pregReplace(subject: string, pattern: string, replacement: stri
 declare function processLineOfSight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings?: boolean, checkVehicles?: boolean, checkPlayers?: boolean, checkObjects?: boolean, checkDummies?: boolean, seeThroughStuff?: boolean, ignoreSomeObjectsForCamera?: boolean, shootThroughStuff?: boolean, ignoredElement?: Element, includeWorldModelInformation?: boolean, bIncludeCarTyres: boolean): [boolean, , number, number, number, , , , Element, , number, number, number, , , , number, Material, number, , number, , number, , number, number, number, , , , number, number, number, , , , number, ];
 
 /**
- * This function reloads the current browser's page.
- * @param webBrowser The browser that you want to reload.
- * @returns Returns true if the browser has reloaded, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ReloadBrowserPage
-**/
-declare function reloadBrowserPage(webBrowser: Browser): boolean;
-
-/**
  * This function removes a command handler, that is one that has been added using addCommandHandler.
  * This function can only remove command handlers that were added by the resource that it is called in.
  * @param commandName the name of the command you wish to remove.
@@ -6665,17 +6475,6 @@ declare function removeVehicleUpgrade(theVehicle: Vehicle, upgrade: number): boo
  * @see https://wiki.mtasa.com/wiki/RemoveWorldModel
 **/
 declare function removeWorldModel(modelID: number, radius: number, x: number, y: number, z: number, interior?: number): boolean;
-
-/**
- * You must use this function prior to calling loadBrowserURL because every domain, with exceptions in the whitelist here and there, is blocked by default.
- * }}
- * @param pages A table containing all domains
- * @param [parseAsURL=false] true if the passed addresses should be converted from URLs, false otherwise.
- * @param callback A callback function that is called as soon as the result is available
- * @returns Returns true, if the string was successfully read, false otherwise.
- * @see https://wiki.mtasa.com/wiki/RequestBrowserDomains
-**/
-declare function requestBrowserDomains(pages: object, parseAsURL?: boolean, callback: Function): boolean;
 
 /**
  * This function is used to reset the background sounds to the default setting.
@@ -6852,17 +6651,6 @@ declare function resetWindVelocity(resetWindVelocity: boolean): [];
 declare function resetWorldSounds(): boolean;
 
 /**
- * Allows resizing of CEF browsers at runtime.
- * Warning: Do not use this function with onClientRender as it re-creates the underlying texture internally (which is an expensive operation).,true
- * @param webBrowser The browser you want to resize.
- * @param width The new width of the browser.
- * @param height The new height of the browser.
- * @returns Returns true if the browser is resized successfully, false if there's something wrong.
- * @see https://wiki.mtasa.com/wiki/ResizeBrowser
-**/
-declare function resizeBrowser(webBrowser: Browser, width: number, height: number): boolean;
-
-/**
  * This function respawns a specific object.
  * @param theObject an object element
  * @returns 
@@ -6986,44 +6774,6 @@ declare function setBlipSize(theBlip: Blip, iconSize: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetBlipVisibleDistance
 **/
 declare function setBlipVisibleDistance(theBlip: Blip, theDistance: number): boolean;
-
-/**
- * browser]].
- * @param webBrowser The web browser which will execute the Javascript code
- * @param url The URL endpoint to handle
- * @param handler The function to call if the webBrowser attempts to open the ajax endpoint.If this parameter is nil or omitted, the ajax handler for the url will be deleted.
- * @returns Returns true if the ajax handler could be created/removed.
- * @see https://wiki.mtasa.com/wiki/SetBrowserAjaxHandler
-**/
-declare function setBrowserAjaxHandler(webBrowser: Browser, url: string, handler: Function): boolean;
-
-/**
- * This function sets a given property of a specified browser.
- * @param theBrowser unknown
- * @param key unknown
- * @param value unknown
- * @returns Returns true if the property was successfully set, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetBrowserProperty
-**/
-declare function setBrowserProperty(theBrowser: Browser, key: string, value: string): boolean;
-
-/**
- * This function sets the rendering state of a browser.
- * @param webBrowser The browser
- * @param paused true to pause rendering, false to continue
- * @returns Returns true if the state was successfully changed
- * @see https://wiki.mtasa.com/wiki/SetBrowserRenderingPaused
-**/
-declare function setBrowserRenderingPaused(webBrowser: Browser, paused: boolean): boolean;
-
-/**
- * browser]]'s volume, or the overall volume for browsers.
- * @param webBrowser A browser element
- * @param volume A floating point number representing the desired volume level.Range is from 0.0 to 1.0
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetBrowserVolume
-**/
-declare function setBrowserVolume(webBrowser: Browser, volume: number): boolean;
 
 /**
  * This function sets if the camera will "collide" with any objects or vehicles in its way.
@@ -8918,16 +8668,6 @@ declare function tocolor(red: number, green: number, blue: number, alpha?: numbe
  * @see https://wiki.mtasa.com/wiki/ToggleAllControls
 **/
 declare function toggleAllControls(enabled: boolean, gtaControls?: boolean, mtaControls?: boolean): boolean;
-
-/**
- * This function toggles the visibility of the developer tools pane.
- * - Note: You should do a 'setDevelopmentMode(true, true)' before using this function.
- * @param webBrowser The browser
- * @param visible true to show the tools, false to hide
- * @returns Returns true if the visibility was successfully toggled, false if an error occurred
- * @see https://wiki.mtasa.com/wiki/ToggleBrowserDevTools
-**/
-declare function toggleBrowserDevTools(webBrowser: Browser, visible: boolean): boolean;
 
 /**
  * Enables or disables the use of a GTA control for a specific player.
