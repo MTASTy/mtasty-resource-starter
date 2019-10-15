@@ -23,6 +23,20 @@
  **/
 declare function attachElements(theElement: Element, theAttachToElement: Element, xPosOffset?: number, yPosOffset?: number, zPosOffset?: number, xRotOffset?: number, yRotOffset?: number, zRotOffset?: number): boolean;
 
+// TODO: Fix types
+/**
+ * This function is used to retrieve a list of all elements of specified type within a range of 3D coordinates.
+ * - Note: This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed. This function checks if elements are in a box, not in a circle. Z argument isn't in use currently, but make your scripts like it is for future compatibility reasons. This function doesn't work with elements which is created by createElement.
+ * @param x the x coordinate at which to retrieve elements.
+ * @param y the y coordinate at which to retrieve elements.
+ * @param z the z coordinate at which to retrieve elements.
+ * @param range the range at the coordinates in which to retrieve elements.
+ * @param [elemType=] The type of element you want a list of.
+ * @returns Returns a object containing all the elements of the specified type within range. Returns an empty object if there are no elements within range. Returns false if the arguments are invalid.
+ * @see https://wiki.mtasa.com/wiki/GetElementsWithinRange
+ **/
+declare function getElementsWithinRange(x: number, y: number, z: number, range: number, elemType?: string): object | false;
+
 /**
  * This function clears any settings added by setElementVisibleTo and restores an element to its default visibility.
  * This does not work with all entities - vehicles, players and objects are exempt.

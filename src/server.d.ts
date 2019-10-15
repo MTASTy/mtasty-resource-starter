@@ -1,21 +1,3 @@
-
-
-/**
- * This function is used to retrieve a list of all elements of specified type within a range of 3D coordinates.
- * - Note: * This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed.
- * * This function checks if elements are in a box, not in a circle.
- * * Z argument isn't in use currently, but make your scripts like it is for future compatibility reasons.
- * * This function doesn't work with elements which is created by createElement.
- * @param x the x coordinate at which to retrieve elements
- * @param y the y coordinate at which to retrieve elements
- * @param z the z coordinate at which to retrieve elements
- * @param range the range at the coordinates in which to retrieve elements
- * @param [elemType=] The type of element you want a list of. This can be any element type, such as
- * @returns Returns a table containing all the elements of the specified type within range. Returns an empty table if there are no elements within range. Returns false if the arguments are invalid.
- * @see https://wiki.mtasa.com/wiki/GetElementsWithinRange
-**/
-declare function getElementsWithinRange(x: number, y: number, z: number, range: number, elemType?: string): object;
-
 /**
  * Gets the currently queued latent events.
  * The last one in the table is always the latest event queued.
