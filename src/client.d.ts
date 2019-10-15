@@ -1712,22 +1712,6 @@ declare function executeCommandHandler(commandName: string, args: string): boole
 declare function extinguishFire(x: number, y: number, z: number, radius?: number, ]: unknown): boolean;
 
 /**
- * This function will fade a player's camera to a color or back to normal over a specified time period.
- * This will also affect the sound volume for the player (50% faded = 50% volume, full fade = no sound).
- * For clientside scripts you can perform 2 fade ins or fade outs in a row, but for serverside scripts you must use one then the other.
- * - Note: The speed of the effect depends directly on the current gamespeed.
- * @param fadeIn Should the camera be faded in our out?Pass true to fade the camera in, false to fade it out to a color.
- * @param [timeToFade=1] The number of seconds it should take to fade.
- * @param , unknown
- * @param [red=0] The amount of red in the color that the camera fades out to (0 - 255). Not required for fading in.
- * @param [green=0] The amount of green in the color that the camera fades out to (0 - 255). Not required for fading in.
- * @param [blue=0] The amount of blue in the color that the camera fades out to (0 - 255). Not required for fading in.
- * @returns Returns true if the camera was faded successfully, false if invalid arguments were passed to the function.
- * @see https://wiki.mtasa.com/wiki/FadeCamera
-**/
-declare function fadeCamera(fadeIn: boolean, timeToFade?: number, ,: unknown, red?: number, green?: number, blue?: number): boolean;
-
-/**
  * This function allows you to post and receive data from HTTP servers.
  * The calls are asynchronous so you do not get an immediate result from the call, instead a callback function you specify is called when the download completes.
  * In the case when the call fails, a string containing "ERROR" followed by an integer containing the error reason will be passed to the callback function.
@@ -2231,40 +2215,6 @@ declare function getBodyPartName(bodyPartID: number): string;
 declare function getBoundKeys(command/control: string): object;
 
 /**
- * New items: 3.0135,1.3.5,This function returns an element that corresponds to the game camera
- * - Note: Using attachElements with the camera and the main player can interfere with movement
- * - Note: Using setElementPosition/Rotation/Matrix on the camera element will automatically clear any target set with setCameraTarget
-
- * @returns Returns an element that corresponds to the game camera
- * @see https://wiki.mtasa.com/wiki/GetCamera
-**/
-declare function getCamera(): Element;
-
-/**
- * here]].
-
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetCameraClip
-**/
-declare function getCameraClip(): [boolean, boolean];
-
-/**
- * This function returns what goggle effect is currently affecting the camera.
- * @param getCameraGoggleEffect unknown
- * @returns * String indicating the current camera goggle effect. Their meanings can be seen below.
- * @see https://wiki.mtasa.com/wiki/GetCameraGoggleEffect
-**/
-declare function getCameraGoggleEffect(getCameraGoggleEffect: string): [];
-
-/**
- * Returns the interior of the local camera (independent of the interior of the local player).
- * @param Camera unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetCameraInterior
-**/
-declare function getCameraInterior(Camera: number): [number];
-
-/**
  * This function gets the position of the camera and the position of the point it is facing.
  * Important note: Server-side this functions returns false or the latest value set via setCameraMatrix (called from server or client).
 
@@ -2274,30 +2224,12 @@ declare function getCameraInterior(Camera: number): [number];
 declare function getCameraMatrix(): [number, number, number, number, number, number, number, number];
 
 /**
- * This function gets the camera shake level set by setCameraShakeLevel.
- * @param getCameraShakeLevel unknown
- * @returns Returns an integer representing the camera shake level, from 0 (no shaking effect) to 255 (maximum shaking effect). By default, the camera has no shaking effect.
- * @see https://wiki.mtasa.com/wiki/GetCameraShakeLevel
-**/
-declare function getCameraShakeLevel(getCameraShakeLevel: number): [];
-
-/**
  * This function returns an element that corresponds to the current target of the specified player's camera (i.e. what it is following).
  * @param thePlayer The player whose camera you wish to receive the target of.<section class="client" name="Client" show="true">
  * @returns * Returns an element of the target if the function was successful, or false if bad arguments were specified
  * @see https://wiki.mtasa.com/wiki/GetCameraTarget
 **/
 declare function getCameraTarget(thePlayer: Player): Element;
-
-/**
- * This function allows you to get the camera's view mode.
- * This indicates at what distance the camera will follow the player.
- * - Note: It currently only returns vehicle view modes.
- * @param getCameraViewMode unknown
- * @returns Returns an int indicating the current camera view mode. Their meanings can be seen below.
- * @see https://wiki.mtasa.com/wiki/GetCameraViewMode
-**/
-declare function getCameraViewMode(getCameraViewMode: number): [];
 
 /**
  * Returns information about how the chatbox looks.
@@ -6776,27 +6708,6 @@ declare function setBlipSize(theBlip: Blip, iconSize: number): boolean;
 declare function setBlipVisibleDistance(theBlip: Blip, theDistance: number): boolean;
 
 /**
- * This function sets if the camera will "collide" with any objects or vehicles in its way.
- * This means that if object clip is enabled an object is in the way of where the camera actually wants to be, the camera will try to be in front of it. This function can disable that.
- * - Note: This function doesn't fix the issue of camera clip not working on objects out of world bounds.
- * @param [objects=true] Sets if you want the camera to clip on objects.
- * @param [vehicles=true] Sets if you want the camera to clip on vehicles.
- * @returns Always returns true.
- * @see https://wiki.mtasa.com/wiki/SetCameraClip
-**/
-declare function setCameraClip(objects?: boolean, vehicles?: boolean): boolean;
-
-/**
- * This function allows you to set the camera's current goggle effect.
- * This means you can activate nightvision or infrared effects by script
- * @param goggleEffect the goggle effect you wish to set
- * @param [noiseEnabled=true] whether or not there should be a fuzzy noise effect
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetCameraGoggleEffect
-**/
-declare function setCameraGoggleEffect(goggleEffect: string, noiseEnabled?: boolean): boolean;
-
-/**
  * Sets the interior of the local camera.
  * Only the interior of the camera is changed, the local player stays in the interior he was in.
  * @param interior the interior to place the camera in.
@@ -6821,28 +6732,6 @@ declare function setCameraInterior(interior: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetCameraMatrix
 **/
 declare function setCameraMatrix(positionX: number, positionY: number, positionZ: number, lookAtX: number, lookAtY: number, lookAtZ: number, roll?: number, fov?: number): boolean;
-
-/**
- * This function sets the camera shake level (as seen on the Are you going to San Fierro? singleplayer mission).
- * @param shakeLevel unknown
- * @returns Returns true if the camera shake level was changed, false if the required argument is incorrect or missing.
- * @see https://wiki.mtasa.com/wiki/SetCameraShakeLevel
-**/
-declare function setCameraShakeLevel(shakeLevel: number): boolean;
-
-// TODO: SetCameraTarget
-/**
- * @see https://wiki.mtasa.com/wiki/SetCameraTarget
-**/
-
-/**
- * This function allows you to set the camera's view mode if you are inside a vehicle.
- * This indicates at what distance the camera will follow the player.
- * @param viewMode The view mode you wish to use
- * @returns Returns true if the view was set correctly, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetCameraViewMode
-**/
-declare function setCameraViewMode(viewMode: number): boolean;
 
 /**
  * This function sets the players clipboard text (what appears when you paste with CTRL + V) Note that there is no getClipBoard function for safety reasons.

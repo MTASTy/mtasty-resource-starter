@@ -35,7 +35,7 @@ declare function getCameraMatrix(thePlayer: Player): [number, number, number, nu
 /**
  * This function returns an element that corresponds to the current target of the specified player's camera (i.e. what it is following).
  * @param thePlayer The player whose camera you wish to receive the target of.
- * @returns * Returns an element of the target if the function was successful, or false if bad arguments were specified
+ * @returns Returns an element of the target if the function was successful, or false if bad arguments were specified.
  * @see https://wiki.mtasa.com/wiki/GetCameraTarget
  **/
 declare function getCameraTarget(thePlayer: Player): Element | false;
@@ -69,7 +69,7 @@ declare function setCameraInterior(thePlayer: Player, interior: number): boolean
 declare function setCameraMatrix(thePlayer: Player, positionX: number, positionY: number, positionZ: number, lookAtX?: number, lookAtY?: number, lookAtZ?: number, roll?: number, fov?: number): boolean;
 
 /**
- * This function allows you to set a player's camera to follow other elements instead. Currently supported element type is: Player
+ * This function allows you to set a player's camera to follow other elements instead. Currently supported element type is: Player.
  * @param thePlayer The player whose camera you wish to modify.
  * @param target The player who you want the camera to follow. If none is specified, the camera will target the player.
  * @returns Returns true if the function was successful, false otherwise.
