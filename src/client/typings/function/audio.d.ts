@@ -67,7 +67,7 @@ declare function getSoundFFTData(sound: Sound | Sound3D, iSamples: number, iBand
  * @returns Returns a number value indicating the playback length of the sound element in seconds.
  * @see https://wiki.mtasa.com/wiki/GetSoundLength
  **/
-declare function getSoundLength(sound: Sound): number | false;
+declare function getSoundLength(sound: Sound | Sound3D): number | false;
 
 /**
  * This function gets the left/right level from a sound element.
