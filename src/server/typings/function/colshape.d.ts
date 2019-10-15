@@ -12,6 +12,36 @@
 declare function createColCircle(fX: number, fY: number, radius: number): ColShape | false;
 
 /**
+ * This function creates a collision sphere.
+ * This is a shape that has a position and a radius.
+ * See Wikipedia for a definition of a sphere.
+ * - Tip: To visualize a colshape when writing scripts, use the client console command "/showcol".
+ * @param fX The collision sphere's center point's X axis position.
+ * @param fY The collision sphere's center point's Y axis position.
+ * @param fZ The collision sphere's center point's Z axis position.
+ * @param fRadius The collision sphere's radius.
+ * @returns Returns a colshape element if successful, false if invalid arguments were passed to the function.
+ * @see https://wiki.mtasa.com/wiki/CreateColSphere
+ **/
+declare function createColSphere(fX: number, fY: number, fZ: number, fRadius: number): ColShape | false;
+
+/**
+ * This function creates a collision tube.
+ * This is a shape that has a position and a 2D (X/Y) radius and a height.
+ * See Cylinder for a definition of a tube.
+ * A tube is similar to a colcircle, except that it has a limited height, this means you can limit the distance above the position defined by (fX, fY, fZ) that the collision is detected.
+ * - Tip: To visualize a colshape when writing scripts, use the client console command "/showcol".
+ * @param fX The position of the base of the tube's center on the X axis.
+ * @param fY The position of the base of the tube's center on the Y axis.
+ * @param fZ The position of the base of the tube's center on the Z axis.
+ * @param fRadius The collision tube's radius.
+ * @param fHeight The collision tube's height.
+ * @returns Returns a colshape element if successful, false if invalid arguments were passed to the function.
+ * @see https://wiki.mtasa.com/wiki/CreateColTube
+ **/
+declare function createColTube(fX: number, fY: number, fZ: number, fRadius: number, fHeight: number): ColShape | false;
+
+/**
  * This function creates a collision cuboid.
  * This is a shape that has a position, width, depth and height.
  * The XYZ of the col starts at the southwest bottom corner of the shape.
@@ -64,3 +94,22 @@ declare function createColPolygon(fCenterX: number, fCenterY: number, fX1: numbe
  * @see https://wiki.mtasa.com/wiki/CreateColRectangle
  **/
 declare function createColRectangle(fX: number, fY: number, fWidth: number, fHeight: number): ColShape | false;
+
+/**
+ * This function is used to retrieve the type of an colshape.
+ * @param shape The colshape you wish to get the type of.
+ * @returns Returns false if invalid arguments were passed, or a number of the type of the colshape.
+ * @see https://wiki.mtasa.com/wiki/GetColShapeType
+ **/
+declare function getColShapeType(shape: ColShape): number | false;
+
+/**
+ * This function checks if a 3D position is inside a colshape or not.
+ * @param theShape The colshape you're checking the position against.
+ * @param posX The X coordinate of the position you're checking.
+ * @param posY The Y coordinate of the position you're checking.
+ * @param posZ The Z coordinate of the position you're checking.
+ * @returns Returns true if the position is inside the colshape, false if it isn't or if any parameters are invalid.
+ * @see https://wiki.mtasa.com/wiki/IsInsideColShape
+ **/
+declare function isInsideColShape(theShape: ColShape, posX: number, posY: number, posZ: number): boolean;
