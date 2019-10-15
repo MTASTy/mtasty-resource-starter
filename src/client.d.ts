@@ -3619,22 +3619,6 @@ declare function getRadarAreaColor(theRadararea: RadarArea): [number, number, nu
 declare function getRadarAreaSize(theRadararea: RadarArea): [number, number];
 
 /**
- * This function retrieves the ID of the currently active radio channel.
- * @param getRadioChannel unknown
- * @returns Returns the ID of the radio channel.
- * @see https://wiki.mtasa.com/wiki/GetRadioChannel
-**/
-declare function getRadioChannel(getRadioChannel: number): [];
-
-/**
- * This function gets the given radio channel name.
- * @param id The ID of the radio station you want to get the name of. It is a number from 0 to 12.
- * @returns Returns a string containing the station name if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetRadioChannelName
-**/
-declare function getRadioChannelName(id: number): string;
-
-/**
  * This function is used to get the current rain level.
  * - Note: The server can only return the rain level if it has actually been set by script, otherwise it will return false.
  * @param getRainLevel unknown
@@ -3731,16 +3715,6 @@ declare function getResourceState(theResource: Resource): string;
 declare function getRootElement(getRootElement: Element): [];
 
 /**
- * This function checks if a big sound container is available to use or not.
- * Warning: Many players use versions of GTA:SA (especially pirated versions) that have audio files full of zeros so that they can compress better in their AUDIO\SFX\ folder. (They lack any data) 
- * In case of these invalid audio files, this function returns false.,true
- * @param audioContainer The container name.Possible values are: "feet", "genrl", "pain_a", "script", "spc_ea", "spc_fa", "spc_ga", spc_na", "spc_pa"
- * @returns Returns true if the sound container is available, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetSFXStatus
-**/
-declare function getSFXStatus(audioContainer: string): boolean;
-
-/**
  * This function gets the screen position of a point in the world.
  * This is useful for attaching 2D gui elements to parts of the world (e.g. players) or detecting if a point is on the screen (though it does not check if it is actually visible, you should use processLineOfSight for that).
  * @param x A float value indicating the x position in the world.
@@ -3797,143 +3771,6 @@ declare function getSearchLightStartRadius(theSearchLight: Searchlight): number;
  * @see https://wiki.mtasa.com/wiki/GetSlotFromWeapon
 **/
 declare function getSlotFromWeapon(weaponid: number): number;
-
-/**
- * This function gets the beats per minute of a specific sound element.
- * @param sound a sound element that is created using playSound or playSound3D
- * @returns Returns the beats per minute of the given sound.
- * @see https://wiki.mtasa.com/wiki/GetSoundBPM
-**/
-declare function getSoundBPM(sound: Element): number;
-
-/**
- * This function gets the buffer playback length of the specified sound.
- * Works only with streams.
- * @param theSound the sound element which buffer length you want to get.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetSoundBufferLength
-**/
-declare function getSoundBufferLength(theSound: Element): number;
-
-/**
- * Returns the states of all effects of a sound.
- * @param sound a sound element.
- * @returns Returns a table with the effect names as the keys, and their states as the values if successful. Otherwise, it returns false. Sound effect names:
- * @see https://wiki.mtasa.com/wiki/GetSoundEffects
-**/
-declare function getSoundEffects(sound: Element): object;
-
-/**
- * This function gets the fast fourier transform data for an audio stream which is a table of floats representing the current audio frame.
- * This allows things like visualisations.
- * A fast fourier transform generates a table of all the frequencies of the current audio frame which starts at the bass end of the spectrum to mids to highs in that order
- * Should you have any problems there is an example resource located on the resource svn here:
- * Visualiser
- * just type "startmusic mystreamurl" in your console and it will play on the cinema billboard near A51 If the element is a player, this function will use the players voice.
- * @param sound a sound element that is created using playSound or playSound3D. Streams are also supported
- * @param iSamples allowed samples are 256, 512, 1024, 2048, 4096, 8192 and 16384.
- * @param [iBands=0] post processing option allows you to split the samples into the desired amount of bands or bars so if you only need 5 bars this saves a lot of cpu power compared to trying to do it in Lua.
- * @returns Returns a table of iSamples/2 (or iBands if iBands is used) floats representing the current audio frame. Returns false if the sound is not playing yet or hasn't buffered in the case of streams.
- * @see https://wiki.mtasa.com/wiki/GetSoundFFTData
-**/
-declare function getSoundFFTData(sound: Element, iSamples: number, iBands?: number): object;
-
-/**
- * This function is used to return the playback length of the specified sound element.
- * If the element is a player, this function will use the players voice.
- * @param theSound the sound element which length you want to return.
- * @returns Returns an float value indicating the playback length of the sound element in seconds.
- * @see https://wiki.mtasa.com/wiki/GetSoundLength
-**/
-declare function getSoundLength(theSound: Element): number;
-
-/**
- * This function gets the left/right level from a sound element.
- * If the element is a player, this function will use the players voice.
- * @param theSound the sound element which level data you want to return.
- * @returns Returns a two integers in range from 0 to 32767.
- * @see https://wiki.mtasa.com/wiki/GetSoundLevelData
-**/
-declare function getSoundLevelData(theSound: Element): [number, number];
-
-/**
- * Gets a custom sound max distance at which the sound stops.
- * @param sound a sound element.
- * @returns Returns an integer of the max distance, false if invalid arguments where passed.
- * @see https://wiki.mtasa.com/wiki/GetSoundMaxDistance
-**/
-declare function getSoundMaxDistance(sound: Element): number;
-
-/**
- * Used to get the meta tags attached to a sound.
- * These provide information about the sound, for instance the title or the artist.
- * @param sound a sound element.
- * @param [format=] a filter string to get a specific meta tag.
- * @returns Returns a table, but only a string if format is given, with all data available (keys are listed below) for the sound if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetSoundMetaTags
-**/
-declare function getSoundMetaTags(sound: Element, format?: string): object;
-
-/**
- * Gets a custom sound Minimum distance at which the sound stops getting louder.
- * @param sound a sound element.
- * @returns Returns an integer of the minimum distance, false if invalid arguements where passed.
- * @see https://wiki.mtasa.com/wiki/GetSoundMinDistance
-**/
-declare function getSoundMinDistance(sound: Element): number;
-
-/**
- * This function is used to get the pan level of the specified sound element.
- * @param theSound the sound element which pan you want to get.
- * @returns Returns float value with range from -1.0 (left) to 1.0 (right), false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetSoundPan
-**/
-declare function getSoundPan(theSound: Element): number;
-
-/**
- * This function is used to return the current seek position of the specified sound element.
- * If the element is a player, this function will use the players voice.
- * @param theSound The sound element which seek position you want to return.
- * @returns Returns a float value indicating the seek position of the sound element in seconds.
- * @see https://wiki.mtasa.com/wiki/GetSoundPosition
-**/
-declare function getSoundPosition(theSound: Element): number;
-
-/**
- * This function gets the properties of a specific sound.
- * @param sound a sound element that is created using playSound or playSound3D
- * @returns This function returns 3 floats and a boolean value: The first float is the sound's sample rate, the second one the sound's tempo, and the third one the pitch of the sound. The boolean representing whether the sound is reversed or not.
- * @see https://wiki.mtasa.com/wiki/GetSoundProperties
-**/
-declare function getSoundProperties(sound: Element): [number, number, number, boolean];
-
-/**
- * This function is used to return the playback speed of the specified sound element.
- * @param theSound the sound element which playback speed you want to return.
- * @returns Returns an float value indicating the playback speed of the sound element. Default sound playback speed is 1.0.
- * @see https://wiki.mtasa.com/wiki/GetSoundSpeed
-**/
-declare function getSoundSpeed(theSound: Element): number;
-
-/**
- * This function is used to return the volume level of the specified sound element.
- * If the element is a player, this function will use the players voice.
- * @param theSound the sound element which volume you want to return.
- * @returns Returns a float representing the volume level of the sound element, false if invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/GetSoundVolume
-**/
-declare function getSoundVolume(theSound: Element): number;
-
-/**
- * This function gets the wave form data for an audio stream which is a table of floats representing the current audio frame as a wave.
- * This allows things like visualisations.
- * If the element is a player, this function will use the players voice.
- * @param sound a sound element that is created using playSound or playSound3D. Streams are also supported
- * @param iSamples allowed samples are 256, 512, 1024, 2048, 4096, 8192 and 16384.
- * @returns Returns a table of iSamples floats representing the current audio frame waveform. Returns false if the sound is not playing yet or hasn't buffered in the case of streams.
- * @see https://wiki.mtasa.com/wiki/GetSoundWaveData
-**/
-declare function getSoundWaveData(sound: Element, iSamples: number): object;
 
 /**
  * This function is used to get the color of the sun.
@@ -6363,24 +6200,6 @@ declare function isPlayerNametagShowing(thePlayer: Player): boolean;
 declare function isRadarAreaFlashing(theRadararea: RadarArea): boolean;
 
 /**
- * This function checks whether panning is enabled in a sound element or not.
- * - Tip: Although this function works in no-3D sounds (those created by playSound), it only makes sense to use it with 3D sounds (created by playSound3D). Please refer to setSoundPanningEnabled for a explanation of what this property does.
- * @param theSound A valid sound element.
- * @returns Returns true if the sound is valid and it has panning enabled, false if it does not or is not valid.
- * @see https://wiki.mtasa.com/wiki/IsSoundPanningEnabled
-**/
-declare function isSoundPanningEnabled(theSound: Element): boolean;
-
-/**
- * This function is used to return the current pause state of the specified sound element.
- * If the element is a player, this function will use the players voice.
- * @param theSound the sound element which pause state you want to return.
- * @returns Returns true if the sound element is paused, false if unpaused or invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/IsSoundPaused
-**/
-declare function isSoundPaused(theSound: Element): boolean;
-
-/**
  * This function checks if a variable is a timer.
  * - Note: This function is not reliable as timer ids are eventually recycled. Always make sure you nil variables containing a timer after it has expired.
  * @param theTimer The variable that we want to check.
@@ -6696,75 +6515,6 @@ declare function passwordHash(password: string, algorithm: string, options: obje
  * @see https://wiki.mtasa.com/wiki/PasswordVerify
 **/
 declare function passwordVerify(password: string, hash: string, options: object, callback: Function): boolean;
-
-/**
- * This function plays a sound from GTA's big sound containers.
- * - Note: There is a tool available which allows you to find bank and sound IDs easily: [ sfxBrowser:Download].
- * Warning: Many players use versions of GTA:SA (especially pirated versions) that have audio files full of zeros so that they can compresses better in their AUDIO\SFX\ folder. (They lack any data) 
- * In case of these invalid audio files, this function returns false.
- * 
- * It also returns false when trying to play a track deleted in the recent GTA: SA Steam patches (and if the client is using a Steam GTA: SA copy).,true
- * @param containerName The name of the audio container. Possible values are
- * @param bankId The audio bank id
- * @param soundId The sound id within the audio bank
- * @param [looped=false] A boolean representing whether the sound will be looped
- * @returns Returns a sound element if the sound was successfully created, false otherwise.Returns a sound element if the sound was successfully created, false otherwise.
- * @see https://wiki.mtasa.com/wiki/PlaySFX
-**/
-declare function playSFX(containerName: string, bankId: number, soundId: number, looped?: boolean): Element;
-
-/**
- * This function plays a sound in the GTA world from GTA's big sound containers.
- * - Note: There is a tool available which allows you to find bank and sound IDs easily: [ sfxBrowser:Download].
- * Warning: Many players use versions of GTA:SA (especially pirated versions) that have audio files full of zeros so that they can compresses better in their AUDIO\SFX\ folder. (They lack any data) 
- * In case of these invalid audio files, this function returns false.
- * 
- * It also returns false when trying to play a track deleted in the recent GTA: SA Steam patches (and if the client is using a Steam GTA: SA copy).,true
- * @param containerName The name of the audio container. Possible values are
- * @param bankId The audio bank id
- * @param soundId The sound id within the audio bank
- * @param x A floating point number representing the X coordinate on the map.
- * @param y A floating point number representing the Y coordinate on the map.
- * @param z A floating point number representing the Z coordinate on the map.
- * @param [looped=false] A boolean representing whether the sound will be looped
- * @returns Returns a sound element if the sound was successfully created, false otherwise.Returns a sound element if the sound was successfully created, false otherwise.
- * @see https://wiki.mtasa.com/wiki/PlaySFX3D
-**/
-declare function playSFX3D(containerName: string, bankId: number, soundId: number, x: number, y: number, z: number, looped?: boolean): Element;
-
-/**
- * Creates a sound element and plays it immediately after creation for the local player.
- * - Note: *The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT, S3M and PLS (e.g. Webstream).
- * *For performance reasons, when using playSound for effects that will be played lots (i.e. weapon fire), it is recommend that you convert your audio file to a one channel (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the effect can be played e.g. once every 50ms.
- * @param soundPath the filepath or URL of the sound file you want to play.(Note: Playing sound files from other resources requires the target resource to be in the running state)
- * @param [looped=false] a boolean representing whether the sound will be looped.To loop the sound, use true.Loop is not available for streaming sounds, only for sound files.
- * @param [throttled=true] a boolean representing whether the sound will be throttled (i.e. given reduced download bandwidth).To throttle the sound, use true.Sounds will be throttled per default and only for URLs.
- * @returns Returns a sound element if the sound was successfully created, false otherwise.
- * @see https://wiki.mtasa.com/wiki/PlaySound
-**/
-declare function playSound(soundPath: string, looped?: boolean, throttled?: boolean): Element;
-
-/**
- * Creates a sound element in the GTA world and plays it immediately after creation for the local player.
- * setElementPosition can be used to move the sound element around after it has been created.
- * Remember to use setElementDimension after creating the sound to play it outside of dimension 0.
- * - Note: *The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT and S3M.
- * *For performance reasons, when using playSound3D for effects that will be played lots (i.e. weapon fire), it is recommend that you convert your audio file to a one channel (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the effect can be played e.g. once every 50ms.
- * @param soundURL the URL. (In this version the file does not has to be predefined in the meta.xml )
- * @param x a floating point number representing the X coordinate on the map.
- * @param y a floating point number representing the Y coordinate on the map.
- * @param z a floating point number representing the Z coordinate on the map.
- * @param [looped=false] a boolean representing whether the sound will be looped.To loop the sound, use true.
- * @param [throttled=true] a boolean representing whether the sound will be throttled (i.e. given reduced download bandwidth).To throttle the sound, use true.
- * @returns Returns a sound element if the sound was successfully created, false otherwise.
- * @see https://wiki.mtasa.com/wiki/PlaySound3D
-**/
-declare function playSound3D(soundURL: string, x: number, y: number, z: number, looped?: boolean, throttled?: boolean): Element;
-
-// TODO: PlaySoundFrontEnd
-/**
- * @see https://wiki.mtasa.com/wiki/PlaySoundFrontEnd
-**/
 
 /**
  * New items: 3.0135,1.3.5,This function stops at the first occurrence of the pattern in the input string and returns the result of the search.
@@ -8287,15 +8037,6 @@ declare function setRadarAreaFlashing(theRadarArea: RadarArea, flash: boolean): 
 declare function setRadarAreaSize(theRadararea: RadarArea, x: number, y: number): boolean;
 
 /**
- * This function sets the heard radio channel, even while not in a vehicle.
- * - Note: This function sometimes doesn't work when setting the radio channel to another different from the current one due to unknown reasons. If you experience this issue, simply add setRadioChannel(0) at the beginning of the script, outside any function.
- * @param ID The ID of the radio station you want to play.
- * @returns Returns true if channel was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetRadioChannel
-**/
-declare function setRadioChannel(ID: number): boolean;
-
-/**
  * This function sets the rain level to any weather available in GTA.
  * Use resetRainLevel to undo the changes.
  * @param level A floating point number representing the rain level. 1 represents the maximum rain level usually available in GTA, but higher values are accepted.
@@ -8356,106 +8097,6 @@ declare function setSearchLightStartRadius(theSearchlight: Searchlight, startRad
  * @see https://wiki.mtasa.com/wiki/SetSkyGradient
 **/
 declare function setSkyGradient(topRed?: number, topGreen?: number, topBlue?: number, bottomRed?: number, bottomGreen?: number, bottomBlue?: number): boolean;
-
-/**
- * Used to enable or disable specific sound effects.
- * Use a player element to control a players voice with this function.
- * @param sound a sound element.
- * @param effectName the effect you want to enable or disable
- * @param bEnable true if you want to enable the effect, false if you want to disable it.
- * @returns Returns true if the effect was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundEffectEnabled
-**/
-declare function setSoundEffectEnabled(sound: Element, effectName: string, bEnable: boolean): boolean;
-
-/**
- * Sets a custom sound max distance at which the sound stops.
- * @param sound a sound element.
- * @param distance the default value for this is 20
- * @returns Returns a true if the max distance was set, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundMaxDistance
-**/
-declare function setSoundMaxDistance(sound: Element, distance: number): boolean;
-
-/**
- * Sets a custom sound Minimum distance at which the sound stops getting louder.
- * @param sound a sound element.
- * @param distance an integer representing the distance the sound stops getting louder. the default value for this is 5
- * @returns Returns a true if the minimum distance was set, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundMinDistance
-**/
-declare function setSoundMinDistance(sound: Element, distance: number): boolean;
-
-/**
- * This function is used to change the pan level of the specified sound element.
- * @param theSound The sound element which pan you want to modify.
- * @param pan A floating point number representing the desired pan level. Range is from -1.0 (left) to 1.0 (right)
- * @returns Returns true if the sound element pan was successfully changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundPan
-**/
-declare function setSoundPan(theSound: Element, pan: number): boolean;
-
-/**
- * This function toggles the panning of a sound (hearing it closer to the left or right side of the speakers due to the camera position).
- * By default a sound has its panning enabled.
- * @param sound unknown
- * @param enable unknown
- * @returns Returns true if the sound is valid and good arguments were passed, false if not. If the sound is not 3D, this function will return true as well, but isSoundPanningEnabled will always return true after this (so it has no effect).
- * @see https://wiki.mtasa.com/wiki/SetSoundPanningEnabled
-**/
-declare function setSoundPanningEnabled(sound: Element, enable: boolean): boolean;
-
-/**
- * This function is used to either pause or unpause the playback of the specified sound element.
- * Use a player element to control a players voice with this function.
- * @param theSound the sound element which you want to pause/unpause.
- * @param paused a boolean value representing whether the sound should be paused or not. To pause the sound, use true.
- * @returns Returns true if the sound element was successfully paused, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundPaused
-**/
-declare function setSoundPaused(theSound: Element, paused: boolean): boolean;
-
-/**
- * This function is used to change the seek position of the specified sound element.
- * Use a player element to control a players voice with this function.
- * @param theSound the sound element which seek position you want to modify.
- * @param pos a float value representing the new seek position of the sound element in seconds.
- * @returns Returns true if the sound element's seek position was successfully changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundPosition
-**/
-declare function setSoundPosition(theSound: Element, pos: number): boolean;
-
-/**
- * This function edits the properties of a specific sound.
- * - Note: Streams are not supported.
- * @param sound a sound element that is created using playSound or playSound3D
- * @param fSampleRate a float that defines the new sound's sample rate
- * @param fTempo a float that defines the new sound tempo
- * @param fPitch a float that defines the new sound pitch
- * @param [bReverse=false] a boolean representing whether the sound will be reversed or not.
- * @returns Returns true if the properties sucessfully set, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundProperties
-**/
-declare function setSoundProperties(sound: Element, fSampleRate: number, fTempo: number, fPitch: number, bReverse?: boolean): boolean;
-
-/**
- * This function can be used to change the playback speed of the specified sound element.
- * @param theSound the sound element which volume you want to modify.
- * @param speed a floating point number representing the desired sound playback speed.
- * @returns Returns true if the sound element playback speed was successfully changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundSpeed
-**/
-declare function setSoundSpeed(theSound: Element, speed: number): boolean;
-
-/**
- * This function is used to change the volume level of the specified sound element.
- * Use a player element to control a players voice with this function.
- * @param theSound/thePlayer unknown
- * @param volume A floating point number representing the desired volume level. Range is from 0.0 to 1.0. This can go above 1.0 for amplification.
- * @returns Returns true if the sound element volume was successfully changed, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetSoundVolume
-**/
-declare function setSoundVolume(theSound/thePlayer: Element, volume: number): boolean;
 
 /**
  * This function is used to set the color of the sun.
@@ -9220,15 +8861,6 @@ declare function split(stringToSplit: string, int: string, ): unknown): object;
  * @see https://wiki.mtasa.com/wiki/StopObject
 **/
 declare function stopObject(theobject: Object): boolean;
-
-/**
- * Stops the sound playback for specified sound element.
- * The sound element is also destroyed.
- * @param theSound the sound element you want to stop playing.
- * @returns Returns true if the sound was successfully stopped, false otherwise.
- * @see https://wiki.mtasa.com/wiki/StopSound
-**/
-declare function stopSound(theSound: Element): boolean;
 
 /**
  * This function subtracts money from a player's current money amount.
