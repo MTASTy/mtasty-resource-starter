@@ -21,7 +21,7 @@ declare function clearChatBox(clearFor?: Player): boolean;
  * @returns Returns true if the message was displayed successfully. Returns false if invalid arguments are specified.
  * @see https://wiki.mtasa.com/wiki/OutputChatBox
  **/
-declare function outputChatBox(text: string, visibleTo?: Player, r?: number, g?: number, b?: number, colorCoded?: boolean): boolean;
+declare function outputChatBox(text: string | number, visibleTo?: Player, r?: number, g?: number, b?: number, colorCoded?: boolean): boolean;
 
 /**
  * This outputs the specified text string to the console window (accessed with F8 or ~ key).
@@ -31,7 +31,7 @@ declare function outputChatBox(text: string, visibleTo?: Player, r?: number, g?:
  * @returns Returns true if the message was displayed successfully. Returns false if invalid arguments are specified.
  * @see https://wiki.mtasa.com/wiki/OutputConsole
  **/
-declare function outputConsole(text: string, visibleTo?: Player): boolean;
+declare function outputConsole(text: string | number, visibleTo?: Player): boolean;
 
 /**
  * This function outputs scripting debug messages, which can be read by enabling the debug textbox.
@@ -44,7 +44,7 @@ declare function outputConsole(text: string, visibleTo?: Player): boolean;
  * @returns Returns true if the debug message was successfully output, false if invalid arguments are specified.
  * @see https://wiki.mtasa.com/wiki/OutputDebugString
  **/
-declare function outputDebugString(text: string, level?: number, red?: number, green?: number, blue?: number): boolean;
+declare function outputDebugString(text: string | number, level?: number, red?: number, green?: number, blue?: number): boolean;
 
 /**
  * This outputs a line of text to the server's log.
@@ -53,7 +53,7 @@ declare function outputDebugString(text: string, level?: number, red?: number, g
  * @returns Returns true if successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/OutputServerLog
  **/
-declare function outputServerLog(text: string): boolean;
+declare function outputServerLog(text: string | number): boolean;
 
 /**
  * This function is used to show or hide the player's chat.
