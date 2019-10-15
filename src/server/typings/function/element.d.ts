@@ -31,7 +31,7 @@ declare function attachElements(theElement: Element, theAttachToElement: Element
  * @param y the y coordinate at which to retrieve elements.
  * @param z the z coordinate at which to retrieve elements.
  * @param range the range at the coordinates in which to retrieve elements.
- * @param [elemType=] The type of element you want a list of.
+ * @param [elemType=""] The type of element you want a list of.
  * @returns Returns a object containing all the elements of the specified type within range. Returns an empty object if there are no elements within range. Returns false if the arguments are invalid.
  * @see https://wiki.mtasa.com/wiki/GetElementsWithinRange
  **/

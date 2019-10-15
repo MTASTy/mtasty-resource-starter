@@ -147,7 +147,7 @@ declare function triggerEvent(eventName: string, baseElement: Element, ...args: 
  * You should take this into account when using them.
  * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
  * - Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
- * - Note: It is marginally more efficient to pass one large event than two smaller ones
+ * - Note: It is marginally more efficient to pass one large event than two smaller ones.
  * @param sendTo The event will be sent to all players that are children of the specified element. By default this is the root element, and hence the event is sent to all players. If you specify a single player it will just be sent to that player. This argument can also be a table of player elements.
  * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
  * @param sourceElement The element that is the source of the event.

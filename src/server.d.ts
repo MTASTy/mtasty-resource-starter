@@ -1,36 +1,4 @@
 /**
- * Gets the currently queued latent events.
- * The last one in the table is always the latest event queued.
- * Each returned handle can be used with getLatentEventStatus or cancelLatentEvent
- * Needs example
- * @param thePlayer The player who is receiving the events.
- * @returns Returns a table of handles or false if invalid arguments were passed.
- * @see https://wiki.mtasa.com/wiki/GetLatentEventHandles
-**/
-declare function getLatentEventHandles(thePlayer: Player): object;
-
-/**
- * This function triggers an event previously registered on a client.
- * This is the primary means of passing information between the server and the client.
- * Clients have a similar triggerServerEvent function that can do the reverse.
- * You can treat this function as if it was an asynchronous function call, using triggerServerEvent to pass back any returned information if necessary.
- * Almost any data types can be passed as expected, including elements and complex nested tables.
- * Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
- * Events are sent reliably, so clients will receive them, but there may be (but shouldn't be) a significant delay before they are received.
- * You should take this into account when using them.
- * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
- * Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
- * - Note: It is marginally more efficient to pass one large event than two smaller ones
- * @param [sendTo=getRootElement()] The event will be sent to all players that are children of the specified element. By default this is the root element, and hence the event is sent to all players. If you specify a single player it will just be sent to that player. This argument can also be a table of player elements.
- * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
- * @param sourceElement The element that is the source of the event.
- * @param arguments unknown
- * @returns Returns true if the event trigger has been sent, false if invalid arguments were specified.
- * @see https://wiki.mtasa.com/wiki/TriggerClientEvent
- **/
-declare function triggerClientEvent(sendTo?: unknown, name: string, sourceElement: Element, arguments: ...any[]): boolean;
-
-/**
  * Generates a string representing the character codepoints as arguments.
  * @param codepoints An variable argument sequence of code points representing the desired unicode characters.
  * @param ] unknown
