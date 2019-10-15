@@ -1,13 +1,6 @@
 
 
 /**
- * This function gets the maximum height at which aircraft can fly without their engines turning off.
- * @returns Returns a float containing the max aircraft height.
- * @see https://wiki.mtasa.com/wiki/GetAircraftMaxHeight
-**/
-declare function getAircraftMaxHeight(): number;
-
-/**
  * This function is used to retrieve a list of all elements of specified type within a range of 3D coordinates.
  * - Note: * This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed.
  * * This function checks if elements are in a box, not in a circle.
@@ -35,30 +28,25 @@ declare function getElementsWithinRange(x: number, y: number, z: number, range: 
 declare function getLatentEventHandles(thePlayer: Player): object;
 
 /**
- * This function changes the maximum flying height of aircraft.
- * @param Height unknown
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetAircraftMaxHeight
-**/
-declare function setAircraftMaxHeight(Height: number): boolean;
-
-/**
- * This function changes the maximum flying height of jetpack.
- * @param Height The max height starting at approximately -20.
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetJetpackMaxHeight
-**/
-declare function setJetpackMaxHeight(Height: number): boolean;
-
-/**
- * This function sets the dirt level on a vehicle.
- * Disabled: This function doesn't work actually. See the bugtracker for updates and more information.
- * @param theVehicle The vehicle that you want to set the dirt level from
- * @param dirtLevel The dirt level
- * @returns Returns true if the dirt level was set on the vehicle, false if the dirt level was not set or if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/SetVehicleDirtLevel
-**/
-declare function setVehicleDirtLevel(theVehicle: Vehicle, dirtLevel: number): boolean;
+ * This function triggers an event previously registered on a client.
+ * This is the primary means of passing information between the server and the client.
+ * Clients have a similar triggerServerEvent function that can do the reverse.
+ * You can treat this function as if it was an asynchronous function call, using triggerServerEvent to pass back any returned information if necessary.
+ * Almost any data types can be passed as expected, including elements and complex nested tables.
+ * Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
+ * Events are sent reliably, so clients will receive them, but there may be (but shouldn't be) a significant delay before they are received.
+ * You should take this into account when using them.
+ * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
+ * Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
+ * - Note: It is marginally more efficient to pass one large event than two smaller ones
+ * @param [sendTo=getRootElement()] The event will be sent to all players that are children of the specified element. By default this is the root element, and hence the event is sent to all players. If you specify a single player it will just be sent to that player. This argument can also be a table of player elements.
+ * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
+ * @param sourceElement The element that is the source of the event.
+ * @param arguments unknown
+ * @returns Returns true if the event trigger has been sent, false if invalid arguments were specified.
+ * @see https://wiki.mtasa.com/wiki/TriggerClientEvent
+ **/
+declare function triggerClientEvent(sendTo?: unknown, name: string, sourceElement: Element, arguments: ...any[]): boolean;
 
 /**
  * Generates a string representing the character codepoints as arguments.
@@ -276,24 +264,3 @@ declare function utf8.width(input: unknown, ambi_is_double?: boolean, default_wi
  * @see https://wiki.mtasa.com/wiki/Utf8.widthindex
 **/
 declare function utf8.widthindex(input: string, location: number, ambi_is_double?: boolean, default_width?: number): [number, number, number, ];
-
-/**
- * This function triggers an event previously registered on a client.
- * This is the primary means of passing information between the server and the client.
- * Clients have a similar triggerServerEvent function that can do the reverse.
- * You can treat this function as if it was an asynchronous function call, using triggerServerEvent to pass back any returned information if necessary.
- * Almost any data types can be passed as expected, including elements and complex nested tables.
- * Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
- * Events are sent reliably, so clients will receive them, but there may be (but shouldn't be) a significant delay before they are received.
- * You should take this into account when using them.
- * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
- * Important note: Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
- * - Note: It is marginally more efficient to pass one large event than two smaller ones
- * @param [sendTo=getRootElement()] The event will be sent to all players that are children of the specified element. By default this is the root element, and hence the event is sent to all players. If you specify a single player it will just be sent to that player. This argument can also be a table of player elements.
- * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
- * @param sourceElement The element that is the source of the event.
- * @param arguments unknown
- * @returns Returns true if the event trigger has been sent, false if invalid arguments were specified.
- * @see https://wiki.mtasa.com/wiki/TriggerClientEvent
-**/
-declare function triggerClientEvent(sendTo?: unknown, name: string, sourceElement: Element, arguments: ...any[]): boolean;

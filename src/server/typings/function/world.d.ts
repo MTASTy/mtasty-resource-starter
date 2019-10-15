@@ -131,6 +131,22 @@ declare function getSunColor(): [number, number, number, number, number, number]
 declare function getSunSize(): number | false;
 
 /**
+ * This function changes the maximum flying height of jetpack.
+ * @param height The max height starting at approximately -20.
+ * @returns Returns true if successful, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/SetJetpackMaxHeight
+ **/
+declare function setJetpackMaxHeight(height: number): boolean;
+
+/**
+ * This function changes the maximum flying height of aircraft.
+ * @param height The height you want aircraft to be able to go.
+ * @returns Returns true if successful, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/SetAircraftMaxHeight
+ **/
+declare function setAircraftMaxHeight(height: number): boolean;
+
+/**
  * This function is used to get the current time in the game.
  * If you want to get the real server time, use getRealTime.
  * @returns Returns two numbers that represent hours and minutes.
@@ -157,8 +173,15 @@ declare function getTrafficLightState(): number;
 declare function getWeather(): [number, number | undefined];
 
 /**
+ * This function gets the maximum height at which aircraft can fly without their engines turning off.
+ * @returns Returns a number containing the max aircraft height.
+ * @see https://wiki.mtasa.com/wiki/GetAircraftMaxHeight
+ **/
+declare function getAircraftMaxHeight(): number | false;
+
+/**
  * This function gets the wind velocity in San Andreas.
- * @returns
+ * @returns Returns three numbers containing wind velocity.
  * @see https://wiki.mtasa.com/wiki/GetWindVelocity
  * @tupleReturn
  **/
