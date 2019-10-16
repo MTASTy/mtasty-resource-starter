@@ -49,9 +49,9 @@ declare function fxAddBulletImpact(posX: number, posY: number, posZ: number, dir
 
 /**
  * This function creates a bullet splash particle effect, normally created when shooting into water.
- * @param posX A float representing the x position of the splash.
- * @param posY A float representing the y position of the splash.
- * @param posZ A float representing the z position of the splash.
+ * @param posX A number representing the x position of the splash.
+ * @param posY A number representing the y position of the splash.
+ * @param posZ A number representing the z position of the splash.
  * @returns Returns a true if the operation was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/FxAddBulletSplash
  **/
@@ -75,9 +75,9 @@ declare function fxAddDebris(posX: number, posY: number, posZ: number, colorR?: 
 
 /**
  * This function creates a foot splash particle effect, normally created when walking into water.
- * @param posX A float representing the x position of the splash.
- * @param posY A float representing the y position of the splash.
- * @param posZ A float representing the z position of the splash.
+ * @param posX A number representing the x position of the splash.
+ * @param posY A number representing the y position of the splash.
+ * @param posZ A number representing the z position of the splash.
  * @returns Returns a true if the operation was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/FxAddFootSplash
  **/
@@ -85,14 +85,14 @@ declare function fxAddFootSplash(posX: number, posY: number, posZ: number): bool
 
 /**
  * This function creates a glass particle effect.
- * @param posX A float representing the x position of the glass.
- * @param posY A float representing the y position of the glass.
- * @param posZ A float representing the z position of the glass.
+ * @param posX A number representing the x position of the glass.
+ * @param posY A number representing the y position of the glass.
+ * @param posZ A number representing the z position of the glass.
  * @param [colorR=255] the color and alpha (transparency) of the glass effect.
  * @param [colorG=0] the color and alpha (transparency) of the glass effect.
  * @param [colorB=0] the color and alpha (transparency) of the glass effect.
  * @param [colorA=255] the color and alpha (transparency) of the glass effect.
- * @param [scale=1] A float representing the size of the particle effect, where 1 is the standard size.
+ * @param [scale=1] A number representing the size of the particle effect, where 1 is the standard size.
  * @param [count=1] The density of the particle effect.
  * @returns Returns a true if the operation was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/FxAddGlass
@@ -175,9 +175,9 @@ declare function fxAddTyreBurst(posX: number, posY: number, posZ: number, dirX: 
 
 /**
  * This function creates a water hydrant particle effect.
- * @param posX A float representing the x position of the hydrant.
- * @param posY A float representing the y position of the hydrant.
- * @param posZ A float representing the z position of the hydrant.
+ * @param posX A number representing the x position of the hydrant.
+ * @param posY A number representing the y position of the hydrant.
+ * @param posZ A number representing the z position of the hydrant.
  * @returns Returns a true if the operation was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/FxAddWaterHydrant
  **/
@@ -185,9 +185,9 @@ declare function fxAddWaterHydrant(posX: number, posY: number, posZ: number): bo
 
 /**
  * This function creates a water splash particle effect.
- * @param posX A float representing the x position of the splash.
- * @param posY A float representing the y position of the splash.
- * @param posZ A float representing the z position of the splash.
+ * @param posX A number representing the x position of the splash.
+ * @param posY A number representing the y position of the splash.
+ * @param posZ A number representing the z position of the splash.
  * @returns Returns a true if the operation was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/FxAddWaterSplash
  **/
@@ -219,7 +219,7 @@ declare function getEffectDensity(theEffect: Effect): number | false;
 /**
  * This function gets the speed of a specified effect.
  * @param theEffect The effect to get the speed of.
- * @returns Returns float containing the effect's speed, false if invalid arguments were specified.
+ * @returns Returns number containing the effect's speed, false if invalid arguments were specified.
  * @see https://wiki.mtasa.com/wiki/GetEffectSpeed
  **/
 declare function getEffectSpeed(theEffect: Effect): number | false;

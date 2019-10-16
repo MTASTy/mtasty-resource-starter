@@ -590,7 +590,7 @@ declare function setElementDoubleSided(theElement: Element, enable: boolean): bo
 
 /**
  * This function freezes an element (stops it in its position and disables movement) or unfreezes it.
- * Warning: This function cancels any animation set by setPedAnimation if you freeze the ped.
+ * - Warning: This function cancels any animation set by setPedAnimation if you freeze the ped.
  * @param theElement The element whose freeze status we want to change.
  * @param freezeStatus A boolean denoting whether we want to freeze (true) or unfreeze (false) it.
  * @returns Returns true if the element was frozen, false if it wasn't or if invalid arguments are passed.
@@ -650,7 +650,7 @@ declare function setElementModel(theElement: Element, model: number): boolean;
 
 /**
  * This function is used for setting an element as the parent of another element.
- * Important note: The client-side version of this function can only be used on client-created elements. It cannot be used to modify the parent of server side elements.
+ * - Important note: The client-side version of this function can only be used on client-created elements. It cannot be used to modify the parent of server side elements.
  * - Note: This function does not change when an element will be destroyed - Elements are always destroyed when the resource that created them is stopped.
  * - Note: When an element is destroyed, its parent becomes the new parent of its children.
  * - Note: setElementParent only works if new parent is the root element, map root, or ancestor of map root
@@ -712,8 +712,6 @@ declare function setElementSyncer(theElement: Element, thePlayer: Player): boole
 /**
  * This function sets the velocity (movement speeds) along each axis, for an element.
  * This is not compatible with all elements.
- * Only the following elements are compatible:
- * Deprecated feature: 3.0140,1.4,Objects and projectiles velocity can only be set clientside.
  * @param theElement The element you wish to set the velocity of.
  * @param speedX A number point value determining the speed along the X axis.
  * @param speedY A number point value determining the speed along the Y axis.
@@ -721,7 +719,7 @@ declare function setElementSyncer(theElement: Element, thePlayer: Player): boole
  * @returns Returns true if the speed was set successfully, false if a bad element was specified or other bad arguments.
  * @see https://wiki.mtasa.com/wiki/SetElementVelocity
  **/
-declare function setElementVelocity(theElement: Element, speedX: number, speedY: number, speedZ: number): boolean;
+declare function setElementVelocity(theElement: Ped | Vehicle | MapObject | Projectile, speedX: number, speedY: number, speedZ: number): boolean;
 
 /**
  * This function can change an element's visibility.

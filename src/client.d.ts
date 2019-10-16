@@ -1792,15 +1792,6 @@ function getElementParent(theElement: Element): Element | false;
 function getElementPosition(theElement: Element): [number, number, number];
 
 /**
- * This function gets the radius of an element.
- * Normally, sphere or circle-shaped elements tend to return a more accurate and expected radius than others with another shapes.
- * @param theElement The element to get the radius of. It can be any entity type, such as
- * @returns Returns a float containing the radius if the element is valid, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetElementRadius
-**/
-function getElementRadius(theElement: Element): number | false;
-
-/**
  * Retrieve the rotation of elements.
  * @param theElement The element whose rotation will be retrieved
  * @param [rotOrder=default] A string representing the rotation order desired when returning the euler angles. If omitted, default value is "default". Allowed values are
@@ -4825,16 +4816,6 @@ declare function isElement(theValue: unknown): boolean;
 declare function isElementAttached(theElement: Element): boolean;
 
 /**
- * This function can be used to check whether specified element is collidable with another element.
- * - Note: You can only use this function with the element types listed below.
- * @param theElement The element which colliding you want to get
- * @param withElement The other element which colliding with the first entity you want to get
- * @returns Returns true if the elements collide with eachother, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsElementCollidableWith
-**/
-declare function isElementCollidableWith(theElement: Element, withElement: Element): boolean;
-
-/**
  * This function checks whether an element is double-sided as set by setElementDoubleSided or not.
  * @param theElement The element in which you'd like to check the double-sidedness of.
  * @returns Returns true if the theElement is double-sided, false otherwise.
@@ -4859,68 +4840,12 @@ declare function isElementFrozen(theElement: Element): boolean;
 declare function isElementInWater(theElement: Element): boolean;
 
 /**
- * This function checks whether a clientside element is local to the client (doesn't exist in the server) or not.
- * @param theElement The element that we want to check.
- * @returns Returns true if the passed element is local, false if not or if invalid parameters are passed.
- * @see https://wiki.mtasa.com/wiki/IsElementLocal
-**/
-declare function isElementLocal(theElement: Element): boolean;
-
-/**
  * This function reveals if an element is low LOD.
  * @param theElement The element whose low LOD status we want to get.
  * @returns Returns true if the element is low LOD, false otherwise. <section name="Clientside" class="client" show="true"> This example will show how many low lods objects is around you. <section name="Serverside" class="server" show="false"> This example will show how many low lods objects is around all the world.
  * @see https://wiki.mtasa.com/wiki/IsElementLowLOD
 **/
 declare function isElementLowLOD(theElement: Element): boolean;
-
-/**
- * This function will check if an element is on the screen.
- * Elements behind objects but still in the camera view count as being on screen.
- * This function is particularly useful for detecting if dynamic objects are in "destroyed" state.
- * Destroyed objects will return false.
- * @param theElement The element of which you wish to check wether it's being rendered on screen.
- * @returns Returns true if element is on screen, false if not.
- * @see https://wiki.mtasa.com/wiki/IsElementOnScreen
-**/
-declare function isElementOnScreen(theElement: Element): boolean;
-
-/**
- * This function checks whether an element is streamable as set by setElementStreamable or not.
- * Needs example
- * @param theElement The element to check the streamability of.
- * @returns Returns true if the passed element is streamable like normal, false if this element must always be streamed in.
- * @see https://wiki.mtasa.com/wiki/IsElementStreamable
-**/
-declare function isElementStreamable(theElement: Element): boolean;
-
-/**
- * This function checks whether an element is currently streamed in (not virtualized) and are actual GTA objects in the world.
- * You can force an element to be streamed in using setElementStreamable.
- * Deprecated feature: 3,1.0,DP2 can return true even if this element is not fully streamed in. This can happen during the period when the vehicle/object model is loading while the element is not actually fully created yet.
- * @param theElement The element to check whether is streamed in or not.
- * @returns Returns true if the passed element is currently streamed in, false if it is virtualized.
- * @see https://wiki.mtasa.com/wiki/IsElementStreamedIn
-**/
-declare function isElementStreamedIn(theElement: Element): boolean;
-
-/**
- * This function checks whether an element is synced by the local player or not.
- * Accepted elements are peds and vehicles.
- * @param theElement The element to check.
- * @returns Returns true if the passed element is synced by the local player, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsElementSyncer
-**/
-declare function isElementSyncer(theElement: Element): boolean;
-
-/**
- * This function checks whether MTA has frozen an element because it is above map objects which are still loading or not.
- * - Note: When vehicles are frozen waiting for collisions to load they do not overwrite the frozen status set by setElementFrozen.
- * @param theElement unknown
- * @returns Returns true if the specified element is frozen waiting for collisions of custom map objects to load. Returns false if it's not or if the specified element is invalid.
- * @see https://wiki.mtasa.com/wiki/IsElementWaitingForGroundToLoad
-**/
-declare function isElementWaitingForGroundToLoad(theElement: Element): boolean;
 
 /**
  * This function is used to determine if an element is within a collision shape.
@@ -5983,18 +5908,6 @@ declare function setElementAngularVelocity(theElement: Element, rx: number, ry: 
 declare function setElementAttachedOffsets(theElement: Element, xPosOffset: number, yPosOffset: number, zPosOffset: number, xRotOffset: number, yRotOffset: number, zRotOffset: number): boolean;
 
 /**
- * This function can be used to set an element to collide with another element.
- * An element with collisions disabled does not interact physically with the other element.
- * - Note: You can only use this function with the element types listed below.
- * @param theElement The element which colliding you want to change
- * @param withElement The other element you wish the first entity to collide with
- * @param enabled A boolean to indicate whether elements should be able to collide with eachother (true) or not (false)
- * @returns Returns true if the collisions were set succesfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetElementCollidableWith
-**/
-declare function setElementCollidableWith(theElement: Element, withElement: Element, enabled: boolean): boolean;
-
-/**
  * This function can disable or enable an element's collisions.
  * An element without collisions does not interact with the physical environment and remains static.
  * - Note: Vehicles that are collisionless and have a driver will cause bugs.
@@ -6099,16 +6012,6 @@ declare function setElementID(theElement: Element, name: string): boolean;
 declare function setElementInterior(theElement: Element, interior: number, x: number, y: number, z: number): boolean;
 
 /**
- * This function sets matrix to element.
- * Needs example
- * @param theElement The element which you set matrix
- * @param theMatrix The matrix.
- * @returns Returns true if the matrix was set succesfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetElementMatrix
-**/
-declare function setElementMatrix(theElement: Element, theMatrix: object): boolean;
-
-/**
  * Sets the model of a given element.
  * This allows you to change the model of a player (or ped), a vehicle or an object.
  * @param theElement the element you want to change.
@@ -6158,19 +6061,6 @@ declare function setElementPosition(theElement: Element, x: number, y: number, z
  * @see https://wiki.mtasa.com/wiki/SetElementRotation
 **/
 declare function setElementRotation(theElement: Element, rotX: number, rotY: number, rotZ: number, rotOrder?: string, conformPedRotation?: boolean): boolean;
-
-/**
- * This function can be used to disable streaming for an element.
- * This will make sure the element is not virtualized (streamed out from GTA) when the player moves far away from it. This function only works in elements with a physical representation in the world (entities), such as players, peds, vehicles and objects.
- * - Tip: Always use this function with caution. Not doing so can cause the following problems:
- * * There is a limit of elements that can be streamed in safely for every GTA entity type. If you bypass said limit by using this function, the client can experience problems of disappearing objects and unstability when trying to stream in new elements of that type.
- * * In general, if you disable too many elements (of the same type or not) to stream out, GTA will always try to render them, so it can cause a noticeable FPS drop.
- * @param theElement The element you wish to set the streaming of
- * @param streamable true if this element should stream in/out like normal, false if it should always be streamed in.
- * @returns Returns whether the element could be set to be streamable.
- * @see https://wiki.mtasa.com/wiki/SetElementStreamable
-**/
-declare function setElementStreamable(theElement: Element, streamable: boolean): boolean;
 
 /**
  * This function sets the velocity (movement speeds) along each axis, for an element.
