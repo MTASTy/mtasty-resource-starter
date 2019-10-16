@@ -719,7 +719,7 @@ declare function setElementSyncer(theElement: Element, thePlayer: Player): boole
  * @returns Returns true if the speed was set successfully, false if a bad element was specified or other bad arguments.
  * @see https://wiki.mtasa.com/wiki/SetElementVelocity
  **/
-declare function setElementVelocity(theElement: Ped | Vehicle | MapObject | Projectile, speedX: number, speedY: number, speedZ: number): boolean;
+declare function setElementVelocity(theElement: Ped | Vehicle | MapObject, speedX: number, speedY: number, speedZ: number): boolean;
 
 /**
  * This function can change an element's visibility.
