@@ -39,32 +39,6 @@ declare function addDebugHook(hookType: string, callbackFunction: Function, name
 declare function addEvent(eventName: string, allowRemoteTrigger?: boolean): boolean;
 
 /**
- * This function will add an event handler.
- * An event handler is a function that will be called when the event it's attached to is triggered.
- * See event system for more information on how the event system works.
- * Event handlers are functions that are called when a particular event happens.
- * Each event specifies a specific set of variables that are passed to the event handler and can be read by your function.
- * The following global variables are available for use in handler functions:
- * It is important to remember that events pass up and down the element tree.
- * An event triggered on the root element is triggered on every element in the tree.
- * An event triggered on any other element is triggered on its ancestors (its parent element and its parent's parent etc) and its children, grandchildren and great-grandchildren.
- * You can use the getPropagated argument to specify if you wish your handler to receive events that have propagated up or down the tree.
- * The order in which event handlers are triggered is undefined, you should not rely on one event handler being executed before another.
- * Important note: Do NOT use the same name for your handler function as the event name, as this can lead to confusion if multiple handler functions are used.
- * New feature: 3,1.0,*eventName: the name of the event which triggered the handler function.
- * - Note: See Script security for tips on preventing cheaters when using events and element data
- * - Note: See Event Source Element for a descriptive visualization of the event system handling an event trigger.
- * @param eventName The name of the event you want to attach the handler function to.
- * @param attachedTo The element you wish to attach the handler to. The handler will only be called when the event it is attached to is triggered for this element, or one of its children. Often, this can be the root element (meaning the handler will be called when the event is triggered for any element).
- * @param handlerFunction The handler function you wish to call when the event is triggered. This function will be passed all of the event's parameters as arguments, but it isn't required that it takes all of them.
- * @param [getPropagated=true] A boolean representing whether the handler will be triggered if the event was propagated down or up the element tree (starting from the source), and not triggered directly on attachedTo (that is, handlers attached with this argument set to false will only be triggered if source == this).
- * @param [priority=normal] unknown
- * @returns Returns true if the event handler was attached successfully. Returns false if the specified event could not be found or any parameters were invalid.
- * @see https://wiki.mtasa.com/wiki/AddEventHandler
-**/
-declare function addEventHandler(eventName: string, attachedTo: Element, handlerFunction: Function, getPropagated?: boolean, priority?: string): boolean;
-
-/**
  * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
  * @param theVehicle The element representing the vehicle you wish to add the upgrade to.
  * @param upgrade The id of the upgrade you wish to add. (1000 to 1193), see Vehicle Upgrades
@@ -7314,38 +7288,6 @@ declare function toggleObjectRespawn(theObject: Object, respawn: boolean): boole
  * @see https://wiki.mtasa.com/wiki/TriggerEvent
 **/
 declare function triggerEvent(eventName: string, baseElement: Element, argument1: unknown, ]: unknown): boolean;
-
-/**
- * This function is the same as triggerServerEvent except the transmission rate of the data contained in the arguments can be limited and other network traffic is not blocked while the data is being transferred.
- * @param event The name of the event to trigger server-side. You should register this event with addEvent and add at least one event handler using addEventHandler.
- * @param [bandwidth=5000] The bytes per second rate to send the data contained in the arguments.
- * @param [persist=false] A bool indicating whether the transmission should be allowed to continue even after the resource that triggered it has since stopped.
- * @param theElement The element that is the source of the event. This could be another player, or if this isn't relevant, use the root element.
- * @param arguments unknown
- * @returns Returns true if the event trigger has been sent, false if invalid arguments were specified.
- * @see https://wiki.mtasa.com/wiki/TriggerLatentServerEvent
-**/
-declare function triggerLatentServerEvent(event: string, bandwidth?: number, persist?: boolean, theElement: Element, arguments: ...any[]): boolean;
-
-/**
- * This function triggers an event previously registered on the server.
- * This is the primary means of passing information between the client and the server.
- * Servers have a similar triggerClientEvent function that can do the reverse.
- * You can treat this function as if it was an asynchronous function call, using triggerClientEvent to pass back any returned information if necessary.
- * Almost any data types can be passed as expected, including elements and complex nested tables.
- * Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
- * Elements of the Vector or Matrix classes cannot be passed!
- * Events are sent reliably, so the server will receive them, but there may be (but shouldn't be) a significant delay before they are received.
- * You should take this into account when using them.
- * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. It is marginally more efficient to pass one large event than two smaller ones.
- * Warning: You should use the global variable client serverside instead of passing the localPlayer by parameter or source. Otherwise event faking (passing another player instead of the localPlayer) would be possible. More information at addEventHandler
- * @param event The name of the event to trigger server-side. You should register this event with addEvent and add at least one event handler using addEventHandler.
- * @param theElement The element that is the source of the event.
- * @param arguments unknown
- * @returns Returns true if the event trigger has been sent, false if invalid arguments were specified or a client side element was a parameter.
- * @see https://wiki.mtasa.com/wiki/TriggerServerEvent
-**/
-declare function triggerServerEvent(event: string, theElement: Element, arguments: ...any[]): boolean;
 
 /**
  * Removes an existing key bind from the specified player.

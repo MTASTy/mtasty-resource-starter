@@ -30,7 +30,6 @@ declare function addEvent(eventName: string, allowRemoteTrigger?: boolean): bool
  * See event system for more information on how the event system works.
  * Event handlers are functions that are called when a particular event happens.
  * Each event specifies a specific set of variables that are passed to the event handler and can be read by your function.
- * The following global variables are available for use in handler functions:
  * It is important to remember that events pass up and down the element tree.
  * An event triggered on the root element is triggered on every element in the tree.
  * An event triggered on any other element is triggered on its ancestors (its parent element and its parent's parent etc) and its children, grandchildren and great-grandchildren.
@@ -80,8 +79,8 @@ declare function cancelLatentEvent(thePlayer: Player, handle: number): boolean;
 declare function getCancelReason(): string;
 
 /**
- * This function gets the attached functions from the event and attached element from current lua script.
- * @param eventName The name of the event. For example ( "onPlayerWasted" ).
+ * This function gets the attached functions from the event and attached element from current script.
+ * @param eventName The name of the event. For example ("onPlayerWasted").
  * @param attachedTo The element attached to.
  * @returns Returns table with attached functions, empty table otherwise.
  * @see https://wiki.mtasa.com/wiki/GetEventHandlers
@@ -131,7 +130,7 @@ declare function removeEventHandler(eventName: string, attachedTo: Element, func
  * @param eventName The name of the event you wish to trigger
  * @param baseElement The element you wish to trigger the event on. See event system for information on how this works.
  * @param args The first argument that the event handler expects should be added after the baseElement variable. This function can have more than one of these arguments specified, once for each argument the event handler is expecting.
- * @returns Returns nil if the arguments are invalid or the event could not be found. Returns true if the event was triggered successfully, and was not cancelled using cancelEvent. Returns false if the event was triggered successfully, and was cancelled using cancelEvent.
+ * @returns Returns undefined if the arguments are invalid or the event could not be found. Returns true if the event was triggered successfully, and was not cancelled using cancelEvent. Returns false if the event was triggered successfully, and was cancelled using cancelEvent.
  * @see https://wiki.mtasa.com/wiki/TriggerEvent
  **/
 declare function triggerEvent(eventName: string, baseElement: Element, ...args: any[]): undefined | boolean;
