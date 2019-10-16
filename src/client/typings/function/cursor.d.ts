@@ -13,7 +13,7 @@ declare function getCursorAlpha(): number | false;
  * @see https://wiki.mtasa.com/wiki/GetCursorPosition
  * @tupleReturn
  **/
-declare function getCursorPosition(): [number | false, number, number, number, number];
+declare function getCursorPosition(): [number, number, number, number, number] | [false];
 
 /**
  * This function is used to determine whether or not a player's cursor is showing.

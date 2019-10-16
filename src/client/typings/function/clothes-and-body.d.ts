@@ -56,7 +56,7 @@ declare function addPedClothes(thePed: Ped, clothesTexture: string, clothesModel
  * @see https://wiki.mtasa.com/wiki/GetPedClothes
  * @tupleReturn
  **/
-declare function getPedClothes(thePed: Ped, clothesType: number): [string | false, string];
+declare function getPedClothes(thePed: Ped, clothesType: number): [string, string] | [false];
 
 /**
  * This function is used to remove the current clothes of a certain type on a ped.

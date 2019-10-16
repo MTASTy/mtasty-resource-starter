@@ -14,7 +14,7 @@ declare function dxConvertPixels(pixels: string, newFormat: "plain" | "png" | "j
  * @param filepath the name of the file containing the font.
  * @param [size=9] size of the font.
  * @param [bold=false] flag to indicate if the font should be bold.
- * @param [quality=proof] the font quality.
+ * @param [quality="proof"] the font quality.
  * @returns Returns a DX font element if successful, false if invalid arguments were passed to the function, or there is insufficient resources available. You should always check to see if this function has returned false.
  * @see https://wiki.mtasa.com/wiki/DxCreateFont
  **/
@@ -169,7 +169,7 @@ declare function dxDrawImage(posX: number, posY: number, width: number, height: 
  * @param [rotation=0] the rotation, in degrees for the image.
  * @param [rotationCenterOffsetX=0] the absolute X offset from the image center for which to rotate the image from.
  * @param [rotationCenterOffsetY=0] the absolute Y offset from the image center for which to rotate the image from.
- * @param [color=white] the color of the image, a value produced by tocolor or hexadecimal number in format.
+ * @param [color=tocolor(255,255,255,255)] the color of the image, a value produced by tocolor or hexadecimal number in format.
  * @param [postGUI=false] A bool representing whether the image should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
  * @returns Returns true if successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/DxDrawImageSection
@@ -324,8 +324,8 @@ declare function dxDrawRectangle(startX: number, startY: number, width: number, 
  * @param [rightX=0] the absolute X coordinate of the right side of the text bounding box. Used for text aligning, clipping and word breaking.
  * @param [bottomY=0] the absolute Y coordinate of the bottom side of the text bounding box. Used for text aligning, clipping and word breaking.
  * @param [color=tocolor(255,255,255,255)] the color of the text, a value produced by tocolor or 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
- * @param [scaleX=1] the size of the text scale: can (optionally) be specified as two floats. i.e. scaleX, scaleY.
- * @param [scaleY=1] the size of the text scale: can (optionally) be specified as two floats. i.e. scaleX, scaleY.
+ * @param [scaleX=1] the size of the text scale: can (optionally) be specified as two numbers. i.e. scaleX, scaleY.
+ * @param [scaleY=1] the size of the text scale: can (optionally) be specified as two numbers. i.e. scaleX, scaleY.
  * @param [font="default"] either a custom DX font element or the name of a built-in DX font: Note: Some fonts are incompatible with certain languages such as Arabic.
  * @param [alignX="left"] horizontal alignment of the text within the bounding box. Can be "left", "center" or "right".
  * @param [alignY="top"] vertical alignment of the text within the bounding box. Can be "top", "center" or "bottom".
@@ -355,7 +355,7 @@ declare function dxGetBlendMode(): string;
  * - Note: The returned height will be in logical units which are 1.75 times the actual pixel height.
  * @param [scale=1] The size of the text.
  * @param [font="default"] Either a custom DX font element or the name of a built-in dx font.
- * @returns Returns an integer of the height of the text.
+ * @returns Returns an number of the height of the text.
  * @see https://wiki.mtasa.com/wiki/DxGetFontHeight
  **/
 declare function dxGetFontHeight(scale?: number, font?: DxFont | string): number;
@@ -507,7 +507,7 @@ declare function dxSetRenderTarget(renderTarget?: DxRenderTarget, clear?: boolea
  * - Important note: It's enough to set the texture only once if it's a render target.
  * @param theShader The shader element whose parameter is to be changed.
  * @param parameterName The name of parameter.
- * @param value The value to set, which can be a texture, a boolean, a number or a list of numbers(max 16 floats(numbers)).
+ * @param value The value to set, which can be a texture, a boolean, a number or a list of numbers(max 16 numbers).
  * @returns Returns true if the shader element's parameter was successfully changed, false otherwise.
  * @see https://wiki.mtasa.com/wiki/DxSetShaderValue
  **/
