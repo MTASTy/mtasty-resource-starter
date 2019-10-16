@@ -7,7 +7,6 @@
  * If you attempt to do this, the existing attachment will automatically be dropped in favor of the new attachment.
  * For example, if carA is asked to attached to carB then carC, it is only attached to carC.
  * This is not compatible with all elements.
- * The following elements are compatible:
  * - Note: The offset coordinates reflect the object space, not the world space. This means that you cannot calculate the exact offsets between two objects by pre-positioning them in the map editor as a reference. Please see attachElementsOffsets for more details.
  * Due to a limitation in GTA, unexpected attach rotations may occur if all rotation offsets are non-zero. (i.e. Try to ensure at least one of 'xRotOffset', 'yRotOffset' or 'zRotOffset' is zero).
  * @param theElement The element to be attached.
@@ -23,7 +22,6 @@
  **/
 declare function attachElements(theElement: Element, theAttachToElement: Element, xPosOffset?: number, yPosOffset?: number, zPosOffset?: number, xRotOffset?: number, yRotOffset?: number, zRotOffset?: number): boolean;
 
-// TODO: Fix types
 /**
  * This function is used to retrieve a list of all elements of specified type within a range of 3D coordinates.
  * - Note: This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed. This function checks if elements are in a box, not in a circle. Z argument isn't in use currently, but make your scripts like it is for future compatibility reasons. This function doesn't work with elements which is created by createElement.
@@ -35,7 +33,7 @@ declare function attachElements(theElement: Element, theAttachToElement: Element
  * @returns Returns a object containing all the elements of the specified type within range. Returns an empty object if there are no elements within range. Returns false if the arguments are invalid.
  * @see https://wiki.mtasa.com/wiki/GetElementsWithinRange
  **/
-declare function getElementsWithinRange(x: number, y: number, z: number, range: number, elemType?: string): object | false;
+declare function getElementsWithinRange(x: number, y: number, z: number, range: number, elemType?: string): Element[] | false;
 
 /**
  * This function clears any settings added by setElementVisibleTo and restores an element to its default visibility.
@@ -56,9 +54,9 @@ declare function clearElementVisibleTo(theElement: Element): boolean;
  * This list also includes remote clients, and console elements.
  * The cloned element will be placed on the element tree as a child of the same parent as the cloned element.
  * @param theElement The element that you wish to clone.
- * @param [xPos=0] A floating point number representing the X coordinate on the map.
- * @param [yPos=0] A floating point number representing the Y coordinate on the map.
- * @param [zPos=0] A floating point number representing the Z coordinate on the map.
+ * @param [xPos=0] A number point number representing the X coordinate on the map.
+ * @param [yPos=0] A number point number representing the Y coordinate on the map.
+ * @param [zPos=0] A number point number representing the Z coordinate on the map.
  * @param [cloneChildren=false] A boolean value representing whether or not the element's children will be cloned.
  * @returns Returns the handle of the new cloned element of the parent, false if invalid arguments were passed.
  * @see https://wiki.mtasa.com/wiki/CloneElement
@@ -99,6 +97,7 @@ declare function destroyElement(elementToDestroy: Element): boolean;
  **/
 declare function detachElements(theElement: Element, theAttachToElement: Element): boolean;
 
+// TODO: Fix types
 /**
  * Returns a table of all element data of an element.
  * @param theElement the element you want to get the element data of.
@@ -119,7 +118,7 @@ declare function getAttachedElements(theElement: Element): Element[] | false;
  * This function returns the alpha (transparency) value for the specified element.
  * This can be a player, ped, object, vehicle or weapon.
  * @param theElement The element whose alpha you want to retrieve.
- * @returns Returns an integer (0-255; 0 = transparent) indicating the element's alpha, or false if invalid arguments were passed.
+ * @returns Returns a number (0-255; 0 = transparent) indicating the element's alpha, or false if invalid arguments were passed.
  * @see https://wiki.mtasa.com/wiki/GetElementAlpha
  **/
 declare function getElementAlpha(theElement: Element): number | false;
@@ -127,7 +126,7 @@ declare function getElementAlpha(theElement: Element): number | false;
 /**
  * This function returns the offsets of an element that has been attached to another element using attachElements.
  * @param theElement The attached element.
- * @returns Returns 6 floats, of which the first 3 indicate the position offset (x, y, z), and the last 3 indicate the rotation offset (x, y, z), if successful. false otherwise.
+ * @returns Returns 6 numbers, of which the first 3 indicate the position offset (x, y, z), and the last 3 indicate the rotation offset (x, y, z), if successful. false otherwise.
  * @see https://wiki.mtasa.com/wiki/GetElementAttachedOffsets
  * @tupleReturn
  **/
@@ -144,7 +143,7 @@ declare function getElementAttachedTo(theElement: Element): Element | false;
 /**
  * This function indicates if a specific element is set to have collisions disabled.
  * An element without collisions does not interact with the physical environment and remains static.
- * @param theElement The element for which you want to check whether collisions are enabled
+ * @param theElement The element for which you want to check whether collisions are enabled.
  * @returns Returns true if the collisions are enabled, false otherwise.
  * @see https://wiki.mtasa.com/wiki/GetElementCollisionsEnabled
  **/
@@ -192,8 +191,8 @@ declare function getElementChildren(parent: Element, theType?: string): Element[
 /**
  * This function returns the number of children an element has.
  * - Note that only the direct children are counted and not elements that are further down the element tree.
- * @param parent the parent element
- * @returns Returns an int with the number of child elements, or false if the parent element does not exist.
+ * @param parent the parent element.
+ * @returns Returns a number with the number of child elements, or false if the parent element does not exist.
  * @see https://wiki.mtasa.com/wiki/GetElementChildrenCount
  **/
 declare function getElementChildrenCount(parent: Element): number | false;
@@ -221,7 +220,7 @@ declare function getElementData(theElement: Element, key: string, inherit?: bool
  * This function allows you to retrieve the dimension of any element.
  * The dimension determines what/who the element is visible to.
  * @param theElement The element in which you'd like to retrieve the dimension of.
- * @returns Returns an integer for the dimension if theElement is valid, false otherwise.
+ * @returns Returns a number for the dimension if theElement is valid, false otherwise.
  * @see https://wiki.mtasa.com/wiki/GetElementDimension
  **/
 declare function getElementDimension(theElement: Element): number | false;
@@ -230,7 +229,7 @@ declare function getElementDimension(theElement: Element): number | false;
  * This function returns the current health for the specified element.
  * This can be a player, a ped, a vehicle, or an object.
  * @param theElement The player or vehicle whose health you want to check.
- * @returns Returns a float indicating the element's health, or false if invalid arguments were passed.
+ * @returns Returns a number indicating the element's health, or false if invalid arguments were passed.
  * @see https://wiki.mtasa.com/wiki/GetElementHealth
  **/
 declare function getElementHealth(theElement: Element): number | false;
@@ -248,7 +247,7 @@ declare function getElementID(theElement: Element): string | false;
  * This function allows you to retrieve the interior of any element.
  * An interior is the current loaded place, 0 being outside.
  * @param theElement The element of which you'd like to retrieve the interior
- * @returns Returns an int for the interior if theElement is valid, false otherwise.
+ * @returns Returns a number for the interior if theElement is valid, false otherwise.
  * @see https://wiki.mtasa.com/wiki/GetElementInterior
  **/
 declare function getElementInterior(theElement: Element): number | false;
@@ -256,7 +255,7 @@ declare function getElementInterior(theElement: Element): number | false;
 // TODO: Fix types
 /**
  * This function gets an element's transform matrix.
- * This contains 16 float values that multiplied to a point will give you the point transformed.
+ * This contains 16 number values that multiplied to a point will give you the point transformed.
  * It is most useful for matrix calculations such as calculating offsets.
  * For further information, please refer to a tutorial of matrices in computer graphics programming.
  * - Note: The matrix returned by this function is not setup correctly for some calculations unless the legacy argument is set to false.
@@ -289,7 +288,7 @@ declare function getElementParent(theElement: Element): Element | false;
  * The getElementPosition function allows you to retrieve the position coordinates of an element.
  * This can be any real world element, including:
  * @param theElement The element which you'd like to retrieve the location of
- * @returns Returns three floats indicating the position of the element, x, y and z respectively.
+ * @returns Returns three numbers indicating the position of the element, x, y and z respectively.
  * @see https://wiki.mtasa.com/wiki/GetElementPosition
  * @tupleReturn
  **/
@@ -297,9 +296,9 @@ declare function getElementPosition(theElement: Element): [number, number, numbe
 
 /**
  * Retrieve the rotation of elements.
- * @param theElement The element whose rotation will be retrieved
- * @param [rotOrder=default] A string representing the rotation order desired when returning the euler angles. If omitted, default value is "default". Allowed values are
- * @returns rx, ry, rz: 3 floats representing the Euler rotation angles on the axis X, Y and Z (with the rotation order depending on the rotOrder argument) if element exists and is a valid element, false if it's invalid.
+ * @param theElement The element whose rotation will be retrieved.
+ * @param [rotOrder=default] A string representing the rotation order desired when returning the euler angles. If omitted, default value is "default".
+ * @returns rx, ry, rz: 3 numbers representing the Euler rotation angles on the axis X, Y and Z (with the rotation order depending on the rotOrder argument) if element exists and is a valid element, false if it's invalid.
  * @see https://wiki.mtasa.com/wiki/GetElementRotation
  * @tupleReturn
  **/
@@ -324,10 +323,10 @@ declare function getElementSyncer(theElement: Element): Element | false;
 declare function getElementType(theElement: Element): string | false;
 
 /**
- * This function returns three floats containing the velocity (movement speeds) along the X, Y, and Z axis respectively.
+ * This function returns three numbers containing the velocity (movement speeds) along the X, Y, and Z axis respectively.
  * This means that velocity values can be positive and negative for each axis.
  * @param theElement The element you wish to retrieve the velocity of.
- * @returns If successful, returns three floats that represent the element's current velocity along the x, y, and z axis respectively. This function can fail if the element is a player in a car. Use the vehicle element in this case. It will also fail if the element specified does not have a velocity, or does not exist. In case of failure, the first return value will be false. The returned values are expressed in GTA units per 1/50th of a second. A GTA Unit is equal to one metre.
+ * @returns If successful, returns three numbers that represent the element's current velocity along the x, y, and z axis respectively. This function can fail if the element is a player in a car. Use the vehicle element in this case. It will also fail if the element specified does not have a velocity, or does not exist. In case of failure, the first return value will be false. The returned values are expressed in GTA units per 1/50th of a second. A GTA Unit is equal to one metre.
  * @see https://wiki.mtasa.com/wiki/GetElementVelocity
  * @tupleReturn
  **/
@@ -341,14 +340,21 @@ declare function getElementVelocity(theElement: Element): [number, number, numbe
  * @returns Returns the string of the elements zone name.
  * @see https://wiki.mtasa.com/wiki/GetElementZoneName
  **/
-declare function getElementZoneName(theElement: Element, citiesonly?: boolean): string;
+declare function getElementZoneName(theElement: Element, citiesonly?: boolean): string | false;
 
-// TODO: getElementsByType
+/**
+ * This function is used to retrieve a list of all elements of the specified type. This can be useful, as it disregards where in the element tree it is. It can be used with either the built in types (listed below) or with any custom type used in a .map file. For example, if there is an element of type "flag" (e.g. <flag />) in the .map file, the using "flag" as the type argument would find it.
+ * @param theType The type of element you want a list of. This is the same as the tag name in the .map file, so this can be used with a custom element type if desired.
+ * @param [startat=getRootElement()] The element the search should start at. Children of this element are searched, siblings or parents will not be found. By default, this is the root element which should suit most uses.
+ * @returns Returns a table containing all the elements of the specified type. Returns an empty table if there are no elements of the specified type. Returns false if the string specified is invalid (or not a string).
+ * @see https://wiki.multitheftauto.com/wiki/GetElementsByType
+ **/
+declare function getElementsByType(theType: string, startat?: Element): Element[] | false;
 
 /**
  * This function is used to retrieve a list of all elements in a colshape, of the specified type.
- * - Note: For legacy reasons, a colshape created on the client does not collide with elements already existing at that location until they first move
- * * This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed
+ * - Note: For legacy reasons, a colshape created on the client does not collide with elements already existing at that location until they first move.
+ * * This function doesn't verify whether elements are in the same dimension and interior, additional checks could be implemented manually if they are needed.
  * @param theShape The colshape you want to get the elements from.
  * @param [elemType=undefined] The type of element you want a list of. This can be any element type, the common ones being
  * @returns Returns a table containing all the elements inside the colshape, of the specified type. Returns an empty table if there are no elements inside. Returns false if the colshape is invalid.
@@ -393,7 +399,13 @@ declare function isElement(theValue: any): boolean;
  **/
 declare function isElementAttached(theElement: Element): boolean | undefined;
 
-// TODO: isElementCallPropagationEnabled
+/**
+ * This functions checks if certain element has call propagation enabled.
+ * @param theElement The element to check.
+ * @returns Returns true if the propagation is enabled, false if disabled or invalid arguments have been passed.
+ * @see https://wiki.mtasa.com/wiki/IsElementCallPropagationEnabled
+ **/
+declare function isElementCallPropagationEnabled(theElement: Element): boolean;
 
 /**
  * This function checks whether an element is double-sided as set by setElementDoubleSided or not.
@@ -482,23 +494,22 @@ declare function setElementAlpha(theElement: Element, alpha: number): boolean;
 /**
  * Sets the angular velocity of a specified, supported element (Applies a spin to it).
  * @param theElement The element to apply the spin to. Can be either a player, ped, object, vehicle or a custom weapon.
- * @param rx velocity around the X axis
- * @param ry velocity around the Y axis
- * @param rz velocity around the Z axis
+ * @param rx velocity around the X axis.
+ * @param ry velocity around the Y axis.
+ * @param rz velocity around the Z axis.
  * @returns Returns true if it was successful, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetElementAngularVelocity
  **/
 declare function setElementAngularVelocity(theElement: Element, rx: number, ry: number, rz: number): boolean;
 
-// TODO: Fix types (set concrete classes instead of Element)
 /**
  * Gets the current angular velocity of a specified, supported element.
- * @param theElement The element to retrieve the angular velocity from. Can be either a player, ped, object, vehicle or a custom weapon. Server side supports only vehicles currently.
- * @returns Returns three floats describing the x, y and z rotation
+ * @param theElement The element to retrieve the angular velocity from. Server side supports only vehicles currently.
+ * @returns Returns three numbers describing the x, y and z rotation
  * @see https://wiki.mtasa.com/wiki/GetElementAngularVelocity
  * @tupleReturn
  **/
-declare function getElementAngularVelocity(theElement: Element): [number, number, number] | [false];
+declare function getElementAngularVelocity(theElement: Vehicle): [number, number, number] | [false];
 
 /**
  * This function updates the offsets of an element that has been attached to another element using attachElements.
@@ -514,7 +525,14 @@ declare function getElementAngularVelocity(theElement: Element): [number, number
  **/
 declare function setElementAttachedOffsets(theElement: Element, xPosOffset?: number, yPosOffset?: number, zPosOffset?: number, xRotOffset?: number, yRotOffset?: number, zRotOffset?: number): boolean;
 
-// TODO: setElementCallPropagationEnabled
+/**
+ * This function enables/disables call propagation on a certain element. Look at the example for a practical application.
+ * @param theElement The element whose propagation behaviour you'd like to change.
+ * @param enabled Whether propagation should be enabled or not.
+ * @returns Returns true, if the propagation behaviour has been changed successfully, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/SetElementCallPropagationEnabled
+ **/
+declare function setElementCallPropagationEnabled(theElement: Element, enabled: boolean): boolean;
 
 /**
  * This function can disable or enable an element's collisions.
@@ -522,8 +540,8 @@ declare function setElementAttachedOffsets(theElement: Element, xPosOffset?: num
  * - Note: Vehicles that are collisionless and have a driver will cause bugs.
  * - Note: Enabling a players collisions when they're inside a vehicle will cause bugs.
  * - Note: Disabling a peds collisions will cause some problems, such as it being unable to move.
- * @param theElement The element you wish to set the collisions of
- * @param enabled A boolean to indicate whether collisions are enabled (true) or disabled (false)
+ * @param theElement The element you wish to set the collisions of.
+ * @param enabled A boolean to indicate whether collisions are enabled (true) or disabled (false).
  * @returns Returns true if the collisions were set successfully, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetElementCollisionsEnabled
  **/
@@ -537,12 +555,12 @@ declare function setElementCollisionsEnabled(theElement: Element, enabled: boole
  * Events are much more efficient for sending data from a client to the server only, or from the server to a specific client.
  * Usage of element data should be discouraged where your goal can be achieved with events like above, and tables for storing and retrieving data.
  * - Tip: A simple and efficient way to make a variable known to the server and clients is to use setElementData on the root element.
- * - Note: See Script security for tips on preventing cheaters when using events and element data
+ * - Note: See Script security for tips on preventing cheaters when using events and element data.
  * - Note: For performance reasons, never use setElementData in events that fire often (like onClientRender) without further optimization or conditions.
  * @param theElement The element you wish to attach the data to.
  * @param key The key you wish to store the data under. (Maximum 31 characters.)
  * @param value The value you wish to store. See element data for a list of acceptable data types.
- * @param [synchronize=true] Determines whether or not the data will be synchronized with the clients(server-side variation) or server(client-side variation)
+ * @param [synchronize=true] Determines whether or not the data will be synchronized with the clients(server-side variation) or server(client-side variation).
  * @returns Returns true if the data was set successfully, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetElementData
  **/
@@ -552,7 +570,7 @@ declare function setElementData(theElement: Element, key: string, value: any, sy
  * This function allows you to set the dimension of any element.
  * The dimension determines what/who the element is visible to.
  * @param theElement The element in which you'd like to set the dimension of.
- * @param dimension An integer representing the dimension ID. You can also use -1 to make the element visible in all dimensions (only valid to objects). Valid values are 0 to 65535.
+ * @param dimension A number representing the dimension ID. You can also use -1 to make the element visible in all dimensions (only valid to objects). Valid values are 0 to 65535.
  * @returns Returns true if theElement and dimension are valid, false otherwise. Also returns false if theElement is a player and it's not alive.
  * @see https://wiki.mtasa.com/wiki/SetElementDimension
  **/
@@ -584,12 +602,12 @@ declare function setElementFrozen(theElement: Element, freezeStatus: boolean): b
  * This function sets the health for the specified element.
  * This can be a ped, object or a vehicle.
  * - Note: In the case of the vehicle element, the following effects appear, depending on the health value:
- * 650: white steam 0%, black smoke 0%
- * 450: white steam 100%, black smoke 50%
- * 250: white steam 0%, black smoke 100%
- * 249: fire with big black smoke
+ * 650: white steam 0%, black smoke 0%.
+ * 450: white steam 100%, black smoke 50%.
+ * 250: white steam 0%, black smoke 100%.
+ * 249: fire with big black smoke.
  * @param theElement The ped, vehicle or object whose health you want to set.
- * @param newHealth A float indicating the new health to set for the element.
+ * @param newHealth A number indicating the new health to set for the element.
  * @returns Returns true if the new health was set successfully, or false if invalid arguments were passed.
  * @see https://wiki.mtasa.com/wiki/SetElementHealth
  **/
@@ -612,9 +630,9 @@ declare function setElementID(theElement: Element, name: string): boolean;
  * - Note: If passing the same interior as the element is in, the call will be ignored and position (optional arguments) will not be set either. Use setElementPosition separately to be sure the position will be set.
  * @param theElement The element in which you'd like to set the interior of.
  * @param interior The interior you want to set the element to. Valid values are 0 to 255.
- * @param x A floating point number representing the X coordinate on the map.
- * @param y A floating point number representing the Y coordinate on the map.
- * @param z A floating point number representing the Z coordinate on the map.
+ * @param x A number representing the X coordinate on the map.
+ * @param y A number representing the Y coordinate on the map.
+ * @param z A number representing the Z coordinate on the map.
  * @returns Returns true if theElement and interior are valid arguments, false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetElementInterior
  **/
@@ -657,20 +675,15 @@ declare function setElementParent(theElement: Element, parent: Element): boolean
  **/
 declare function setElementPosition(theElement: Element, x: number, y: number, z: number, warp?: boolean): boolean;
 
-// TODO: Fix JSDoc for rotOrder param
 /**
  * Sets the rotation of elements according to the world (does not work with players that are on the ground).
  * - Tip: New scripts should set conformPedRotation to true when using this function on peds. This will prevent quirky old behaviour.
- * @param theElement The element whose rotation will be set
- * @param rotX The element's rotation around the x axis in degrees
- * @param rotY The element's rotation around the y axis in degrees
- * @param rotZ The element's rotation around the z axis in degrees
- * @param [rotOrder="default"] A string representing the rotation order desired when interpreting the provided euler angles. If omitted, default value is "default". Allowed values are:
- * - "default": default MTA behavior prior to 1.1, where rotation order depends on element type
- * - "ZXY": rotation about the Z axis (up), then about the resulting X axis (right), and finally about the resulting Y axis (front). This is the default rotation order for objects
- * - "ZYX": rotation about the Z axis (up), then about the resulting Y axis (front), and finally about the resulting X axis (right). This is the default rotation order for vehicles
- * @param [conformPedRotation=false] Relevant only for peds and will be ignored for other element types. A bool which should be set to true to ensure the ped rotation is correctly set in all circumstances.
- * Failing to set this argument may result in the ped rotation being inverted whilst it is in the air and other inconsistencies.The default value of false is for backward compatibility with scripts which may depend upon the incorrect behaviour.
+ * @param theElement The element whose rotation will be set.
+ * @param rotX The element's rotation around the x axis in degrees.
+ * @param rotY The element's rotation around the y axis in degrees.
+ * @param rotZ The element's rotation around the z axis in degrees.
+ * @param [rotOrder="default"] A string representing the rotation order desired when interpreting the provided euler angles. If omitted, default value is "default". Allowed values are: "default": default MTA behavior prior to 1.1, where rotation order depends on element type, "ZXY": rotation about the Z axis (up), then about the resulting X axis (right), and finally about the resulting Y axis (front). This is the default rotation order for objects, "ZYX": rotation about the Z axis (up), then about the resulting Y axis (front), and finally about the resulting X axis (right). This is the default rotation order for vehicles.
+ * @param [conformPedRotation=false] Relevant only for peds and will be ignored for other element types. A bool which should be set to true to ensure the ped rotation is correctly set in all circumstances. Failing to set this argument may result in the ped rotation being inverted whilst it is in the air and other inconsistencies.The default value of false is for backward compatibility with scripts which may depend upon the incorrect behaviour.
  * @returns Returns true if the element rotation was successfully set and false otherwise.
  * @see https://wiki.mtasa.com/wiki/SetElementRotation
  **/
@@ -702,9 +715,9 @@ declare function setElementSyncer(theElement: Element, thePlayer: Player): boole
  * Only the following elements are compatible:
  * Deprecated feature: 3.0140,1.4,Objects and projectiles velocity can only be set clientside.
  * @param theElement The element you wish to set the velocity of.
- * @param speedX A floating point value determining the speed along the X axis.
- * @param speedY A floating point value determining the speed along the Y axis.
- * @param speedZ A floating point value determining the speed along the Z axis.
+ * @param speedX A number point value determining the speed along the X axis.
+ * @param speedY A number point value determining the speed along the Y axis.
+ * @param speedZ A number point value determining the speed along the Z axis.
  * @returns Returns true if the speed was set successfully, false if a bad element was specified or other bad arguments.
  * @see https://wiki.mtasa.com/wiki/SetElementVelocity
  **/
