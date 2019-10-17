@@ -449,19 +449,6 @@ declare function createColTube(fX: number, fY: number, fZ: number, fRadius: numb
 declare function createExplosion(x: number, y: number, z: number, theType: number, makeSound?: boolean, camShake?: number, ,: unknown, damaging?: boolean): boolean;
 
 /**
- * Creates a patch of fire that will spread a bit and die out after a while.
- * Because it's a client side only function, other players won't see it, so custom events or custom objects will be needed to make a fire visible to some players.
- * @param x unknown
- * @param y unknown
- * @param z unknown
- * @param [size=1] a float value indicating the size of the initial patch of fire.It will also make the fire to stay alive more or less time.
- * @param ] unknown
- * @returns Returns true if successful, false if bad arguments were passed or the limit of active fires was reached. There can be a maximum of 60 active fires.
- * @see https://wiki.mtasa.com/wiki/CreateFire
-**/
-declare function createFire(x: number, y: number, z: number, size?: number, ]: unknown): boolean;
-
-/**
  * light]] in the world.
  * - Note: * The direction of the light only has any effect if the light type is spot light.
  * * One light will only apply illumination effects to peds, players, wheels and number plates (like a emergency vehicle siren light does).
@@ -812,18 +799,6 @@ declare function encodeString(algorithm: string, input: string, options: object)
  * @see https://wiki.mtasa.com/wiki/ExecuteCommandHandler
 **/
 declare function executeCommandHandler(commandName: string, args: string): boolean;
-
-/**
- * This function is used to extinguish all spreading fire, or spreading fire at specified coordinates.
- * @param x unknown
- * @param y unknown
- * @param z unknown
- * @param [radius=1] a float value indicating the radius in which to extinguish fire.
- * @param ] unknown
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ExtinguishFire
-**/
-declare function extinguishFire(x: number, y: number, z: number, radius?: number, ]: unknown): boolean;
 
 /**
  * This function allows you to post and receive data from HTTP servers.
