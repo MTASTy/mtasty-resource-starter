@@ -16,7 +16,7 @@ declare function guiBringToFront(guiElement: GuiElement): boolean;
  * @see https://wiki.mtasa.com/wiki/GetChatboxLayout
  * @tupleReturn
  **/
-declare function getChatboxLayout(CVar: string): [number, number, number, number] | [number, number] | [number] | [object] | [boolean];
+declare function getChatboxLayout(CVar: string): [number, number, number, number] | [number, number] | [number] | [object] | [false];
 
 /**
  * This function creates a GUI font element that can be used in guiSetFont.

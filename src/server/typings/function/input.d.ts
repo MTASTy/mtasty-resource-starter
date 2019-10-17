@@ -23,7 +23,7 @@ declare function addCommandHandler(commandName: string, handlerFunction: Command
  * @param thePlayer The player you wish to bind the key of.
  * @param key The key or control you wish to bind to the command. See key names for a list of possible keys: https://wiki.mtasa.com/wiki/Key_names and control names for a list of possible controls: https://wiki.mtasa.com/wiki/Control_names.
  * @param keyState A string that has one of the following values: "up", "down" or "both".
- * @param handlerFunction The function that will be triggered when the player's key is pressed. This function should have the form.
+ * @param handlerFunction The function that will be triggered when the player's key is pressed.
  * @param args Any arguments you may want to pass to the function when the key is pressed by the user.Any number of arguments of can be specified, each being passed to the designated function.You may not pass functions.
  * @returns Returns true if the key was bound, false otherwise.
  * @see https://wiki.mtasa.com/wiki/BindKey
@@ -45,7 +45,7 @@ declare function bindKey(thePlayer: Player, key: string, keyState: "up" | "down"
 /**
  * This function will call all the attached functions of an existing console command, for a specified player.
  * - Note: You can only execute commands created with addCommandHandler. You cannot execute MTA harcoded commands due to security reasons.
- * - Note: Serverside commands can only be executed by the server. The same applies to the client side
+ * - Note: Serverside commands can only be executed by the server. The same applies to the client side.
  * @param commandName The name of the command you wish to execute. This is what must be typed into the console to trigger the function.
  * @param thePlayer The player that will be presented as executer of the command to the handler function(s) of the command.
  * @param args Additional parameters that will be passed to the handler function(s) of the command that is called, separated by spaces.
