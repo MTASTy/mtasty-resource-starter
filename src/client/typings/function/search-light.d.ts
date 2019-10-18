@@ -87,4 +87,4 @@ declare function setSearchLightStartPosition(theSearchLight: SearchLight, startX
  * @returns If every argument is correct, this function returns true. If not, it will return false plus an error message.
  * @see https://wiki.mtasa.com/wiki/SetSearchLightStartRadius
  **/
-declare function setSearchLightStartRadius(theSearchlight: Searchlight, startRadius: number): boolean;
+declare function setSearchLightStartRadius(theSearchlight: SearchLight, startRadius: number): boolean;
