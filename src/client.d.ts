@@ -24,35 +24,12 @@ declare function addDebugHook(hookType: string, callbackFunction: Function, name
 declare function addEvent(eventName: string, allowRemoteTrigger?: boolean): boolean;
 
 /**
- * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
- * @param theVehicle The element representing the vehicle you wish to add the upgrade to.
- * @param upgrade The id of the upgrade you wish to add. (1000 to 1193), see Vehicle Upgrades
- * @returns Returns true if the upgrade was successfully added to the vehicle, otherwise false.
- * @see https://wiki.mtasa.com/wiki/AddVehicleUpgrade
-**/
-declare function addVehicleUpgrade(theVehicle: Vehicle, upgrade: number): boolean;
-
-/**
  * Gets whether the traffic lights are currently locked or not.
  * If the lights are locked, it means they won't change unless you do setTrafficLightState.
  * @returns Returns true the traffic lights are currently locked, false otherwise.
  * @see https://wiki.mtasa.com/wiki/AreTrafficLightsLocked
 **/
 declare function areTrafficLightsLocked(): boolean;
-
-/**
- * This function is used to find out whether the lights of the vehicle are on.
- * - Note: *This is different to getVehicleOverrideLights because this function will return true if the lights were turned on by natural causes.
- * * Unless setVehicleOverrideLights is used, vehicles always automatically disable their lights between 06:00 and 07:00 and enable them between 20:00 and 21:00.
- * @param theVehicle the vehicle you wish to retrieve the lights state of.
- * @returns Returns true if the lights are on, false otherwise.
- * @see https://wiki.mtasa.com/wiki/AreVehicleLightsOn
-**/
-declare function areVehicleLightsOn(theVehicle: Vehicle): boolean;
-
-
-
-
 
 /**
  * This function returns the decrypted data from base64 representation of the encrypted block
@@ -1375,22 +1352,6 @@ declare function getGroundPosition(x: number, y: number, z: number): number;
 declare function getHeatHaze(,: number, ,: number, ,: number, ,: number, ,: number, ,: number, ,: number, ,: number, getHeatHaze: boolean): [number, number, number, number, number, number, number, number];
 
 /**
- * This function gets the state of the helicopter blades collisions on the specified vehicle.
- * @param theVehicle The vehicle that will be checked.
- * @returns Returns true if the collisions are enabled for specified vehicle, false if the collisions aren't enabled for the specified vehicle, if the vehicle is not a helicopter or if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/GetHeliBladeCollisionsEnabled
-**/
-declare function getHeliBladeCollisionsEnabled(theVehicle: Vehicle): boolean;
-
-/**
- * Retrieves the speed at which the rotor of a helicopter rotates.
- * @param heli the helicopter element to get the rotor speed of.
- * @returns Returns the rotor speed if successful. This is 0 when the helicopter is parked, and about 0.2 when it is fully spun up. It can be negative if the rotor rotates counter-clockwise. Returns false in case of failure (an invalid element or a vehicle element that is not a helicopter was passed).
- * @see https://wiki.mtasa.com/wiki/GetHelicopterRotorSpeed
-**/
-declare function getHelicopterRotorSpeed(heli: Vehicle): number;
-
-/**
  * This function will tell you if interior furniture are enabled or disabled in a specified room ID.
  * @param roomID unknown
  * @returns Returns true if interior furniture is enabled or false if interior furniture is disabled.
@@ -2105,15 +2066,6 @@ declare function getUserdataType(value: unknown): string;
 declare function getValidPedModels(getValidPedModels: object): [];
 
 /**
- * Use this to get the value of a vehicles adjustable property.
- * This property relates to movable parts of a model, for example hydra jets or dump truck tray.
- * @param theVehicle The vehicle you want to get the adjustable property of.
- * @returns Returns a value from 0 upwards representing adjustment. 0 is default position. Maximum varies per vehicle, for example hydra horizontal flight is 5000, while dump truck tray max tilt is 2500. Or returns false if the vehicle passed to the function is invalid.
- * @see https://wiki.mtasa.com/wiki/GetVehicleAdjustableProperty
-**/
-declare function getVehicleAdjustableProperty(theVehicle: Vehicle): number;
-
-/**
  * This function returns the color of the specified vehicle.
  * A vehicle can have up to four colors.
  * @param theVehicle The vehicle that you wish to get the color of.
@@ -2133,16 +2085,6 @@ declare function getVehicleColor(theVehicle: Vehicle, bRGB: boolean): [number, n
 declare function getVehicleCompatibleUpgrades(theVehicle: Vehicle, slot: number): object;
 
 /**
- * This function gets the component position of a vehicle.
- * @param theVehicle The vehicle you wish to get component position of.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @param [base=root] A string representing what the returned position is relative to. It can be one of the following values
- * @returns Returns three floats indicating the position of the component, x, y and z respectively.
- * @see https://wiki.mtasa.com/wiki/GetVehicleComponentPosition
-**/
-declare function getVehicleComponentPosition(theVehicle: Vehicle, theComponent: string, base?: string): [number, number, number];
-
-/**
  * This function gets the component rotation of a vehicle.
  * - Note: Before r6974 the component rotations went the wrong way (i.e. opposite to the vehicle rotations). This has been corrected, so you'll have to modify any scripts written before r6974 that use this function.
  * @param theVehicle The vehicle you wish to get component rotation of.
@@ -2152,49 +2094,6 @@ declare function getVehicleComponentPosition(theVehicle: Vehicle, theComponent: 
  * @see https://wiki.mtasa.com/wiki/GetVehicleComponentRotation
 **/
 declare function getVehicleComponentRotation(theVehicle: Vehicle, theComponent: string, base?: string): [number, number, number];
-
-/**
- * This function gets the component scale of a vehicle.
- * @param theVehicle The vehicle you wish to get component scale of.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @param [base=root] A string representing what the returned scale is relative to. It can be one of the following values
- * @returns Returns three floats indicating the scale of the component, x, y and z respectively.
- * @see https://wiki.mtasa.com/wiki/GetVehicleComponentScale
-**/
-declare function getVehicleComponentScale(theVehicle: Vehicle, theComponent: string, base?: string): [number, number, number];
-
-/**
- * This function get component visibility for vehicle.
- * @param theVehicle The vehicle you wish to get component visibility of.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @returns Returns a bool indicating the visible state of the component.
- * @see https://wiki.mtasa.com/wiki/GetVehicleComponentVisible
-**/
-declare function getVehicleComponentVisible(theVehicle: Vehicle, theComponent: string): boolean;
-
-/**
- * This function gets a table of the components currently on a vehicle.
- * @param theVehicle The vehicle you wish to get the components of.
- * @returns Returns a table containing the name of the component as the key and visibility flag of that component as the value
- * @see https://wiki.mtasa.com/wiki/GetVehicleComponents
-**/
-declare function getVehicleComponents(theVehicle: Vehicle): object;
-
-/**
- * This function is used to get the player in control of the specified vehicle which includes somebody who is trying to enter the drivers seat.
- * @param theVehicle the vehicle you want to get the 'controller' of.
- * @returns Returns a player object, if there isn't a driver, it will search the 'trailer chain' for the front driver, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetVehicleController
-**/
-declare function getVehicleController(theVehicle: Vehicle): Player;
-
-/**
- * Gets the specified vehicle's current gear.
- * @param theVehicle the vehicle to get the gear of
- * @returns Returns the gear if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetVehicleCurrentGear
-**/
-declare function getVehicleCurrentGear(theVehicle: Vehicle): number;
 
 /**
  * This function tells you how open a door is (the 'open ratio').
@@ -2222,15 +2121,6 @@ declare function getVehicleDoorState(theVehicle: Vehicle, door: number): number;
  * @see https://wiki.mtasa.com/wiki/GetVehicleEngineState
 **/
 declare function getVehicleEngineState(theVehicle: Vehicle): boolean;
-
-/**
- * Retrieves the current gravity vector of a vehicle.
- * This is the direction in which the vehicle falls, also the cameras of any passengers will be rotated to match it.
- * @param theVehicle the vehicle to retrieve the gravity vector of.
- * @returns Returns the x, y and z components of the gravity vector if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetVehicleGravity
-**/
-declare function getVehicleGravity(theVehicle: Vehicle): [number, number, number];
 
 /**
  * This function returns a table of the current vehicle handling data.
@@ -2278,23 +2168,6 @@ declare function getVehicleLightState(theVehicle: Vehicle, light: number): numbe
 declare function getVehicleMaxPassengers(theVehicle: Vehicle, modelID: number): number;
 
 /**
- * This function gets position of the dummies contained in a vehicle model.
- * @param modelID The model ID which you want to apply the change to
- * @param dummy The dummy whose position you want to get
- * @returns Returns the position of given dummy if everything went fine, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetVehicleModelDummyPosition
-**/
-declare function getVehicleModelDummyPosition(modelID: number, dummy: string): boolean;
-
-/**
- * This function returns the position of the exhaust fumes the vehicle model emits.
- * @param modelID The vehicle model ID.
- * @returns Returns the position of the exhaust fumes if everything went fine or false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetVehicleModelExhaustFumesPosition
-**/
-declare function getVehicleModelExhaustFumesPosition(modelID: number): [number, number, number];
-
-/**
  * This function returns a string containing the name of the vehicle
  * @param theVehicle the vehicle you want to get the name of.
  * @returns Returns a string containing the requested vehicle's name, or false if the vehicle passed to the function is invalid.
@@ -2309,24 +2182,6 @@ declare function getVehicleName(theVehicle: Vehicle): string;
  * @see https://wiki.mtasa.com/wiki/GetVehicleNameFromModel
 **/
 declare function getVehicleNameFromModel(model: number): string;
-
-/**
- * This function gets the nitro count of the vehicle.
- * Warning: Only works if the vehicle is streamed in, use isElementStreamedIn to check.
- * @param theVehicle unknown
- * @returns Returns an integer determining the amount of nitro counts of the vehicle, false if there is no nitro in the vehicle.
- * @see https://wiki.mtasa.com/wiki/GetVehicleNitroCount
-**/
-declare function getVehicleNitroCount(theVehicle: Vehicle): number;
-
-/**
- * This function gets the nitro level of the vehicle.
- * Warning: Only works if the vehicle is streamed in
- * @param theVehicle unknown
- * @returns Returns a float determining the nitro level (ranges from 0.0001 to 1.0) of the vehicle, false if there is no nitro in the vehicle.
- * @see https://wiki.mtasa.com/wiki/GetVehicleNitroLevel
-**/
-declare function getVehicleNitroLevel(theVehicle: Vehicle): number;
 
 /**
  * This function gets the player sitting/trying to enter the specified vehicle.
@@ -2378,14 +2233,6 @@ declare function getVehiclePanelState(theVehicle: Vehicle, panel: number): numbe
  * @see https://wiki.mtasa.com/wiki/GetVehiclePlateText
 **/
 declare function getVehiclePlateText(theVehicle: Vehicle): string;
-
-/**
- * This function get the parameters of a vehicles siren.
- * @param theVehicle The vehicle to get the siren parameters of
- * @returns Returns a table with the siren count, siren type and a sub table for the four flags. False otherwise.
- * @see https://wiki.mtasa.com/wiki/GetVehicleSirenParams
-**/
-declare function getVehicleSirenParams(theVehicle: Vehicle): object;
 
 /**
  * This function gets the properties of a vehicle's sirens.
@@ -2951,14 +2798,6 @@ declare function isRadarAreaFlashing(theRadararea: RadarArea): boolean;
 declare function isTimer(theTimer: unknown): boolean;
 
 /**
- * New items: 3.0140,1.4,This function checks if a train is a chain engine (moves the rest of the chain's carriages) or not.
- * @param theTrain unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/IsTrainChainEngine
-**/
-declare function isTrainChainEngine(theTrain: Vehicle): boolean;
-
-/**
  * This function will check if a train or tram is derailable.
  * @param vehicleToCheck The vehicle you wish to check.
  * @returns Returns true if the train is derailable, false otherwise.
@@ -3007,24 +2846,6 @@ declare function isVehicleFuelTankExplodable(theVehicle: Vehicle): boolean;
 declare function isVehicleLocked(theVehicle: Vehicle): boolean;
 
 /**
- * This function checks if nitro is activated on the vehicle.
- * Warning: Only works if the vehicle is steamed in
- * @param theVehicle unknown
- * @returns Returns true if the nitro is currently activated on the vehicle, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsVehicleNitroActivated
-**/
-declare function isVehicleNitroActivated(theVehicle: Vehicle): boolean;
-
-/**
- * This function checks if nitro is recharging on the vehicle.
- * Warning: Only works if the vehicle is steamed in
- * @param theVehicle unknown
- * @returns Returns true if the nitro is currently recharging on the vehicle, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsVehicleNitroRecharging
-**/
-declare function isVehicleNitroRecharging(theVehicle: Vehicle): boolean;
-
-/**
  * Checks to see if a vehicle has contact with the ground.
  * @param theVehicle The vehicle you wish to check.
  * @returns Returns true if vehicle is on the ground, false if it is not.
@@ -3039,25 +2860,6 @@ declare function isVehicleOnGround(theVehicle: Vehicle): boolean;
  * @see https://wiki.mtasa.com/wiki/IsVehicleTaxiLightOn
 **/
 declare function isVehicleTaxiLightOn(taxi: Vehicle): boolean;
-
-/**
- * This function returns a boolean whether the vehicle's wheel is on ground (true) or in air (false).
- * - Note: In vehicles with 3 wheels, the wheels are combined 2 in 1, in motorbikes only the left - and
- * @param theVehicle unknown
- * @param wheel unknown
- * @returns Returns true if the vehicle wheel is on ground/collided, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsVehicleWheelOnGround
-**/
-declare function isVehicleWheelOnGround(theVehicle: Vehicle, wheel: unknown): boolean;
-
-/**
- * This function gets the vehicle window state.
- * @param theVehicle unknown
- * @param window unknown
- * @returns This function returns a boolean which represents window open state.
- * @see https://wiki.mtasa.com/wiki/IsVehicleWindowOpen
-**/
-declare function isVehicleWindowOpen(theVehicle: Vehicle, window: number): boolean;
 
 /**
  * Added to client side.
@@ -3384,33 +3186,6 @@ declare function resetSunSize(resetSunSize: boolean): [];
  * @see https://wiki.mtasa.com/wiki/ResetTimer
 **/
 declare function resetTimer(theTimer: unknown): boolean;
-
-/**
- * This function reset to default component position for vehicle.
- * @param theVehicle The vehicle you wish to reset component position.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @returns Returns true if the position of the component was reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetVehicleComponentPosition
-**/
-declare function resetVehicleComponentPosition(theVehicle: Vehicle, theComponent: string): boolean;
-
-/**
- * This function reset to default component rotation for vehicle.
- * @param theVehicle The vehicle you wish to reset component rotation.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @returns Returns true if the rotation of the component was reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetVehicleComponentRotation
-**/
-declare function resetVehicleComponentRotation(theVehicle: Vehicle, theComponent: string): boolean;
-
-/**
- * This function reset to default component scale for vehicle.
- * @param theVehicle The vehicle you wish to reset component scale.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @returns Returns true if the scale of the component was reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetVehicleComponentScale
-**/
-declare function resetVehicleComponentScale(theVehicle: Vehicle, theComponent: string): boolean;
 
 /**
  * Resets the distance of vehicles LOD to default.
@@ -3885,25 +3660,6 @@ declare function setGravity(level: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetHeatHaze
 **/
 declare function setHeatHaze(intensity: number, randomShift?: number, speedMin?: number, speedMax?: number, scanSizeX?: number, scanSizeY?: number, renderSizeX?: number, renderSizeY?: number, bShowInside?: boolean): boolean;
-
-/**
- * This function changes the state of the helicopter blades collisions on the specified vehicle.
- * @param theVehicle The helicopter that will have the blades collisions set.
- * @param collisions The state of the helicopter blades collisions.
- * @returns Returns true if the collisions are set for the specified vehicle, false if the collisions can't be set for the specified vehicle, if the vehicle is not a helicopter or if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/SetHeliBladeCollisionsEnabled
-**/
-declare function setHeliBladeCollisionsEnabled(theVehicle: Vehicle, collisions: boolean): boolean;
-
-/**
- * Sets the rotor speed of a helicopter.
- * - Note: Setting higher values will cause problems to the client
- * @param heli the helicopter to adjust the rotor of.
- * @param speed the new rotor speed. Usual values are 0 if the helicopter stands still, or 0.2 if the rotor is fully spun up. Higher values than normal will not affect the helicopter's handling. Negative values are allowed and will make the rotor spin in the opposite direction (pushing the helicopter down).
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetHelicopterRotorSpeed
-**/
-declare function setHelicopterRotorSpeed(heli: Vehicle, speed: number): boolean;
 
 /**
  * This function toggles furniture generation in interiors with the specified room ID.
@@ -4446,56 +4202,6 @@ declare function setTrainTrack(train: Vehicle, track: number): boolean;
 declare function setVehicleColor(theVehicle: Vehicle, r1: number, g1: number, b1: number, r2: number, g2: number, b2: number, r3: number, g3: number, b3: number, r4: number, g4: number, b4: number): boolean;
 
 /**
- * This function sets the component position of a vehicle.
- * @param theVehicle The vehicle you wish to set component position.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @param posX The new x position of this component.
- * @param posY The new y position of this component.
- * @param posZ The new z position of this component.
- * @param [base=root] A string representing what the supplied position (posX, posY, posZ) is relative to. It can be one of the following values
- * @returns Returns true if component position was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleComponentPosition
-**/
-declare function setVehicleComponentPosition(theVehicle: Vehicle, theComponent: string, posX: number, posY: number, posZ: number, base?: string): boolean;
-
-/**
- * This function sets the component rotation of a vehicle.
- * - Note: Before r6974 the component rotations went the wrong way (i.e. opposite to the vehicle rotations). This has been corrected, so you'll have to modify any scripts written before r6974 that use this function.
- * @param theVehicle The vehicle you wish to set component rotation of.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @param rotX The component's rotation around the x axis in degrees.
- * @param rotY The component's rotation around the y axis in degrees.
- * @param rotZ The component's rotation around the z axis in degrees.
- * @param [base=parent] A string representing what the supplied rotation (rotX, rotY, rotZ) is relative to. It can be one of the following values
- * @returns Returns true if the component rotation was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleComponentRotation
-**/
-declare function setVehicleComponentRotation(theVehicle: Vehicle, theComponent: string, rotX: number, rotY: number, rotZ: number, base?: string): boolean;
-
-/**
- * This function sets the component scale of a vehicle.
- * @param theVehicle The vehicle you wish to set component scale.
- * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
- * @param scaleX The new x scale of this component.
- * @param scaleY The new y scale of this component.
- * @param scaleZ The new z scale of this component.
- * @param [base=root] A string representing what the supplied scale (scaleX, scaleY, scaleZ) is relative to. It can be one of the following values
- * @returns Returns true if component scale was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleComponentScale
-**/
-declare function setVehicleComponentScale(theVehicle: Vehicle, theComponent: string, scaleX: number, scaleY: number, scaleZ: number, base?: string): boolean;
-
-/**
- * This function sets component visibility for vehicle.
- * @param theVehicle The vehicle you wish to set component visibility of.
- * @param theComponent A vehicle component (this is the component's frame name (also called 'dummy') from the vehicle model's DFF file of which you want to manipulate components)
- * @param visible a bool which determines if the component should be visible
- * @returns Returns a bool indicating if the visiblity was changed successfully.
- * @see https://wiki.mtasa.com/wiki/SetVehicleComponentVisible
-**/
-declare function setVehicleComponentVisible(theVehicle: Vehicle, theComponent: string, visible: boolean): boolean;
-
-/**
  * This functions makes a vehicle damage proof, so it won't take damage from bullets, hits, explosions or fire.
  * A damage proof's vehicle health can still be changed via script.
  * @param theVehicle The vehicle you wish to make damage proof.
@@ -4504,16 +4210,6 @@ declare function setVehicleComponentVisible(theVehicle: Vehicle, theComponent: s
  * @see https://wiki.mtasa.com/wiki/SetVehicleDamageProof
 **/
 declare function setVehicleDamageProof(theVehicle: Vehicle, damageProof: boolean): boolean;
-
-/**
- * This function sets the dirt level on a vehicle.
- * Disabled: This function doesn't work actually. See the bugtracker for updates and more information.
- * @param theVehicle The vehicle that you want to set the dirt level from
- * @param dirtLevel The dirt level
- * @returns Returns true if the dirt level was set on the vehicle, false if the dirt level was not set or if invalid arguments are specified.
- * @see https://wiki.mtasa.com/wiki/SetVehicleDirtLevel
-**/
-declare function setVehicleDirtLevel(theVehicle: Vehicle, dirtLevel: number): boolean;
 
 /**
  * This function sets how much a vehicle's door is open.
@@ -4568,18 +4264,6 @@ declare function setVehicleEngineState(theVehicle: Vehicle, engineState: boolean
 declare function setVehicleFuelTankExplodable(theVehicle: Vehicle, explodable: boolean): boolean;
 
 /**
- * Sets the gravity vector of a vehicle.
- * The vehicle will fall in this direction, and the camera of any occupants will also be rotated to match it. Can be used for e.g. driving on walls or upside down on ceilings.
- * @param theVehicle the vehicle of which to change the gravity.
- * @param x unknown
- * @param y unknown
- * @param z unknown
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleGravity
-**/
-declare function setVehicleGravity(theVehicle: Vehicle, x: number, y: number, z: number): boolean;
-
-/**
  * This function is used to change the handling data of a vehicle.
  * Implemented also for client-sided vehicles.
  * @param theVehicle The vehicle you wish to set the handling of.
@@ -4630,15 +4314,6 @@ declare function setVehicleHandling(theVehicle: Element, property: string, ,: nu
 declare function setVehicleHeadLightColor(theVehicle: Vehicle, red: number, green: number, blue: number): boolean;
 
 /**
- * This function is used to set the landing gear state of certain vehicles.
- * @param theVehicle The vehicle of which you wish to set the landing gear state.
- * @param gearState A bool representing the state of the landing gear. true represents a collapsed landing gear, while false represents a disabled landing gear.
- * @returns Returns true if the landing gear was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleLandingGearDown
-**/
-declare function setVehicleLandingGearDown(theVehicle: Vehicle, gearState: boolean): boolean;
-
-/**
  * This function sets the state of the light on the vehicle.
  * @param theVehicle A handle to the vehicle that you wish to change the light state of.
  * @param light A whole number determining the individual light
@@ -4657,61 +4332,6 @@ declare function setVehicleLightState(theVehicle: Vehicle, light: number, state:
  * @see https://wiki.mtasa.com/wiki/SetVehicleLocked
 **/
 declare function setVehicleLocked(theVehicle: Vehicle, locked: boolean): boolean;
-
-/**
- * This function sets the position of the dummies contained in a vehicle model.
- * Use setVehicleComponentPosition to adjust the vehicle component positions.
- * @param modelID The model ID which you want to apply the change to
- * @param dummy The dummy whose position you want to change
- * @param x unknown
- * @param y unknown
- * @param z unknown
- * @returns Returns true if everything went fine, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleModelDummyPosition
-**/
-declare function setVehicleModelDummyPosition(modelID: number, dummy: string, x: number, y: number, z: number): boolean;
-
-/**
- * This function sets the position of the exhaust fumes the vehicle model emits.
- * Use setVehicleComponentPosition to adjust the exhaust position.
- * @param modelID The model ID which you want to apply the change to
- * @param posX unknown
- * @param posY unknown
- * @param posZ unknown
- * @returns Returns true if everything went fine, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleModelExhaustFumesPosition
-**/
-declare function setVehicleModelExhaustFumesPosition(modelID: number, posX: number, posY: number, posZ: number): boolean;
-
-/**
- * This function activates or deactivates the nitro on the specified vehicle, like if a player pressed the button for activating nitro.
- * Warning: Only works if the vehicle is steamed in.
- * @param theVehicle unknown
- * @param state unknown
- * @returns Returns true if the nitro activation state was modified successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleNitroActivated
-**/
-declare function setVehicleNitroActivated(theVehicle: Vehicle, state: boolean): boolean;
-
-/**
- * This function sets how many times a player can activate the nitro on a specified vehicle.
- * Warning: Only works if the vehicle is streamed in.
- * @param theVehicle the vehicle which you want to modify how many times a player can use its nitro.
- * @param count how many times should the player be able to use the nitro of this vehicle (from 0-100 times; 0 means that it can't be used and 101 means that it can be used infinite times).
- * @returns Returns true if the nitro count was set successfully to the vehicle, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleNitroCount
-**/
-declare function setVehicleNitroCount(theVehicle: Vehicle, count: number): boolean;
-
-/**
- * This function sets the nitro level of the vehicle.
- * Warning: Only works if the vehicle is steamed in
- * @param theVehicle unknown
- * @param level unknown
- * @returns Returns true if the nitro level was set successfully to the vehicle, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetVehicleNitroLevel
-**/
-declare function setVehicleNitroLevel(theVehicle: Vehicle, level: number): boolean;
 
 /**
  * This function changes the light overriding setting on a vehicle.
@@ -4815,16 +4435,6 @@ declare function setVehicleTurretPosition(turretVehicle: Vehicle, positionX: num
  * @see https://wiki.mtasa.com/wiki/SetVehicleWheelStates
 **/
 declare function setVehicleWheelStates(theVehicle: Vehicle, frontLeft: number, rearLeft?: number, frontRight?: number, rearRight?: number): boolean;
-
-/**
- * This function sets the vehicle window state.
- * @param theVehicle unknown
- * @param window unknown
- * @param open unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetVehicleWindowOpen
-**/
-declare function setVehicleWindowOpen(theVehicle: Vehicle, window: number, open: boolean): boolean;
 
 /**
  * Sets the distance of vehicles LOD.
