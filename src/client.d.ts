@@ -511,19 +511,6 @@ declare function createVehicle(model: number, x: number, y: number, z: number, r
 declare function createWater(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number, x4: number, y4: number, z4: number, bShallow?: boolean): Water;
 
 /**
- * Creates a custom weapon that can fire bullets.
- * Do not confuse this with player held weapons.
- * - Tip: Some weapons (such as the minigun) visually point to a slightly different direction to where they fire. To adjust this, use setWeaponProperty with 'fire_rotation'. See the example below.
- * @param theType The weapon type which can be
- * @param x The x position to create the weapon.
- * @param y The y position to create the weapon.
- * @param z The z position to create the weapon.
- * @returns Returns a custom weapon element, which represents a weapon floating at that position.
- * @see https://wiki.mtasa.com/wiki/CreateWeapon
-**/
-declare function createWeapon(theType: string, x: number, y: number, z: number): Weapon;
-
-/**
  * debugSleep freezes the client/server for the specified time.
  * This means that all synchronization, rendering and script execution will stop except HTTP processing invoked by fetchRemote.
  * This function only works, if development mode is enabled by setDevelopmentMode and can be utilised to build a debugger that communicates via HTTP requests with the editor/IDE.
@@ -792,14 +779,6 @@ declare function fileSetPos(theFile: unknown, offset: number): number;
  * @see https://wiki.mtasa.com/wiki/FileWrite
 **/
 declare function fileWrite(theFile: unknown, string1: string, string2: string, string3: string, ]: unknown): number;
-
-/**
- * Fires one shot from a custom weapon.
- * @param theWeapon The weapon to be fired.
- * @returns Returns true if the shot weapon is valid and therefore the shot was fired, false otherwise.
- * @see https://wiki.mtasa.com/wiki/FireWeapon
-**/
-declare function fireWeapon(theWeapon: Weapon): boolean;
 
 /**
  * This function will set a vehicle's health to full and fix its damage model.
@@ -2378,39 +2357,6 @@ declare function getWaterVertexPosition(theWater: Water, vertexIndex: number): [
 declare function getWaveHeight(): number;
 
 /**
- * This function gets the total ammo a custom weapon has.
- * @param theWeapon unknown
- * @returns Returns an integer containing how many ammo left has the weapon. Returns false if an error occured.
- * @see https://wiki.mtasa.com/wiki/GetWeaponAmmo
-**/
-declare function getWeaponAmmo(theWeapon: Weapon): number;
-
-/**
- * This function gets the amount of ammo left in a custom weapon's magazine/clip.
- * @param theWeapon the weapon to get the clip ammo of.
- * @returns Returns the amount of ammo in the custom weapon's clip, false if an error occured.
- * @see https://wiki.mtasa.com/wiki/GetWeaponClipAmmo
-**/
-declare function getWeaponClipAmmo(theWeapon: Weapon): number;
-
-/**
- * This gets the firing rate to be used when a custom weapon opens fire.
- * @param theWeapon The weapon to modify the firing rate of.
- * @returns Returns an integer with the firing rate of the custom weapon, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetWeaponFiringRate
-**/
-declare function getWeaponFiringRate(theWeapon: Weapon): number;
-
-/**
- * This function gets the flags of a custom weapon.
- * @param theWeapon the weapon to get the flag of.
- * @param theFlag the weapon flag to get
- * @returns Returns the true or false on success (flags flag returns 8 values) if the flag is enabled or not. Returns false if the weapon element isn't valid or an error occured.
- * @see https://wiki.mtasa.com/wiki/GetWeaponFlags
-**/
-declare function getWeaponFlags(theWeapon: Weapon, theFlag: string): boolean;
-
-/**
  * This function will obtain the ID of a particular weapon from its name.
  * @param name A string containing the name of the weapon.Names can be: (Case is ignored)
  * @returns Returns an int if the name matches that of a weapon, false otherwise.
@@ -2426,43 +2372,6 @@ declare function getWeaponIDFromName(name: string): number;
  * @see https://wiki.mtasa.com/wiki/GetWeaponNameFromID
 **/
 declare function getWeaponNameFromID(id: number): string;
-
-/**
- * This function gets the owner of a custom weapon.
- * Weapon ownership system was, however, disabled, so this function always returns false.
- * Please refer to setWeaponOwner for details.
- * @param theWeapon The weapon to get the owner of.
- * @returns This function was intended to return the player which owns the custom weapon, and false if an error occured. However, at the moment it always returns false.
- * @see https://wiki.mtasa.com/wiki/GetWeaponOwner
-**/
-declare function getWeaponOwner(theWeapon: Weapon): boolean;
-
-/**
- * This function gets a weapon property of the specified custom weapon (clientside only) or specified player-held weapon (both client and server).
- * @param weaponID/string unknown
- * @param , unknown
- * @param weaponSkill Either
- * @param property The property you want to get the value of
- * @returns On success: int: The weapon property On failure: bool: False if the passed arguments were invalid
- * @see https://wiki.mtasa.com/wiki/GetWeaponProperty
-**/
-declare function getWeaponProperty(weaponID/string: number, ,: unknown, weaponSkill: string, property: string): number;
-
-/**
- * This function gets the state of a custom weapon.
- * @param theWeapon unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetWeaponState
-**/
-declare function getWeaponState(theWeapon: Weapon): string;
-
-/**
- * This functions gets the target of a custom weapon.
- * @param theWeapon The weapon to get the target of.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetWeaponTarget
-**/
-declare function getWeaponTarget(theWeapon: Weapon): [, number];
 
 /**
  * This function returns the current Weather ID.
@@ -3196,14 +3105,6 @@ declare function resetWaterColor(resetWaterColor: boolean): [];
  * @see https://wiki.mtasa.com/wiki/ResetWaterLevel
 **/
 declare function resetWaterLevel(): boolean;
-
-/**
- * This function resets the firing rate of a custom weapon to the default one.
- * @param theWeapon the weapon to reset the firing rate of.
- * @returns Returns true on success, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetWeaponFiringRate
-**/
-declare function resetWeaponFiringRate(theWeapon: Weapon): boolean;
 
 /**
  * This function resets the wind velocity in San Andreas to its default state.
@@ -4471,62 +4372,9 @@ declare function setWaterVertexPosition(theWater: Water, vertexIndex: number, x:
 **/
 declare function setWaveHeight(height: number): boolean;
 
-/**
- * <section name="setWeaponAmmo" class="server" show="true">
- * Sets the ammo to a certain amount for a specified weapon (if they already have it), regardless of current ammo.
- * @param theWeapon unknown
- * @param ammo unknown
- * @returns Returns a boolean value true or false that tells you if it was successful or not.Returns true on success, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWeaponAmmo
-**/
-declare function setWeaponAmmo(theWeapon: Weapon, ammo: number): boolean;
-
-/**
- * This function sets the ammo left in a custom weapon's magazine/clip.
- * @param theWeapon The weapon to set the clip ammo of.
- * @param clipAmmo The amount of ammo in the clip.
- * @returns This function returns true if the arguments are valid and the weapon clip ammo could be changed; false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWeaponClipAmmo
-**/
-declare function setWeaponClipAmmo(theWeapon: Weapon, clipAmmo: number): boolean;
-
-/**
- * This function sets the firing rate to be used when a custom weapon is in firing state.
- * @param theWeapon The weapon to modify the firing rate of.
- * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the quicker the custom weapon will shoot.
- * @returns Returns true on success, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWeaponFiringRate
-**/
-declare function setWeaponFiringRate(theWeapon: Weapon, firingRate: number): boolean;
-
-/**
- * This function sets a custom weapon flags, used to change how it behaves or finds a possible target to shoot.
- * - Note: Do not confuse this function with setWeaponProperty. Although setWeaponProperty works with player-held weapons and custom weapons (in a limited extent), this function does not work with player-held weapons.
- * @param theWeapon the weapon element to set the flag of.
- * @param theFlag the weapon flag to change (all of them can be true or false)
- * @param enable whether to enable or disable the specified flag.
- * @returns Returns true if all arguments are valid and the flags where changed; false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWeaponFlags
-**/
-declare function setWeaponFlags(theWeapon: Weapon, theFlag: string, enable: boolean): boolean;
-
 // TODO: SetWeaponProperty
 /**
  * @see https://wiki.mtasa.com/wiki/SetWeaponProperty
-**/
-
-/**
- * This function sets a custom weapon's state.
- * @param theWeapon the weapon you wish to set the state of.
- * @param theState the state you wish to set
- * @returns Returns true on success, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWeaponState
-**/
-declare function setWeaponState(theWeapon: Weapon, theState: string): boolean;
-
-// TODO: SetWeaponTarget
-/**
- * @see https://wiki.mtasa.com/wiki/SetWeaponTarget
 **/
 
 /**
