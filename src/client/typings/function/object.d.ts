@@ -1,4 +1,13 @@
 /**
+ * This function breaks a specific object.
+ * - Note: Only breakable objects can be broken.
+ * @param theObject an object element.
+ * @returns Returns true if the object was successfully broken or false if the object is not breakable, or a wrong object was given.
+ * @see https://wiki.mtasa.com/wiki/BreakObject
+ **/
+declare function breakObject(theObject: MapObject): boolean;
+
+/**
  * Creates an object in the GTA world.
  * - Note: Dynamic objects do not automatically have physics applied to them. Use setElementVelocity(object, 0, 0, 0) to fix this.
  * @param modelid a whole integer specifying the GTASA object model ID.
@@ -15,6 +24,14 @@
 declare function createObject(modelid: number, x: number, y: number, z: number, rx?: number, ry?: number, rz?: number, isLowLOD?: boolean): MapObject | false;
 
 /**
+ * This function returns the mass of a specified object.
+ * @param theObject the object whose mass you want to get.
+ * @returns A number representing the mass of the object, false if invalid arguments were passed or -1 if object was never streamed in.
+ * @see https://wiki.mtasa.com/wiki/GetObjectMass
+ **/
+declare function getObjectMass(theObject: MapObject): number | false;
+
+/**
  * This function returns the visible size of an object.
  * @param theObject the maps object you wish to return the scale of.
  * @returns Three number indicating the scale of the object on the x, y, and z axis if successful, false otherwise.
@@ -22,6 +39,14 @@ declare function createObject(modelid: number, x: number, y: number, z: number, 
  * @tupleReturn
  **/
 declare function getObjectScale(theObject: MapObject): [number, number, number] | [false];
+
+/**
+ * This function checks if an object / model ID is breakable.
+ * @param theObjectOrModelID The object / model ID that's being checked.
+ * @returns Returns true if the object is breakable or false if the object is not breakable.
+ * @see https://wiki.mtasa.com/wiki/IsObjectBreakable
+ **/
+declare function isObjectBreakable(theObjectOrModelID: MapObject | number): boolean;
 
 /**
  * This function will smoothly move an object from its current position to a specified rotation and position.
@@ -43,6 +68,32 @@ declare function getObjectScale(theObject: MapObject): [number, number, number] 
 declare function moveObject(theObject: MapObject, time: number, targetX: number, targetY: number, targetZ: number, moveRX?: number, moveRY?: number, moveRZ?: number, strEasingType?: string, fEasingPeriod?: number, fEasingAmplitude?: number, fEasingOvershoot?: number): boolean;
 
 /**
+ * This function respawns a specific object.
+ * @param theObject an object element
+ * @returns Returns true if the object was sucessfully respawned or false if the object is not breakable, or a wrong object was given.
+ * @see https://wiki.mtasa.com/wiki/RespawnObject
+ **/
+declare function respawnObject(theObject: MapObject): boolean;
+
+/**
+ * This function sets an object to be breakable/unbreakable.
+ * @param theObject the object that's being set.
+ * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
+ * @returns Returns true if the object is now breakable or false if it can't or if invalid arguments are passed.
+ * @see https://wiki.mtasa.com/wiki/SetObjectBreakable
+ **/
+declare function setObjectBreakable(theObject: MapObject, breakable: boolean): boolean;
+
+/**
+ * This function sets the mass of a specified object. Changing the mass leads to a different movement behavior for especially dynamic objects.
+ * @param theObject the object that's being set.
+ * @param mass the new mass.
+ * @returns Returns true if the new mass value has been, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/SetObjectMass
+ **/
+declare function setObjectMass(theObject: MapObject, mass: number): boolean;
+
+/**
  * This function changes the visible size of an object.
  * - Note: setObjectScale does not affect the collision models for the object, as such is unsuitable for use for interaction with players, vehicles or other objects.
  * @param theObject the object you wish to change the scale of.
@@ -61,3 +112,33 @@ declare function setObjectScale(theObject: MapObject, scale: number, scaleY?: nu
  * @see https://wiki.mtasa.com/wiki/StopObject
  **/
 declare function stopObject(theObject: MapObject): boolean;
+
+/**
+ * This function is used to toggle if an object should respawn after it got destroyed.
+ * @param theObject the object you want to toggle the respawn from.
+ * @param respawn a bool denoting whether we want to enable (true) or disable (false) respawning.
+ * @returns Returns true when the it was changed successfully, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/ToggleObjectRespawn
+ **/
+declare function toggleObjectRespawn(theObject: MapObject, respawn: boolean): boolean;
+
+// TODO: Fix types
+/**
+ * This function gets a property of the specified object.
+ * @param theObject the object you wish to get a property of.
+ * @param property the property you want to get.
+ * @returns On success: table for all, 3 numbers for center_of_mass or number for other properties. On failure: false.
+ * @see https://wiki.mtasa.com/wiki/GetObjectProperty
+ * @tupleReturn
+ **/
+declare function getObjectProperty(theObject: MapObject, property: string): [object] | [number, number, number] | [number] | [false];
+
+/**
+ * This function sets a property of the specified object.
+ * @param theObject the object you wish to change a property of.
+ * @param property the property you want to set.
+ * @param value the new value for the property.
+ * @returns Returns true if the property was set successfully, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/SetObjectProperty
+ **/
+declare function setObjectProperty(theObject: MapObject, property: string, value: any): boolean;

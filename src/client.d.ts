@@ -206,15 +206,6 @@ declare function bitXor(var1: unknown, var2: unknown, ): unknown): unknown;
 declare function blowVehicle(vehicleToBlow: Vehicle): boolean;
 
 /**
- * This function breaks a specific object.
- * - Note: Only breakable objects can be broken.
- * @param theObject an object element
- * @returns 
- * @see https://wiki.mtasa.com/wiki/BreakObject
-**/
-declare function breakObject(theObject: Object): boolean;
-
-/**
  * This function is used to call a function from another resource (which must be running).
  * The function which you wish to call must first be exported within the resource's meta.
  * For example:
@@ -1663,15 +1654,6 @@ declare function getNetworkStats(getNetworkStats: object): [];
  * @see https://wiki.mtasa.com/wiki/GetNetworkUsageData
 **/
 declare function getNetworkUsageData(getNetworkUsageData: object): [];
-
-/**
- * This function gets a property of the specified object.
- * @param theObject the object you wish to get a property of.
- * @param property unknown
- * @returns On success: table for all, 3 floats for center_of_mass or float for other properties On failure: false
- * @see https://wiki.mtasa.com/wiki/GetObjectProperty
-**/
-declare function getObjectProperty(theObject: Object, property: string): any;
 
 /**
  * This function returns the visible size of an object.
@@ -3234,15 +3216,6 @@ declare function isLineOfSightClear(startX: number, startY: number, startZ: numb
 declare function isOOPEnabled(isOOPEnabled: boolean): [];
 
 /**
- * This function checks if an object / model ID is breakable.
- * @param theObject unknown
- * @param modelId unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/IsObjectBreakable
-**/
-declare function isObjectBreakable(theObject: Object, modelId: number): boolean;
-
-/**
  * This function checks if the specified ped is choking (coughing) or not.
  * This happens as a result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray can.
  * @param thePed The ped you wish to check
@@ -3950,14 +3923,6 @@ declare function resetWindVelocity(resetWindVelocity: boolean): [];
 declare function resetWorldSounds(): boolean;
 
 /**
- * This function respawns a specific object.
- * @param theObject an object element
- * @returns 
- * @see https://wiki.mtasa.com/wiki/RespawnObject
-**/
-declare function respawnObject(theObject: Object): boolean;
-
-/**
  * This function allows restoring of all world objects,which were removed with RemoveWorldModel.
  * @param restoreAllWorldModels unknown
  * @returns Returns true if the world objects were restored, false otherwise.
@@ -4547,25 +4512,6 @@ declare function setMoonSize(size: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetNearClipDistance
 **/
 declare function setNearClipDistance(distance: number): boolean;
-
-/**
- * This function sets an object to be breakable/unbreakable.
- * @param theObject unknown
- * @param breakable unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetObjectBreakable
-**/
-declare function setObjectBreakable(theObject: Object, breakable: boolean): boolean;
-
-/**
- * This function sets a property of the specified object.
- * @param theObject the object you wish to change a property of.
- * @param property unknown
- * @param value unknown
- * @returns Returns true if the property was set successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetObjectProperty
-**/
-declare function setObjectProperty(theObject: Object, property: string, value: unknown): boolean;
 
 /**
  * This function changes the visible size of an object.
@@ -5801,15 +5747,6 @@ declare function toJSON(value: unknown, compact?: boolean, prettyType?: string):
  * @see https://wiki.mtasa.com/wiki/Tocolor
 **/
 declare function tocolor(red: number, green: number, blue: number, alpha?: number): number;
-
-/**
- * This function is used to toggle if an object should respawn after it got destroyed
- * @param theObject the object you want to toggle the respawn from
- * @param respawn a bool denoting whether we want to enable (true) or disable (false) respawning
- * @returns 
- * @see https://wiki.mtasa.com/wiki/ToggleObjectRespawn
-**/
-declare function toggleObjectRespawn(theObject: Object, respawn: boolean): boolean;
 
 /**
  * This function will trigger a named event on a specific element in the element tree.
