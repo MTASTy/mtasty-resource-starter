@@ -128,3 +128,12 @@ declare function setMarkerTarget(theMarker: Marker, x: number, y: number, z: num
  * @see https://wiki.mtasa.com/wiki/SetMarkerType
  **/
 declare function setMarkerType(theMarker: Marker, markerType: "checkpoint" | "ring" | "cylinder" | "arrow" | "corona"): boolean;
+
+/**
+ * This function is used to determine if an element is within a marker.
+ * @param theElement The element you're checking.
+ * @param theMarker The marker you're checking.
+ * @returns Returns true if the element is within the marker, false otherwise
+ * @see https://wiki.mtasa.com/wiki/IsElementWithinMarker
+ **/
+declare function isElementWithinMarker(theElement: Element, theMarker: Marker): boolean;

@@ -3174,15 +3174,6 @@ declare function isElementLowLOD(theElement: Element): boolean;
 declare function isElementWithinColShape(theElement: Element, theShape: ColShape): boolean;
 
 /**
- * This function is used to determine if an element is within a marker.
- * @param theElement The element you're checking.
- * @param theMarker The marker you're checking.
- * @returns Returns true if the element is within the marker, false otherwise
- * @see https://wiki.mtasa.com/wiki/IsElementWithinMarker
-**/
-declare function isElementWithinMarker(theElement: Element, theMarker: Marker): boolean;
-
-/**
  * This function checks whether or not a specific garage door is open.
  * @param garageID The garage ID that represents the garage door that is being checked.
  * @returns Returns true if the garage is open, false if it is closed or an invalid garage ID was given.
