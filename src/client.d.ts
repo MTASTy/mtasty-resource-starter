@@ -1941,17 +1941,6 @@ declare function getResourceExportedFunctions(theResource?: Resource): object;
 declare function getResourceFromName(resourceName: string): Resource;
 
 /**
- * This function retrieves a resource's GUI element.
- * The resource's GUI element is the element in the element tree which is the default parent of all GUI elements that belong to a particular resource.
- * It has a predefined variable called guiRoot, and each resource has one of these.
- * You can attach event handlers to this element to easily capture events that originate from your resource (and global events that originate from the root element).
- * @param [theResource=getThisResource] the resource whose GUI element we are getting.If not specified, assumes the current resource.
- * @returns Returns the root GUI element that contains all the other GUI elements.
- * @see https://wiki.mtasa.com/wiki/GetResourceGUIElement
-**/
-declare function getResourceGUIElement(theResource?: Resource): GuiElement;
-
-/**
  * This function gets the name of the specified resource.
  * @param res The resource you wish to get the name of.
  * @returns Returns a string with the resource name in it, or false if the resource does not exist.
