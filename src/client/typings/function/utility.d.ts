@@ -138,6 +138,18 @@ declare function bitExtract(arg: number, field: number, width?: number): number;
 declare function bitReplace(arg: number, replaceValue: number, field: number, width?: number): number;
 
 /**
+ * This functions creates a notification ballon on the desktop.
+ * - Note: MTA won't show any tray notifications if the MTA window is focused, because there is no reason to show tray notifications if you are ingame. If you want to test this function you should use a Timer and switch to your desktop.
+ * - Note: You can only show a tray notification every 30 seconds.
+ * @param notificationText The text to send in the notification.
+ * @param [iconType="default"] The notification icon type. Possible values are: "default" (the MTA icon), "info", "warning", "error".
+ * @param [useSound=true] A boolean value indicating whether or not to play a sound when receiving the notification.
+ * @returns Returns true if the notification is correctly created, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/CreateTrayNotification
+ **/
+declare function createTrayNotification(notificationText: string, iconType?: "default" | "info" | "warning" | "error", useSound?: boolean): boolean;
+
+/**
  * debugSleep freezes the client/server for the specified time.
  * This means that all synchronization, rendering and script execution will stop except HTTP processing invoked by fetchRemote.
  * This function only works, if development mode is enabled by setDevelopmentMode and can be utilised to build a debugger that communicates via HTTP requests with the editor/IDE.
@@ -147,6 +159,17 @@ declare function bitReplace(arg: number, replaceValue: number, field: number, wi
  * @see https://wiki.mtasa.com/wiki/DebugSleep
  **/
 declare function debugSleep(sleep: number): boolean;
+
+/**
+ * This function ensures the requested resource file is correct and then triggers onClientFileDownloadComplete. If the file has been previously downloaded and the CRC matches, the file will not be downloaded again but onClientFileDownloadComplete will still run. The file should also be included in the resource meta.xml with the download attribute set to "false", see meta.xml for more details.
+ * - Tip: If you are only using downloadFile to download mod files after other resources, then do not use downloadFile, and instead set '<download_priority_group>-1</download_priority_group>' in the resource meta.xml
+ * - Note: This function may cause performance issues with client and/or server.
+ * - Tip: Avoid using fileExists before calling downloadFile. Always call downloadFile and handle the result in onClientFileDownloadComplete.
+ * @param fileName A string referencing the name of the file to download.
+ * @returns Returns true if file download has been queued, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/DownloadFile
+ **/
+declare function downloadFile(fileName: string): boolean;
 
 // TODO: Fix types
 /**
@@ -240,14 +263,36 @@ declare function getDistanceBetweenPoints3D(x1: number, y1: number, z1: number, 
  **/
 declare function getEasingValue(fProgress: number, strEasingType: string, fEasingPeriod?: number, fEasingAmplitude?: number, fEasingOvershoot?: number): number | false;
 
+/**
+ * This function retrieves the maximum FPS (Frames per second) that players on the server can run their game at.
+ * @returns Returns an integer between 25 and 100 of the maximum FPS that players can run their game at.
+ * @see https://wiki.mtasa.com/wiki/GetFPSLimit
+ **/
+declare function getFPSLimit(): number;
+
+// TODO: Fix types
+/**
+ * This function gets the player's keyboard layout settings, which they are currently (keyboard layout can be changed at any moment) using at the time of invocation.
+ * @returns Returns a table with keyboard layout properties.
+ * @see https://wiki.mtasa.com/wiki/GetKeyboardLayout
+ **/
+declare function getKeyboardLayout(): object;
+
+// TODO: Fix types
+/**
+ * This function gets the player's localization setting as set in the MTA client.
+ * @returns Returns a table.
+ * @see https://wiki.mtasa.com/wiki/GetLocalization
+ **/
+declare function getLocalization(): object;
+
 // TODO: Fix types
 /**
  * This function returns network status information.
- * @param [thePlayer=undefined] The player you want to retrieve network stats from.
  * @returns Returns a table.
  * @see https://wiki.mtasa.com/wiki/GetNetworkStats
  **/
-declare function getNetworkStats(thePlayer?: Element): object | false;
+declare function getNetworkStats(): object;
 
 // TODO: Fix types
 /**
@@ -281,14 +326,6 @@ declare function getPerformanceStats(category: string, options?: string, filter?
 declare function getRealTime(seconds?: number, localTime?: boolean): object | false;
 
 /**
- * This function retrieves server settings which are usually stored in the mtaserver.conf file.
- * @param name The name of the setting.
- * @returns Returns a string containing the current value for the named setting, or false if the setting does not exist.
- * @see https://wiki.mtasa.com/wiki/GetServerConfigSetting
- **/
-declare function getServerConfigSetting(name: string): string | false;
-
-/**
  * This function returns amount of time that your system has been running in milliseconds.
  * By comparing two values of getTickCount, you can determine how much time has passed (in milliseconds) between two events.
  * This could be used to determine how efficient your code is, or to time how long a player takes to complete a task.
@@ -296,15 +333,6 @@ declare function getServerConfigSetting(name: string): string | false;
  * @see https://wiki.mtasa.com/wiki/GetTickCount
  **/
 declare function getTickCount(): number;
-
-/**
- * This function is for getting the details of a running timer.
- * @param theTimer A timer element.
- * @returns Returns false if the timer doesn't exist or stopped running. Also, debugscript will say "Bad Argument @ 'getTimerDetails'". To prevent this, you can check if the timer exists with isTimer.
- * @see https://wiki.mtasa.com/wiki/GetTimerDetails
- * @tupleReturn
- **/
-declare function getTimerDetails(theTimer: Timer): [number, number, number] | [false];
 
 // TODO: Fix types
 /**
@@ -315,6 +343,15 @@ declare function getTimerDetails(theTimer: Timer): [number, number, number] | [f
  * @see https://wiki.mtasa.com/wiki/GetTimers
  **/
 declare function getTimers(theTime?: number): object;
+
+/**
+ * This function is for getting the details of a running timer.
+ * @param theTimer A timer element.
+ * @returns Returns false if the timer doesn't exist or stopped running. Also, debugscript will say "Bad Argument @ 'getTimerDetails'". To prevent this, you can check if the timer exists with isTimer.
+ * @see https://wiki.mtasa.com/wiki/GetTimerDetails
+ * @tupleReturn
+ **/
+declare function getTimerDetails(theTimer: Timer): [number, number, number] | [false];
 
 /**
  * This function splits a string using the given separating character and returns one specified substring.
@@ -493,6 +530,13 @@ declare function pregReplace(subject: string, pattern: string, replacement: stri
 declare function removeDebugHook(hookType: "preEvent" | "postEvent" | "preFunction" | "postFunction", callbackFunction: SimpleHandler): boolean;
 
 /**
+ * This function returns a boolean value whether the client has enabled tray notifications in his settings or not.
+ * @returns Returns true if the tray notifications are enabled in the settings, false otherwise.
+ * @see https://wiki.mtasa.com/wiki/IsTrayNotificationEnabled
+ **/
+declare function isTrayNotificationEnabled(): boolean;
+
+/**
  * This function allows you to reset the elapsed time in existing timers to zero.
  * The function does not reset the 'times to execute' count on timers which have a limited amout of repetitions.
  * @param theTimer The timer whose elapsed time you wish to reset.
@@ -500,6 +544,14 @@ declare function removeDebugHook(hookType: "preEvent" | "postEvent" | "preFuncti
  * @see https://wiki.mtasa.com/wiki/ResetTimer
  **/
 declare function resetTimer(theTimer: Timer): boolean;
+
+/**
+ * This function sets the players clipboard text (what appears when you paste with CTRL + V) Note that there is no getClipBoard function for safety reasons.
+ * @param theText The new text to be in the players clipboard when the player pastes with CTRL + V.
+ * @returns Returns true if the text in the clip board was set correctly.
+ * @see https://wiki.mtasa.com/wiki/SetClipboard
+ **/
+declare function setClipboard(theText: string): boolean;
 
 /**
  * This function is used to set the development mode.
@@ -512,15 +564,12 @@ declare function resetTimer(theTimer: Timer): boolean;
 declare function setDevelopmentMode(enable: boolean, enableWeb?: boolean): boolean;
 
 /**
- * This function sets server settings which are stored in the mtaserver.conf file.
- * - Note: This function is protected by default and must be explicitly allowed in the servers acl before it can be used.
- * @param name The name of the setting. Only certain settings from mtaserver.conf can be changed with this function.
- * @param value The value of the setting.
- * @param [bSave=false] Set to true to make the setting permanent, or false for use only until the next server restart.
- * @returns Returns true if the setting was successfully set, or false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetServerConfigSetting
+ * This function sets the maximum FPS (Frames per second) that players on the server can run their game at.
+ * @param fpsLimit An integer value representing the maximum FPS. This value may be between 25 and 100 FPS. You can also pass 0 or false, in which case the FPS limit will be the one set in the client settings (by default, 100 FPS).
+ * @returns Returns true if successful, or false if it was not possible to set the limit or an invalid value was passed.
+ * @see https://wiki.mtasa.com/wiki/SetFPSLimit
  **/
-declare function setServerConfigSetting(name: string, value: string, bSave?: boolean): boolean;
+declare function setFPSLimit(fpsLimit: number | false): boolean;
 
 /**
  * This function allows you to trigger a function after a number of milliseconds have elapsed.
@@ -542,6 +591,15 @@ declare function setServerConfigSetting(name: string, value: string, bSave?: boo
  * @see https://wiki.mtasa.com/wiki/SetTimer
  **/
 declare function setTimer(theFunction: SimpleHandler, timeInterval: number, timesToExecute: number, ...arguments: any[]): Timer | false;
+
+/**
+ * This function allows the window to flash in the Windows taskbar.
+ * @param shouldFlash whether the window should flash.
+ * @param [count=10] the number of times the window should flash, defaults to 10 times.
+ * @returns Returns false if: the window is already in focus or the client has disabled this feature. Returns true otherwise.
+ * @see https://wiki.mtasa.com/wiki/SetWindowFlashing
+ **/
+declare function setWindowFlashing(shouldFlash: boolean, count?: number): boolean;
 
 /**
  * Calculates the sha256 hash of the specified string.

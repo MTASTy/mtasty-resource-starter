@@ -54,3 +54,4 @@ declare function getTeamFromName(teamName: string): Team | false;
  * @see https://wiki.mtasa.com/wiki/GetTeamName
  **/
 declare function getTeamName(theTeam: Team): string | false;
+  

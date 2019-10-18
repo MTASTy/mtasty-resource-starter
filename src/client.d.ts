@@ -486,18 +486,6 @@ declare function createRadarArea(startPosX: number, startPosY: number, sizeX: nu
 declare function createSWATRope(fx: number, fy: number, fZ: number, duration: number): boolean;
 
 /**
- * This functions creates a notification ballon on the desktop.
- * - Note: MTA won't show any tray notifications if the MTA window is focused, because there is no reason to show tray notifications if you are ingame. If you want to test this function you should use a Timer and switch to your desktop.
- * - Note: You can only show a tray notification every 30 seconds.
- * @param notificationText The text to send in the notification.
- * @param [iconType=default] The notification icon type. Possible values are
- * @param [useSound=true] A boolean value indicating whether or not to play a sound when receiving the notification.
- * @returns Returns true if the notification is correctly created, false otherwise.
- * @see https://wiki.mtasa.com/wiki/CreateTrayNotification
-**/
-declare function createTrayNotification(notificationText: string, iconType?: string, useSound?: boolean): boolean;
-
-/**
  * This function creates a vehicle at the specified location.
  * Its worth nothing that the position of the vehicle is the center point of the vehicle, not its base.
  * As such, you need to ensure that the z value (vertical axis) is some height above the ground.
@@ -611,17 +599,6 @@ declare function detachElements(theElement: Element, theAttachToElement: Element
  * @see https://wiki.mtasa.com/wiki/DetachTrailerFromVehicle
 **/
 declare function detachTrailerFromVehicle(theVehicle: Vehicle, theTrailer?: Vehicle): boolean;
-
-/**
- * New items: 3.0140,1.4,This function ensures the requested resource file is correct and then triggers onClientFileDownloadComplete. If the file has been previously downloaded and the CRC matches, the file will not be downloaded again but onClientFileDownloadComplete will still run. The file should also be included in the resource meta.xml with the download attribute set to "false", see meta.xml for more details.
- * - Tip: If you are only using downloadFile to download mod files after other resources, then do not use downloadFile, and instead set '<download_priority_group>-1</download_priority_group>' in the resource meta.xml
- * - Note: This function may cause performance issues with client and/or server.
- * - Tip: Avoid using fileExists before calling downloadFile. Always call downloadFile and handle the result in onClientFileDownloadComplete
- * @param fileName A string referencing the name of the file to download
- * @returns Returns true if file download has been queued, false otherwise.
- * @see https://wiki.mtasa.com/wiki/DownloadFile
-**/
-declare function downloadFile(fileName: string): boolean;
 
 // TODO: DxDrawMaterialPrimitive3D
 /**
@@ -1335,14 +1312,6 @@ declare function getElementsWithinRange(x: number, y: number, z: number, range: 
 declare function getEventHandlers(eventName: string, attachedTo: Element): object;
 
 /**
- * This function retrieves the maximum FPS (Frames per second) that players on the server can run their game at.
-
- * @returns Returns an integer between 25 and 100 of the maximum FPS that players can run their game at.
- * @see https://wiki.mtasa.com/wiki/GetFPSLimit
-**/
-declare function getFPSLimit(): number;
-
-/**
  * This function will tell you what is the current render distance.
  * - Note: The function will return false server-side if far clip distance has not been set before the function is called.
  * @param getFarClipDistance unknown
@@ -1446,14 +1415,6 @@ declare function getInteriorSoundsEnabled(getInteriorSoundsEnabled: boolean): []
 declare function getJetpackMaxHeight(getJetpackMaxHeight: number): [];
 
 /**
- * This function gets the player's keyboard layout settings, which they are currently (keyboard layout can be changed at any moment) using at the time of invocation.
-
- * @returns Returns a table with keyboard layout properties:
- * @see https://wiki.mtasa.com/wiki/GetKeyboardLayout
-**/
-declare function getKeyboardLayout(): object;
-
-/**
  * Gets the currently queued latent events.
  * The last one in the table is always the latest event queued.
  * Each returned handle can be used with getLatentEventStatus or cancelLatentEvent
@@ -1471,14 +1432,6 @@ declare function getLatentEventHandles(getLatentEventHandles: object): [];
  * @see https://wiki.mtasa.com/wiki/GetLatentEventStatus
 **/
 declare function getLatentEventStatus(handle: number): object;
-
-/**
- * New items: 3.0140,1.4,This function gets the player's localization setting as set in the MTA client.
- * @param getLocalization unknown
- * @returns Returns a table with the following entries:
- * @see https://wiki.mtasa.com/wiki/GetLocalization
-**/
-declare function getLocalization(getLocalization: object): [];
 
 /**
  * This function return the low LOD element that an element is associated with.
@@ -3022,14 +2975,6 @@ declare function isTrainDerailable(vehicleToCheck: Vehicle): boolean;
 declare function isTrainDerailed(vehicleToCheck: Vehicle): boolean;
 
 /**
- * This function returns a boolean value whether the client has enabled tray notifications in his settings or not.
- * @param isTrayNotificationEnabled unknown
- * @returns Returns true if the tray notifications are enabled in the settings, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsTrayNotificationEnabled
-**/
-declare function isTrayNotificationEnabled(isTrayNotificationEnabled: boolean): [];
-
-/**
  * This function allows you to determine whether a vehicle is blown or still intact.
  * @param theVehicle The vehicle that you want to obtain the blown status of.
  * @returns Returns true if the vehicle specified has blown up, false if it is still intact or the vehicle specified is invalid.
@@ -3654,14 +3599,6 @@ declare function setCameraInterior(interior: number): boolean;
 declare function setCameraMatrix(positionX: number, positionY: number, positionZ: number, lookAtX: number, lookAtY: number, lookAtZ: number, roll?: number, fov?: number): boolean;
 
 /**
- * This function sets the players clipboard text (what appears when you paste with CTRL + V) Note that there is no getClipBoard function for safety reasons.
- * @param theText The new text to be in the players clipboard when the player pastes with CTRL + V.
- * @returns Returns true if the text in the clip board was set correctly.
- * @see https://wiki.mtasa.com/wiki/SetClipboard
-**/
-declare function setClipboard(theText: string): boolean;
-
-/**
  * This function will enable or disable clouds.
  * This is useful for race maps which are placed high up as clouds can cause low FPS.
  * @param enabled A boolean value determining if clouds should be shown.Use true to show clouds and false to hide them.
@@ -3886,15 +3823,6 @@ declare function setElementRotation(theElement: Element, rotX: number, rotY: num
  * @see https://wiki.mtasa.com/wiki/SetElementVelocity
 **/
 declare function setElementVelocity(theElement: Element, speedX: number, speedY: number, speedZ: number): boolean;
-
-/**
- * This function sets the maximum FPS (Frames per second) that players on the server can run their game at.
- * - Note: When set client side, the actual limit used is the lowest of both the server and client set values
- * @param fpsLimit An integer value representing the maximum FPS.This value may be between 25 and 100 FPS.You can also pass 0 or false, in which case the FPS limit will be the one set in the client settings (by default, 100 FPS).
- * @returns Returns true if successful, or false if it was not possible to set the limit or an invalid value was passed.
- * @see https://wiki.mtasa.com/wiki/SetFPSLimit
-**/
-declare function setFPSLimit(fpsLimit: number): boolean;
 
 /**
  * This function is used to set the distance of render.
@@ -5046,15 +4974,6 @@ declare function setWeatherBlended(weatherID: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetWindVelocity
 **/
 declare function setWindVelocity(velocityX: number, velocityY: number, velocityZ: number): boolean;
-
-/**
- * This function allows the window to flash in the Windows taskbar.
- * @param shouldFlash whether the window should flash
- * @param [count=10] the number of times the window should flash, defaults to 10 times
- * @returns Returns false if: Returns true otherwise
- * @see https://wiki.mtasa.com/wiki/SetWindowFlashing
-**/
-declare function setWindowFlashing(shouldFlash: boolean, count?: number): boolean;
 
 /**
  * This function allows you to disable world sounds.
