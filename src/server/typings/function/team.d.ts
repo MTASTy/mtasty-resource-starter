@@ -26,14 +26,13 @@ declare function createTeam(teamName: string, colorR?: number, colorG?: number, 
  **/
 declare function getPlayerTeam(thePlayer: Player): Team | false;
 
-// TODO: Fix types
 /**
  * This function retrieves all the players of the specified team.
  * @param theTeam The team you wish to retrieve all the players from.
  * @returns Returns a object of all the players in the team, or an empty one if there are none else false if invalid arguments are passed.
  * @see https://wiki.mtasa.com/wiki/GetPlayersInTeam
  **/
-declare function getPlayersInTeam(theTeam: Team): object | false;
+declare function getPlayersInTeam(theTeam: Team): Player[] | false;
 
 /**
  * This function retrieves the color of a team.
