@@ -1521,14 +1521,6 @@ declare function getLatentEventHandles(getLatentEventHandles: object): [];
 declare function getLatentEventStatus(handle: number): object;
 
 /**
- * This function gets the player element of the client running the current script.
- * You can use the predefined variable localPlayer instead of typing getLocalPlayer()
- * @returns Returns the local player element.
- * @see https://wiki.mtasa.com/wiki/GetLocalPlayer
-**/
-declare function getLocalPlayer(): Player;
-
-/**
  * New items: 3.0140,1.4,This function gets the player's localization setting as set in the MTA client.
  * @param getLocalization unknown
  * @returns Returns a table with the following entries:
@@ -1848,14 +1840,6 @@ declare function getPlayerBlurLevel(): number;
  * @see https://wiki.mtasa.com/wiki/GetPlayerFromName
 **/
 declare function getPlayerFromName(playerName: string): Player;
-
-/**
- * This function gets the GUI bounding box of the radar map texture.
-
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetPlayerMapBoundingBox
-**/
-declare function getPlayerMapBoundingBox(): [number, number, number, number];
 
 /**
  * Returns the amount of money a player currently has.
@@ -3115,28 +3099,12 @@ declare function isPedOnGround(thePed: Ped): boolean;
 declare function isPedWearingJetpack(thePed: Ped): boolean;
 
 /**
- * This function can be used to check whether an hud component is visable or not.
- * @param component The component you wish to check. Valid values are
- * @returns Returns true if the component is visable, false if not.
- * @see https://wiki.mtasa.com/wiki/IsPlayerHudComponentVisible
-**/
-declare function isPlayerHudComponentVisible(component: string): boolean;
-
-/**
  * This function checks if the specified player's radar map has been forced on or not.
 
  * @returns Returns true if the player's radar map is forced on, false otherwise.Returns true if the local player's radar map is forced on, false otherwise.
  * @see https://wiki.mtasa.com/wiki/IsPlayerMapForced
 **/
 declare function isPlayerMapForced(): boolean;
-
-/**
- * This function checks if the local player has their map showing.
-
- * @returns Returns true if the player has the map visible, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsPlayerMapVisible
-**/
-declare function isPlayerMapVisible(): boolean;
 
 /**
  * This function will allow you to determine if a player's name tag is currently showing.

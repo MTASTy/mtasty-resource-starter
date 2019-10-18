@@ -192,7 +192,7 @@ declare function givePlayerMoney(thePlayer: Player, amount: number): boolean;
 /**
  * This function checks if the specified player's radar map has been forced on or not.
  * @param thePlayer A player object referencing the specified player.
- * @returns Returns true if the player's radar map is forced on, false otherwise.Returns true if the local player's radar map is forced on, false otherwise.
+ * @returns Returns true if the local player's radar map is forced on, false otherwise.
  * @see https://wiki.mtasa.com/wiki/IsPlayerMapForced
  **/
 declare function isPlayerMapForced(thePlayer: Player): boolean;
@@ -218,7 +218,7 @@ declare function isPlayerNametagShowing(thePlayer: Player): boolean;
  * @returns Returns true if the voice is enabled on the server, false otherwise.
  * @see https://wiki.mtasa.com/wiki/IsVoiceEnabled
  **/
-declare function isVoiceEnabled(): false;
+declare function isVoiceEnabled(): boolean;
 
 /**
  * This function redirects the player to a specified server.
