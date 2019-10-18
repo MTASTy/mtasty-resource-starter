@@ -2359,16 +2359,6 @@ declare function getVersion(getVersion: object): [];
 declare function getWaterColor(,: number, ,: number, ,: number, getWaterColor: number): [number, number, number];
 
 /**
- * This function allows you to retrieve the water level from a certain location.
- * The water level is 0 in most places though it can vary (e.g. it's higher near the dam).
- * - Note: Some small water areas within parts of the city do not count as water to be used with this function. For example, the shallow water area in Northwest San Fierro.
- * @param theWater the water element
- * @returns Returns an integer of the water level if the localPlayer/position is near the water (-3 to 20 on the Z coordinate) else false if there's no water near the localPlayer/position.
- * @see https://wiki.mtasa.com/wiki/GetWaterLevel
-**/
-declare function getWaterLevel(theWater: Water): number;
-
-/**
  * Gets the world position of a vertex (i.e. corner) of a water area.
  * Each water area is either a triangle or quad (rectangle) so each has 3 or 4 corners.
  * Needs example
@@ -2869,14 +2859,6 @@ declare function isVehicleTaxiLightOn(taxi: Vehicle): boolean;
  * @see https://wiki.mtasa.com/wiki/IsVoiceEnabled
 **/
 declare function isVoiceEnabled(isVoiceEnabled: boolean): [];
-
-/**
- * This function determines whether water is drawn last in the rendering order.
- * @param isWaterDrawnLast unknown
- * @returns Returns true if water is drawn last in the rendering order, false otherwise.
- * @see https://wiki.mtasa.com/wiki/IsWaterDrawnLast
-**/
-declare function isWaterDrawnLast(isWaterDrawnLast: boolean): [];
 
 /**
  * This function allows you to check if certain world sound effects have not been disabled by setWorldSoundEnabled
@@ -4456,14 +4438,6 @@ declare function setVehiclesLODDistance(vehiclesDistance: number, trainsAndPlane
  * @see https://wiki.mtasa.com/wiki/SetWaterColor
 **/
 declare function setWaterColor(red: number, green: number, blue: number, alpha?: number): boolean;
-
-/**
- * This function changes the water rendering order.
- * @param bEnabled A boolean value determining whether water should be drawn last.
- * @returns Returns true if the rendering order was changed successfully, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWaterDrawnLast
-**/
-declare function setWaterDrawnLast(bEnabled: boolean): boolean;
 
 /**
  * Sets the height of some or all the water in the game world.
