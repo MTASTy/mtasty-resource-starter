@@ -452,17 +452,6 @@ declare function createPickup(x: number, y: number, z: number, theType: number, 
 declare function createRadarArea(startPosX: number, startPosY: number, sizeX: number, sizeY: number, r?: number, g?: number, b?: number, a?: number, visibleTo?: Element): RadarArea;
 
 /**
- * Creates a SWAT rope like that of the rope in single player used by SWAT Teams abseiling from the Police Maverick.
- * @param fx unknown
- * @param fy unknown
- * @param fZ unknown
- * @param duration the amount in miliseconds the rope will be there before falling to the ground.
- * @returns 
- * @see https://wiki.mtasa.com/wiki/CreateSWATRope
-**/
-declare function createSWATRope(fx: number, fy: number, fZ: number, duration: number): boolean;
-
-/**
  * This function creates a vehicle at the specified location.
  * Its worth nothing that the position of the vehicle is the center point of the vehicle, not its base.
  * As such, you need to ensure that the z value (vertical axis) is some height above the ground.
@@ -830,14 +819,6 @@ declare function getAircraftMaxVelocity(): number;
  * @see https://wiki.mtasa.com/wiki/GetAttachedElements
 **/
 declare function getAttachedElements(theElement: Element): object;
-
-/**
- * This function will tell you if the birds are enabled or disabled.
-
- * @returns Returns true if the birds are enabled or false if the birds are disabled.
- * @see https://wiki.mtasa.com/wiki/GetBirdsEnabled
-**/
-declare function getBirdsEnabled(): boolean;
 
 /**
  * This function will tell you what color a blip is. This color is only applicable to the default blip icon (, or ).
@@ -1302,18 +1283,6 @@ declare function getGameSpeed(getGameSpeed: number): [];
 declare function getGravity(): number;
 
 /**
- * This function gets the Z level of the highest ground below a point.
- * It is required that the point is near enough to the local player so that it's within the area where collision data is loaded.
- * If this is not the case, an incorrect position will be returned.
- * @param x A floating point number representing the X world coordinate of the point.
- * @param y A floating point number representing the Y world coordinate of the point.
- * @param z A floating point number representing the Z world coordinate of the point.
- * @returns Returns a float with the highest ground-level Z coord if parameters are valid, 0 if the point you tried to test is outside the loaded world map, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetGroundPosition
-**/
-declare function getGroundPosition(x: number, y: number, z: number): number;
-
-/**
  * This function will return the current heat haze effect settings.
  * - Note: The server can only return the heat haze settings if it has actually been set by script.
  * @param , unknown
@@ -1330,21 +1299,7 @@ declare function getGroundPosition(x: number, y: number, z: number): number;
 **/
 declare function getHeatHaze(,: number, ,: number, ,: number, ,: number, ,: number, ,: number, ,: number, ,: number, getHeatHaze: boolean): [number, number, number, number, number, number, number, number];
 
-/**
- * This function will tell you if interior furniture are enabled or disabled in a specified room ID.
- * @param roomID unknown
- * @returns Returns true if interior furniture is enabled or false if interior furniture is disabled.
- * @see https://wiki.mtasa.com/wiki/GetInteriorFurnitureEnabled
-**/
-declare function getInteriorFurnitureEnabled(roomID: number): boolean;
 
-/**
- * This function checks to see if the music played by default in clubs is disabled or not.
- * @param getInteriorSoundsEnabled unknown
- * @returns Returns true if music is playing, returns false if music is not playing.
- * @see https://wiki.mtasa.com/wiki/GetInteriorSoundsEnabled
-**/
-declare function getInteriorSoundsEnabled(getInteriorSoundsEnabled: boolean): [];
 
 /**
  * This function gets the maximum height at which your jetpack can fly without failing to go higher.
@@ -1449,15 +1404,6 @@ declare function getMinuteDuration(getMinuteDuration: number): [];
  * @see https://wiki.mtasa.com/wiki/GetMoonSize
 **/
 declare function getMoonSize(): number;
-
-/**
- * This function gets the distance from the camera at which the world starts rendering.
- * For more information about this please refer to setNearClipDistance.
- * @param getNearClipDistance unknown
- * @returns This function returns a float containing the actual near clip distance.
- * @see https://wiki.mtasa.com/wiki/GetNearClipDistance
-**/
-declare function getNearClipDistance(getNearClipDistance: number): [];
 
 /**
  * This function returns network status information.
@@ -1621,14 +1567,6 @@ declare function getPedWeapon(thePed: Ped, weaponSlot?: number): number;
 declare function getPedWeaponSlot(thePed: Ped): number;
 
 /**
- * This function gets the peds LOD distance.
- * @param getPedsLODDistance unknown
- * @returns This function returns a float containing the peds LOD distance.
- * @see https://wiki.mtasa.com/wiki/GetPedsLODDistance
-**/
-declare function getPedsLODDistance(getPedsLODDistance: number): [];
-
-/**
  * This function returns performance information.
  * @param category Performance statistics category.If empty string is given, list of all categories is returned.See categories for more information.
  * @param [options=] Category specific ',' separated options. All categories supports 'h' option for help.
@@ -1669,14 +1607,6 @@ declare function getPickupType(thePickup: Pickup): number;
  * @see https://wiki.mtasa.com/wiki/GetPickupWeapon
 **/
 declare function getPickupWeapon(thePickup: Pickup): number;
-
-/**
- * This function allows you to check the current blur level of a specified player.
-
- * @returns Returns the player's blur level if successful, false if an invalid player was given.Returns the local blur level.
- * @see https://wiki.mtasa.com/wiki/GetPlayerBlurLevel
-**/
-declare function getPlayerBlurLevel(): number;
 
 /**
  * This function returns a player element for the player with the name passed to the function.
@@ -1854,20 +1784,6 @@ declare function getResourceState(theResource: Resource): string;
  * @see https://wiki.mtasa.com/wiki/GetRootElement
 **/
 declare function getRootElement(getRootElement: Element): [];
-
-/**
- * This function gets the screen position of a point in the world.
- * This is useful for attaching 2D gui elements to parts of the world (e.g. players) or detecting if a point is on the screen (though it does not check if it is actually visible, you should use processLineOfSight for that).
- * @param x A float value indicating the x position in the world.
- * @param y A float value indicating the y position in the world.
- * @param z A float value indicating the z position in the world.
- * @param [edgeTolerance=0] A float value indicating the distance the position can be off screen before the function returns false. Note
- * @param , unknown
- * @param [relative=true] A boolean value that indicates if edgeTolerance is in pixels [false], or relative to the screen size [true].
- * @returns Returns two x, y floats indicating the screen position and float distance between screen and given position if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetScreenFromWorldPosition
-**/
-declare function getScreenFromWorldPosition(x: number, y: number, z: number, edgeTolerance?: number, ,: unknown, relative?: boolean): [number, number];
 
 /**
  * This function allows you to identify the weapon slot that a weapon belongs to.
@@ -2308,15 +2224,6 @@ declare function getVehicleVariant(theVehicle: Vehicle): [number, number];
 declare function getVehicleWheelStates(theVehicle: Vehicle): [number, number, number, number];
 
 /**
- * Returns the distance of vehicles LOD.
- * @param , unknown
- * @param getVehiclesLODDistance unknown
- * @returns 
- * @see https://wiki.mtasa.com/wiki/GetVehiclesLODDistance
-**/
-declare function getVehiclesLODDistance(,: number, getVehiclesLODDistance: number): [number];
-
-/**
  * This function gives you various version information about MTA and the operating system.
  * - Note: Clientside will return the version from the player, and the server-sided will return version from the server.
  * @param getVersion unknown
@@ -2392,20 +2299,6 @@ declare function getWeather(): [number, number];
 declare function getWindVelocity(,: number, ,: number, getWindVelocity: number): [number, number];
 
 /**
- * This function allows you to retrieve the world position corresponding to a 2D position on the screen, at a certain depth.
- * If you want to detect what element is at a particular point on the screen, use processLineOfSight between the camera position and the position returned from this function when passed a high depth value (100 or so, depending how far away you want to detect elements at).
- * As expected, setting 0 as the distance will cause the point retrived to be within the camera itself.
- * That means that drawing any 3D thing in that point would result in it not being visible.
- * Depending on the camera near clip distance, however, the minimum distance to be able to view it can vary.
- * @param x A float value indicating the x position on the screen, in pixels.
- * @param y A float value indicating the y position on the screen, in pixels.
- * @param depth A float value indicating the distance from the camera of the point whose coordinates we are retrieving, in units.
- * @returns Returns three x, y, z floats indicating the world position if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/GetWorldFromScreenPosition
-**/
-declare function getWorldFromScreenPosition(x: number, y: number, depth: number): [number, number, number];
-
-/**
  * This function allows you to retrieve the zone name of a certain location.
  * ''Note that between versions 1.1 and 1.3.0-3749 the default value for citiesonly was incorrect when called the client side.
  * The work around for clients before 1.3.0-3749 is to always declare a value for citiesonly. Server side getZoneName was unaffected.''
@@ -2472,14 +2365,6 @@ declare function inspect(var: any, options: object): string;
  * @see https://wiki.mtasa.com/wiki/Iprint
 **/
 declare function iprint(var1: any, var2: any, var3: any, ]: unknown): boolean;
-
-/**
- * This function allows you to check if some background sound effects are enabled.
- * @param theType The type of ambient sound to test.Can be either "gunfire" or "general".
- * @returns Returns true if the ambient sound is enabled, false if it is disabled or invalid values were passed.
- * @see https://wiki.mtasa.com/wiki/IsAmbientSoundEnabled
-**/
-declare function isAmbientSoundEnabled(theType: string): boolean;
 
 /**
  * This function checks if a value is an element or not.
@@ -2571,28 +2456,6 @@ declare function isInsideColShape(theShape: ColShape, posX: number, posY: number
  * @see https://wiki.mtasa.com/wiki/IsInsideRadarArea
 **/
 declare function isInsideRadarArea(theArea: RadarArea, posX: number, posY: number): boolean;
-
-/**
- * This function checks if there are obstacles between two points of the game world, optionally ignoring certain kinds of elements.
- * Use processLineOfSight if you want more information about what the ray hits.
- * @param startX The first point's world X coordinate.
- * @param startY The first point's world Y coordinate.
- * @param startZ The first point's world Z coordinate.
- * @param endX The second point's world X coordinate.
- * @param endY The second point's world Y coordinate.
- * @param endZ The second point's world Z coordinate.
- * @param [checkBuildings=true] Allow the line of sight to be blocked by GTA's internally placed buildings, i.e. the world map.
- * @param [checkVehicles=true] Allow the line of sight to be blocked by vehicles.
- * @param [checkPeds=true] Allow the line of sight to be blocked by peds, i.e. players.
- * @param [checkObjects=true] Allow the line of sight to be blocked by objects.
- * @param [checkDummies=true] Allow the line of sight to be blocked by GTA's internal dummies. These are not used in the current MTA version so this argument can be set to false.
- * @param [seeThroughStuff=false] Allow the line of sight to be blocked by translucent game objects, e.g. glass.
- * @param [ignoreSomeObjectsForCamera=false] Allow the line of sight to pass through objects that have (K) property enabled in "object.dat" data file. (i.e. Most dynamic objects like boxes or barrels)
- * @param [ignoredElement=nil] Allow the line of sight to pass through a certain specified element.
- * @returns Returns true if the line between the specified points is clear, false if there's an obstacle or if invalid parameters are passed.
- * @see https://wiki.mtasa.com/wiki/IsLineOfSightClear
-**/
-declare function isLineOfSightClear(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings?: boolean, checkVehicles?: boolean, checkPeds?: boolean, checkObjects?: boolean, checkDummies?: boolean, seeThroughStuff?: boolean, ignoreSomeObjectsForCamera?: boolean, ignoredElement?: Element): boolean;
 
 /**
  * This function checks whether OOP (Object Oriented Programming) is enabled in the current resource or not.
@@ -2770,24 +2633,6 @@ declare function isVehicleTaxiLightOn(taxi: Vehicle): boolean;
 declare function isVoiceEnabled(isVoiceEnabled: boolean): [];
 
 /**
- * This function allows you to check if certain world sound effects have not been disabled by setWorldSoundEnabled
- * }}
- * @param group An integer representing the world sound group
- * @param [index=1] unknown
- * @returns Returns true if the world sounds are enabled, false if they are disabled or invalid values were passed.
- * @see https://wiki.mtasa.com/wiki/IsWorldSoundEnabled
-**/
-declare function isWorldSoundEnabled(group: number, index?: number): boolean;
-
-/**
- * Checks if a special world property (cheat) is enabled or not.
- * @param propname the name of the property to retrieve.Possible values are listed on SetWorldSpecialPropertyEnabled.
- * @returns Returns true if the property is enabled, false if it is disabled or the specified property name is invalid.
- * @see https://wiki.mtasa.com/wiki/IsWorldSpecialPropertyEnabled
-**/
-declare function isWorldSpecialPropertyEnabled(propname: string): boolean;
-
-/**
  * This function kills the specified ped.
  * From v1.5.3 onwards this function is now available client side.
  * Only works on client side peds.
@@ -2903,35 +2748,6 @@ declare function pregMatch(base: string, pattern: string, flags?: unknown, maxRe
 declare function pregReplace(subject: string, pattern: string, replacement: string, flags: unknown): string;
 
 /**
- * This function casts a ray between two points in the world, and tells you information about the point that was hit, if any.
- * The two positions must be within the local player's draw distance as the collision data is not loaded outside this area, and the call will just fail as if the ray didn't hit.
- * This function is relatively expensive to call, so over use of this in scripts may have a detrimental effect on performance.
- * This function is useful for checking for collisions and for editor-style scripts.
- * If you wish to find what element is positioned at a particular point on the screen, use this function combined with getWorldFromScreenPosition.
- * If you wish to just know if something is hit, and don't care about what or where was hit, use isLineOfSightClear.
- * @param startX The start x position
- * @param startY The start y position
- * @param startZ The start z position
- * @param endX The end x position
- * @param endY The end y position
- * @param endZ The end z position
- * @param [checkBuildings=true] Allow the line of sight to be blocked by GTA's internally placed buildings, i.e. the world map.
- * @param [checkVehicles=true] Allow the line of sight to be blocked by vehicles.
- * @param [checkPlayers=true] Allow the line of sight to be blocked by players.
- * @param [checkObjects=true] Allow the line of sight to be blocked by objects.
- * @param [checkDummies=true] Allow the line of sight to be blocked by GTA's internal dummies. These are not used in the current MTA version so this argument can be set to false.
- * @param [seeThroughStuff=false] Allow the line of sight to be blocked by translucent game objects, e.g. glass.
- * @param [ignoreSomeObjectsForCamera=false] Allow the line of sight to pass through objects that have (K) property enabled in "object.dat" data file. (i.e. Most dynamic objects like boxes or barrels)
- * @param [shootThroughStuff=false] Allow the line of sight to be blocked by things that can be shot through
- * @param [ignoredElement=nil] Allow the line of sight to pass through a certain specified element. This is usually set to the object you are tracing from so it does not interfere with the results.
- * @param [includeWorldModelInformation=false] Include the results of hitting a world model.
- * @param bIncludeCarTyres Includes car tyre hits.
- * @returns *hit: true if there is a collision, false otherwise The other values are only filled if there is a collision, they contain nil otherwise **For vehicles, piece represents the vehicle part hit:
- * @see https://wiki.mtasa.com/wiki/ProcessLineOfSight
-**/
-declare function processLineOfSight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings?: boolean, checkVehicles?: boolean, checkPlayers?: boolean, checkObjects?: boolean, checkDummies?: boolean, seeThroughStuff?: boolean, ignoreSomeObjectsForCamera?: boolean, shootThroughStuff?: boolean, ignoredElement?: Element, includeWorldModelInformation?: boolean, bIncludeCarTyres: boolean): [boolean, , number, number, number, , , , Element, , number, number, number, , , , number, Material, number, , number, , number, , number, number, number, , , , number, number, number, , , , number, ];
-
-/**
  * This function removes hooks added by addDebugHook
  * @param hookType The type of hook to remove. This can be
  * @param callbackFunction The callback function to remove
@@ -2985,14 +2801,6 @@ declare function removeVehicleUpgrade(theVehicle: Vehicle, upgrade: number): boo
 declare function removeWorldModel(modelID: number, radius: number, x: number, y: number, z: number, interior?: number): boolean;
 
 /**
- * This function is used to reset the background sounds to the default setting.
-
- * @returns Returns true if the ambient sounds were reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetAmbientSounds
-**/
-declare function resetAmbientSounds(): boolean;
-
-/**
  * This function resets the far clip distance to its default state.
  * - Note: The function will not reset far clip distance client-side, unless it is relying on a value set by the server.
  * - Note: The function will reset the far clip distance to false server-side, as there is no default value to begin with.
@@ -3026,16 +2834,6 @@ declare function resetHeatHaze(): boolean;
  * @see https://wiki.mtasa.com/wiki/ResetMoonSize
 **/
 declare function resetMoonSize(resetMoonSize: boolean): [];
-
-/**
- * Resets the distance of peds LOD to default.
- * Default values depends on client setting.
- * If client has enabled high detail peds in video options, value will be reset to 500 - otherwise to 60.
- * @param resetPedsLODDistance unknown
- * @returns Returns true if the peds LOD distance was reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetPedsLODDistance
-**/
-declare function resetPedsLODDistance(resetPedsLODDistance: boolean): [];
 
 /**
  * This function resets the rain level of the current weather to its default.
@@ -3079,17 +2877,6 @@ declare function resetSunSize(resetSunSize: boolean): [];
 declare function resetTimer(theTimer: unknown): boolean;
 
 /**
- * Resets the distance of vehicles LOD to default.
- * Default values depends on client setting.
- * If client has enabled high detail vehicles in video options, value will be reset to (500, 500) - otherwise to (70, 150).
- * You can check value of this option using dxGetStatus (SettingHighDetailVehicles).
- * @param resetVehiclesLODDistance unknown
- * @returns Returns true if the vehicles LOD distance was reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetVehiclesLODDistance
-**/
-declare function resetVehiclesLODDistance(resetVehiclesLODDistance: boolean): [];
-
-/**
  * This function reset the water color of the GTA world to default.
  * @param resetWaterColor unknown
  * @returns Returns true if water color was reset correctly, false otherwise.
@@ -3115,15 +2902,6 @@ declare function resetWaterLevel(): boolean;
 declare function resetWindVelocity(resetWindVelocity: boolean): [];
 
 /**
- * Needs example
- * New items: 3.0140,1.3.1,This function is used to reset the world sounds to the default setting.
-
- * @returns Returns true if the world sounds were reset, false otherwise.
- * @see https://wiki.mtasa.com/wiki/ResetWorldSounds
-**/
-declare function resetWorldSounds(): boolean;
-
-/**
  * This function allows restoring of all world objects,which were removed with RemoveWorldModel.
  * @param restoreAllWorldModels unknown
  * @returns Returns true if the world objects were restored, false otherwise.
@@ -3145,14 +2923,6 @@ declare function restoreAllWorldModels(restoreAllWorldModels: boolean): [];
 declare function restoreWorldModel(modelID: number, radius: number, x: number, y: number, z: number, iInterior?: number): boolean;
 
 /**
- * This function changes the maximum flying height of aircraft.
- * @param Height unknown
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetAircraftMaxHeight
-**/
-declare function setAircraftMaxHeight(Height: number): boolean;
-
-/**
  * This function sets the maximum velocity at which aircrafts could fly.
  * Using this function server-side will overwrite the value that was previously set client-side.
  * @param velocity The max velocity, can be 0 or any positive value.Default is 1.5.
@@ -3160,24 +2930,6 @@ declare function setAircraftMaxHeight(Height: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetAircraftMaxVelocity
 **/
 declare function setAircraftMaxVelocity(velocity: number): boolean;
-
-/**
- * This function allows you to disable some background sound effects.
- * See also: setWorldSoundEnabled.
- * @param theType The type of ambient sound to toggle. Can be either "gunfire" or "general".
- * @param enable Set false to turn off, true to turn on
- * @returns Returns true if the ambient sound was set correctly, false if invalid values were passed.
- * @see https://wiki.mtasa.com/wiki/SetAmbientSoundEnabled
-**/
-declare function setAmbientSoundEnabled(theType: string, enable: boolean): boolean;
-
-/**
- * This function allows you to disable the flying birds.
- * @param enable unknown
- * @returns Returns true if the birds state was changed succesfully, false if an invalid argument was specified.
- * @see https://wiki.mtasa.com/wiki/SetBirdsEnabled
-**/
-declare function setBirdsEnabled(enable: boolean): boolean;
 
 /**
  * This function will let you change the color of a blip.
@@ -3658,17 +3410,6 @@ declare function setMinuteDuration(milliseconds: number): boolean;
 declare function setMoonSize(size: number): boolean;
 
 /**
- * This function sets the distance from the camera at which the world starts rendering.
- * Do not use this function unless you have a specific reason to do so, as any values can cause artifacts and flickering problems.
- * It can be used in many ways, including: reducing Z-fighting, creating more sophisticated first person views, allowing the camera to fly closer to the ground without passing through it, etcetera.
- * - Note: setNearClipDistance should only be used when the camera orientation is controlled by setCameraMatrix, because GTA automatically adjusts this value for the optimum setting when the camera is attached to a player. Therefore ensure resetNearClipDistance is called when returning camera control back to GTA.
- * @param distance unknown
- * @returns This function returns true if the argument is valid. Returns false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetNearClipDistance
-**/
-declare function setNearClipDistance(distance: number): boolean;
-
-/**
  * This function changes the visible size of an object.
  * - Note: setObjectScale does not affect the collision models for the object, as such is unsuitable for use for interaction with players, vehicles or other objects.
  * @param theObject the object you wish to change the scale of.
@@ -3799,14 +3540,6 @@ declare function setPedWalkingStyle(thePed: Ped, style: number): boolean;
 declare function setPedWeaponSlot(thePed: Ped, weaponSlot: number): boolean;
 
 /**
- * This function sets the peds LOD distance.
- * @param distance unknown
- * @returns This function returns true if the argument is valid. Returns false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetPedsLODDistance
-**/
-declare function setPedsLODDistance(distance: number): boolean;
-
-/**
  * This function allows changing the type of a pickup to a Weapon, Armour or Health pickup, and allows you to set the health points or the weapon and ammo that the pickup will give.
  * @param thePickup The pickup which you wish to change the settings of
  * @param theType An integer representing the type of pickup. You can choose from
@@ -3817,15 +3550,6 @@ declare function setPedsLODDistance(distance: number): boolean;
  * @see https://wiki.mtasa.com/wiki/SetPickupType
 **/
 declare function setPickupType(thePickup: Pickup, theType: number, amount/weapon: number, [: unknown, ammo: number): boolean;
-
-/**
- * Sets the motion blur level on the clients screen.
- * Accepts a value between 0 and 255.
- * @param level The level to set the blur to (default
- * @returns 
- * @see https://wiki.mtasa.com/wiki/SetPlayerBlurLevel
-**/
-declare function setPlayerBlurLevel(level: number): boolean;
 
 /**
  * This function will show or hide a part of the player's HUD.
@@ -4408,30 +4132,6 @@ declare function setWeatherBlended(weatherID: number): boolean;
 declare function setWindVelocity(velocityX: number, velocityY: number, velocityZ: number): boolean;
 
 /**
- * This function allows you to disable world sounds.
- * A world sound is a sound effect which has not been caused by playSound or playSound3D.
- * - Note: *The values for group and index can be determined by using the client command showsound in conjunction with setDevelopmentMode
- * *This function does not affect sounds which are already playing, such as the wind sound that can only be stopped by entering an interior.
- * * See also: setAmbientSoundEnabled
- * @param group An integer representing the world sound group
- * @param [index=1] An integer representing an individual sound within the group
- * @param enable Set to false to disable, true to enable
- * @param [immediate=false] A boolean if set to true will cancel the sound if it's already playing.This parameter only works for stopping the sound.
- * @returns Returns true if the world sound was correctly enabled/disabled, false if invalid values were passed.
- * @see https://wiki.mtasa.com/wiki/SetWorldSoundEnabled
-**/
-declare function setWorldSoundEnabled(group: number, index?: number, enable: boolean, immediate?: boolean): boolean;
-
-/**
- * Enables or disables a special world property.
- * @param propname the name of the property to set. Possible values are
- * @param enable whether or not to enable the property.
- * @returns Returns true if successful, false otherwise.
- * @see https://wiki.mtasa.com/wiki/SetWorldSpecialPropertyEnabled
-**/
-declare function setWorldSpecialPropertyEnabled(propname: string, enable: boolean): boolean;
-
-/**
  * Calculates the sha256 hash of the specified string.
  * - Tip: * The sha module and this function may conflict with eachother, if you use this function uninstall the module!
  * * This function returns an uppercase string, so make sure you string.upper() anything else you are checking against that has been sha256'd elsewhere.
@@ -4471,21 +4171,6 @@ declare function stopObject(theobject: Object): boolean;
  * @see https://wiki.mtasa.com/wiki/TakePlayerMoney
 **/
 declare function takePlayerMoney(amount: number): boolean;
-
-/**
- * This function checks to see if a line between two points collides with the water.
- * This is similar to processLineOfSight, but only collides with water.
- * Waves are taken into account when testing the line.
- * @param startX unknown
- * @param startY unknown
- * @param startZ unknown
- * @param endX unknown
- * @param endY unknown
- * @param endZ unknown
- * @returns Returns true and the position of the intersection point of the line and the water surface if there is a collision, or false if there is no collision.
- * @see https://wiki.mtasa.com/wiki/TestLineAgainstWater
-**/
-declare function testLineAgainstWater(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number): [boolean, number, number, number];
 
 /**
  * This function converts a single value (preferably a Lua table) into a JSON encoded string.

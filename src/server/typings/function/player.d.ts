@@ -48,7 +48,7 @@ declare function getPlayerAnnounceValue(thePlayer: Player, key: string): string 
 /**
  * This function allows you to check the current blur level of a specified player.
  * @param thePlayer The player whose blur level you want to check.
- * @returns Returns the player's blur level if successful, false if an invalid player was given.Returns the local blur level.
+ * @returns Returns the player's blur level if successful, false if an invalid player was given.
  * @see https://wiki.mtasa.com/wiki/GetPlayerBlurLevel
  **/
 declare function getPlayerBlurLevel(thePlayer: Player): number | false;
