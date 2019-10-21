@@ -15,5 +15,24 @@
     "typescript-to-lua": "^0.28.0",
     "typescript-tstl-plugin": "^0.1.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "mtasty": {
+    "watch_restart": {
+      "enabled": true,
+      "interval": "10s"
+    },
+    "projects": [
+      {
+        "name": "client",
+        "type": "client"
+      },
+      {
+        "name": "server",
+        "type": "server"
+      }
+    ],
+    "assets": [
+      "assets"
+    ]
+  }
 }
